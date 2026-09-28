@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { validateProjects, validateStack } from "./validate";
-import type { Project, StackItem } from "./types";
+import { validateExperience, validateProjects, validateStack } from "./validate";
+import type { Experience, Project, StackItem } from "./types";
 
 function project(overrides: Partial<Project> = {}): Project {
   return {
@@ -93,6 +93,42 @@ describe("validateStack", () => {
     expect(() =>
       validateStack(
         [stackItem({ usedIn: ["does-not-exist"] })],
+        knownProjectSlugs,
+      ),
+    ).toThrow(/does-not-exist/);
+  });
+});
+
+function experience(overrides: Partial<Experience> = {}): Experience {
+  return {
+    role: "AI Engineer & Executive Assistant II",
+    organisation: "DICT OASIS",
+    dateRange: "Aug 2025 – May 2026",
+    description: "Designed the grading method and built the reporting pipeline.",
+    projectSlugs: ["oplan-bantay-signal"],
+    ...overrides,
+  };
+}
+
+describe("validateExperience", () => {
+  const knownProjectSlugs = ["oplan-bantay-signal", "kuya-a", "aya"];
+
+  it("accepts an Experience entry backed by real Projects", () => {
+    expect(() =>
+      validateExperience([experience()], knownProjectSlugs),
+    ).not.toThrow();
+  });
+
+  it("accepts an Experience entry with no Work Projects (e.g. education)", () => {
+    expect(() =>
+      validateExperience([experience({ projectSlugs: [] })], knownProjectSlugs),
+    ).not.toThrow();
+  });
+
+  it("fails when an Experience entry references an unknown Project", () => {
+    expect(() =>
+      validateExperience(
+        [experience({ projectSlugs: ["does-not-exist"] })],
         knownProjectSlugs,
       ),
     ).toThrow(/does-not-exist/);

@@ -1,13 +1,23 @@
+import { About } from "@/components/about";
+import { Contact } from "@/components/contact";
+import { Experience } from "@/components/experience";
 import { Hero } from "@/components/hero";
 import { ProjectSpread } from "@/components/project-spread";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StackIndex } from "@/components/stack-index";
-import { getStack, listFeaturedProjects } from "@/lib/content";
+import {
+  getAboutBody,
+  getStack,
+  listExperience,
+  listFeaturedProjects,
+} from "@/lib/content";
 
 export default function Home() {
   const projects = listFeaturedProjects();
   const stack = getStack();
+  const experience = listExperience();
+  const about = getAboutBody();
 
   return (
     <>
@@ -24,6 +34,9 @@ export default function Home() {
         ))}
       </main>
       <StackIndex stack={stack} />
+      <Experience entries={experience} />
+      <About body={about} />
+      <Contact />
       <SiteFooter />
     </>
   );

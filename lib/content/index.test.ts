@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { getProjectBySlug, getStack, listFeaturedProjects } from "./index";
+import {
+  getAboutBody,
+  getProjectBySlug,
+  getStack,
+  listExperience,
+  listFeaturedProjects,
+} from "./index";
 
 describe("content collection", () => {
   it("lists the three featured Projects in spec order", () => {
@@ -76,6 +82,53 @@ describe("getStack", () => {
     );
     for (const name of stack.alsoWorkedWith) {
       expect(stackItemNames).not.toContain(name);
+    }
+  });
+});
+
+describe("listExperience", () => {
+  it("resolves each entry's Work Projects to real Projects", () => {
+    const entries = listExperience();
+
+    expect(entries.length).toBeGreaterThan(0);
+    for (const entry of entries) {
+      expect(entry.role).toBeTruthy();
+      expect(entry.organisation).toBeTruthy();
+      for (const project of entry.projects) {
+        expect(project.slug).toBeTruthy();
+        expect(project.name).toBeTruthy();
+      }
+    }
+  });
+
+  it("resolves the DICT OASIS entry to Oplan Bantay Signal, Kuya A and Aya", () => {
+    const entries = listExperience();
+    const dict = entries.find((entry) => entry.organisation === "DICT OASIS");
+
+    expect(dict?.projects.map((p) => p.slug)).toEqual([
+      "oplan-bantay-signal",
+      "kuya-a",
+      "aya",
+    ]);
+  });
+
+  it("allows an entry with no Work Projects (e.g. education)", () => {
+    const entries = listExperience();
+    const withoutProjects = entries.filter(
+      (entry) => entry.projects.length === 0,
+    );
+
+    expect(withoutProjects.length).toBeGreaterThan(0);
+  });
+});
+
+describe("getAboutBody", () => {
+  it("returns non-empty first-person paragraphs", () => {
+    const body = getAboutBody();
+
+    expect(body.length).toBeGreaterThan(0);
+    for (const paragraph of body) {
+      expect(paragraph.length).toBeGreaterThan(0);
     }
   });
 });

@@ -60,3 +60,26 @@ export interface Stack {
   /** CV skills with no backing Project (CONTEXT.md: not a Stack Item). */
   alsoWorkedWith: string[];
 }
+
+/**
+ * A single Experience entry (CONTEXT.md), as authored content: a role, an
+ * organisation, a date range, a one-sentence description and the Work
+ * Projects built in that role.
+ */
+export interface Experience {
+  role: string;
+  organisation: string;
+  dateRange: string;
+  description: string;
+  /** Project slugs built in this role. Empty for a non-Work entry (e.g. education). */
+  projectSlugs: string[];
+}
+
+/** An Experience entry with its `projectSlugs` resolved to full Projects. */
+export interface ResolvedExperience {
+  role: string;
+  organisation: string;
+  dateRange: string;
+  description: string;
+  projects: Project[];
+}

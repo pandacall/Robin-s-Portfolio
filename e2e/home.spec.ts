@@ -10,11 +10,12 @@ test("home page loads with the hero and the Project spreads", async ({ page }) =
     page.getByRole("heading", { level: 1, name: /I build AI agents/ }),
   ).toBeVisible();
   await expect(page.getByText("Software & AI Engineer.")).toBeVisible();
-  await expect(page.getByRole("link", { name: "Email" })).toHaveAttribute(
+  const hero = page.locator("#hero");
+  await expect(hero.getByRole("link", { name: "Email" })).toHaveAttribute(
     "href",
     "mailto:hello@robincubi.dev",
   );
-  await expect(page.getByRole("link", { name: "Download CV" })).toBeVisible();
+  await expect(hero.getByRole("link", { name: "Download CV" })).toBeVisible();
 
   await expect(
     page.getByRole("heading", { level: 2, name: "Oplan Bantay Signal" }),

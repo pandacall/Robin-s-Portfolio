@@ -1,10 +1,18 @@
+import { aboutBody } from "./about";
+import { experienceEntries } from "./experience";
 import { projects } from "./projects";
 import { STACK_GROUP_ORDER, alsoWorkedWith, stackItems } from "./stack";
-import type { Project, ResolvedStackItem, Stack } from "./types";
-import { validateProjects, validateStack } from "./validate";
+import type {
+  Project,
+  ResolvedExperience,
+  ResolvedStackItem,
+  Stack,
+} from "./types";
+import { validateExperience, validateProjects, validateStack } from "./validate";
 
 validateProjects(projects);
 validateStack(stackItems);
+validateExperience(experienceEntries);
 
 export function listFeaturedProjects(): Project[] {
   return projects;
@@ -46,6 +54,33 @@ export function getStack(): Stack {
   );
 
   return { groups, alsoWorkedWith };
+}
+
+/**
+ * Experience (CONTEXT.md), each entry resolved to the Work Projects built
+ * in that role.
+ */
+export function listExperience(): ResolvedExperience[] {
+  return experienceEntries.map((entry) => ({
+    role: entry.role,
+    organisation: entry.organisation,
+    dateRange: entry.dateRange,
+    description: entry.description,
+    projects: entry.projectSlugs.map((slug) => {
+      const project = getProjectBySlug(slug);
+      if (!project) {
+        throw new Error(
+          `${entry.organisation} (${entry.role}): links to a Project "${slug}" that doesn't exist`,
+        );
+      }
+      return project;
+    }),
+  }));
+}
+
+/** The About body (spec.md module 1: *get the About body*), as plain first-person paragraphs. */
+export function getAboutBody(): string[] {
+  return aboutBody;
 }
 
 export type { Project };

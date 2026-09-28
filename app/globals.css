@@ -600,6 +600,138 @@ p + p {
   }
 }
 
+/* ---------- experience ---------- */
+.xp {
+  padding: clamp(56px, 8vw, 120px) 0;
+  border-top: 1px solid var(--rule);
+}
+.xp .g {
+  row-gap: 20px;
+}
+.xp h2 {
+  grid-column: 1 / span 5;
+  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.75rem);
+}
+.xp .list {
+  grid-column: 7 / span 6;
+}
+.xp .row {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 16px;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule);
+}
+.xp .row:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+.xp .d {
+  font-family: var(--font-disp);
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+  padding-top: 4px;
+}
+.xp .row h3 {
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+.xp .org {
+  font-family: var(--font-disp);
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+  margin-top: 4px;
+}
+.xp .row p {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+@media (max-width: 900px) {
+  .xp h2,
+  .xp .list {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 560px) {
+  .xp .row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+/* ---------- about ---------- */
+.about {
+  padding: clamp(56px, 8vw, 120px) 0;
+  border-top: 1px solid var(--rule);
+}
+.about .g {
+  row-gap: 20px;
+}
+.about h2 {
+  grid-column: 1 / span 5;
+  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.75rem);
+}
+.about .text {
+  grid-column: 7 / span 6;
+  font-size: 1.0625rem;
+}
+@media (max-width: 900px) {
+  .about h2,
+  .about .text {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- contact ---------- */
+.contact {
+  background: var(--concrete);
+  padding-top: clamp(56px, 8vw, 120px);
+  padding-bottom: clamp(56px, 8vw, 120px);
+}
+.contact .g {
+  row-gap: 24px;
+  align-items: end;
+}
+.contact .lead {
+  grid-column: 1 / span 8;
+}
+.contact h2 {
+  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.75rem);
+}
+.contact .mail {
+  font-family: var(--font-disp);
+  font-size: clamp(1.75rem, 1rem + 3vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  margin-top: 20px;
+  line-height: 1;
+}
+.contact .mail a {
+  color: var(--narra);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.12em;
+}
+.contact .side {
+  grid-column: 9 / span 4;
+  font-family: var(--font-disp);
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+.contact .acts {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+@media (max-width: 900px) {
+  .contact .lead,
+  .contact .side {
+    grid-column: 1 / -1;
+  }
+}
+
 /* ---------- footer ---------- */
 footer.site {
   border-top: 1px solid var(--rule);

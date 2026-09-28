@@ -1,6 +1,6 @@
 import { caseStudySlugs as realCaseStudySlugs } from "./case-studies";
 import { projects as realProjects } from "./projects";
-import type { Project, StackItem } from "./types";
+import type { Experience, Project, StackItem } from "./types";
 
 function textFields(project: Project): string[] {
   return [
@@ -75,6 +75,34 @@ export function validateStack(
       if (!knownProjectSlugs.includes(slug)) {
         errors.push(
           `${item.name}: links to a Project "${slug}" that doesn't exist`,
+        );
+      }
+    }
+  }
+
+  if (errors.length > 0) {
+    throw new Error(`Content validation failed:\n${errors.join("\n")}`);
+  }
+}
+
+/**
+ * An Experience entry may reference no Projects (e.g. education), but every
+ * Project slug it does reference must resolve (CONTEXT.md: an Experience
+ * entry links to the Work Projects built in that role).
+ */
+export function validateExperience(
+  entries: Experience[],
+  knownProjectSlugs: readonly string[] = realProjects.map(
+    (project) => project.slug,
+  ),
+): void {
+  const errors: string[] = [];
+
+  for (const entry of entries) {
+    for (const slug of entry.projectSlugs) {
+      if (!knownProjectSlugs.includes(slug)) {
+        errors.push(
+          `${entry.organisation} (${entry.role}): links to a Project "${slug}" that doesn't exist`,
         );
       }
     }

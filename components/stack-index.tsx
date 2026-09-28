@@ -1,8 +1,5 @@
+import { ProjectLinks } from "@/components/project-links";
 import type { Stack } from "@/lib/content/types";
-
-function projectHref(project: { slug: string; caseStudySlug?: string }): string {
-  return project.caseStudySlug ? `/work/${project.caseStudySlug}` : `#${project.slug}`;
-}
 
 export function StackIndex({ stack }: { stack: Stack }) {
   return (
@@ -38,12 +35,7 @@ export function StackIndex({ stack }: { stack: Stack }) {
                       ))}
                     </td>
                     <td>
-                      {item.usedIn.map((project, index) => (
-                        <span key={project.slug}>
-                          {index > 0 && ", "}
-                          <a href={projectHref(project)}>{project.name}</a>
-                        </span>
-                      ))}
+                      <ProjectLinks projects={item.usedIn} />
                     </td>
                     <td>{item.how}</td>
                   </tr>
