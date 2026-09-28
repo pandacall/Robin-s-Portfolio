@@ -10,6 +10,8 @@ function project(overrides: Partial<Project> = {}): Project {
     private: true,
     evidence: "internal deployment, write-up only.",
     prose: ["A six-pillar method for grading every major telco."],
+    plateCaption: "The reporting pipeline, redrawn from the system.",
+    plateAlt: "Diagram: measurements flow into a report.",
     ...overrides,
   };
 }
@@ -37,5 +39,27 @@ describe("validateProjects", () => {
         project({ prose: ["Download my resume for more."] }),
       ]),
     ).toThrow(/resume/i);
+  });
+
+  it("fails when a Project Card links to a Case Study that doesn't exist", () => {
+    expect(() =>
+      validateProjects(
+        [project({ caseStudySlug: "does-not-exist" })],
+        ["oplan-bantay-signal"],
+      ),
+    ).toThrow(/case study/i);
+  });
+
+  it("accepts a Project Card that links to a Case Study that exists", () => {
+    expect(() =>
+      validateProjects(
+        [project({ caseStudySlug: "oplan-bantay-signal" })],
+        ["oplan-bantay-signal"],
+      ),
+    ).not.toThrow();
+  });
+
+  it("accepts a Project Card with no Case Study link", () => {
+    expect(() => validateProjects([project()], [])).not.toThrow();
   });
 });

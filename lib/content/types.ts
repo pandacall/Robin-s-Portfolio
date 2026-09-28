@@ -12,6 +12,10 @@ export interface Project {
   evidence: string;
   /** The spread's prose, as plain paragraphs. */
   prose: string[];
+  /** The sentence after "Plate n" in the plate's figcaption. */
+  plateCaption: string;
+  /** The plate SVG's text alternative for screen readers. */
+  plateAlt: string;
   /** Never allowed on a Work Project. */
   codeUrl?: string;
   /** A Personal Project that names the Experience entry its original came from. */

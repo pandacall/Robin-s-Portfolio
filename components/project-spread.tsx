@@ -1,3 +1,4 @@
+import { PLATES } from "@/components/plates";
 import type { Project } from "@/lib/content/types";
 
 export function ProjectSpread({
@@ -9,6 +10,12 @@ export function ProjectSpread({
   plateNumber: number;
   alt?: boolean;
 }) {
+  const Plate = PLATES[project.slug];
+  if (!Plate) {
+    throw new Error(`No diagram plate registered for Project "${project.slug}"`);
+  }
+  const titleId = `plate-${project.slug}-title`;
+
   return (
     <section className={alt ? "spread alt" : "spread"}>
       <div className="wrap g">
@@ -29,81 +36,29 @@ export function ProjectSpread({
           <p className="evidence">
             <b>Evidence:</b> {project.evidence}
           </p>
+          {project.caseStudySlug && (
+            <a className="more" href={`/work/${project.caseStudySlug}`}>
+              Open the Case Study
+              <svg viewBox="0 0 18 18" aria-hidden="true">
+                <path
+                  d="M3 9h11m0 0-4-4m4 4-4 4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          )}
         </div>
         <figure className="plate">
           <div className="frame">
-            <svg viewBox="0 0 560 190" aria-hidden="true">
-              <defs>
-                <marker
-                  id="plate-arrow"
-                  viewBox="0 0 10 10"
-                  refX="9"
-                  refY="5"
-                  markerWidth="7"
-                  markerHeight="7"
-                  orient="auto"
-                >
-                  <path d="M0 0 10 5 0 10z" className="p-arrow" />
-                </marker>
-              </defs>
-              <rect x="1" y="28" width="118" height="48" rx="2" className="p-box" />
-              <text x="16" y="56" className="p-text">
-                Measurements
-              </text>
-              <line
-                x1="119"
-                y1="52"
-                x2="150"
-                y2="52"
-                className="p-line"
-                markerEnd="url(#plate-arrow)"
-              />
-              <rect x="151" y="28" width="118" height="48" rx="2" className="p-box hi" />
-              <text x="170" y="56" className="p-text on">
-                Six pillars
-              </text>
-              <line
-                x1="269"
-                y1="52"
-                x2="300"
-                y2="52"
-                className="p-line"
-                markerEnd="url(#plate-arrow)"
-              />
-              <rect x="301" y="28" width="118" height="48" rx="2" className="p-box" />
-              <text x="316" y="56" className="p-text">
-                Agent draft
-              </text>
-              <line
-                x1="419"
-                y1="52"
-                x2="450"
-                y2="52"
-                className="p-line"
-                markerEnd="url(#plate-arrow)"
-              />
-              <rect x="451" y="28" width="108" height="48" rx="2" className="p-box" />
-              <text x="468" y="56" className="p-text">
-                Signed PDF
-              </text>
-              <line x1="210" y1="76" x2="210" y2="118" className="p-line" />
-              <rect x="151" y="118" width="118" height="36" rx="2" className="p-box" />
-              <text x="164" y="140" className="p-small">
-                weights · bands · v3.1
-              </text>
-              <line x1="360" y1="76" x2="360" y2="118" className="p-line" />
-              <rect x="301" y="118" width="118" height="36" rx="2" className="p-box" />
-              <text x="322" y="140" className="p-small">
-                human review
-              </text>
-              <text x="1" y="184" className="p-small">
-                One run per month · every major provider · results stay with the program
-              </text>
-            </svg>
+            <Plate titleId={titleId} alt={project.plateAlt} />
           </div>
           <figcaption>
             <b>Plate {plateNumber}</b>
-            <span>The reporting pipeline, redrawn from the system. Not a screenshot.</span>
+            <span>{project.plateCaption}</span>
           </figcaption>
         </figure>
       </div>

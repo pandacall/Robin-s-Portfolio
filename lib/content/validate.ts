@@ -1,10 +1,20 @@
+import { caseStudySlugs as realCaseStudySlugs } from "./case-studies";
 import type { Project } from "./types";
 
 function textFields(project: Project): string[] {
-  return [project.name, project.evidence, ...project.prose];
+  return [
+    project.name,
+    project.evidence,
+    project.plateCaption,
+    project.plateAlt,
+    ...project.prose,
+  ];
 }
 
-export function validateProjects(projects: Project[]): void {
+export function validateProjects(
+  projects: Project[],
+  knownCaseStudySlugs: readonly string[] = realCaseStudySlugs,
+): void {
   const errors: string[] = [];
 
   for (const project of projects) {
@@ -16,6 +26,14 @@ export function validateProjects(projects: Project[]): void {
     if (project.origin === "Work" && project.codeUrl) {
       errors.push(
         `${project.slug}: a Work Project must never have a code link`,
+      );
+    }
+    if (
+      project.caseStudySlug &&
+      !knownCaseStudySlugs.includes(project.caseStudySlug)
+    ) {
+      errors.push(
+        `${project.slug}: links to a Case Study "${project.caseStudySlug}" that doesn't exist`,
       );
     }
     for (const field of textFields(project)) {
