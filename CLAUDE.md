@@ -6,6 +6,8 @@ Public portfolio site for John Robin Cubi (Software & AI Engineer). Read `CONTEX
 
 This repo is public. The gitignored folders and files (`Oplan Bantay Signal/`, `cv/`, `*-infodump.md`, `.scratch/`) are private source material: read them for facts, but never copy a **Confidential Detail** (see `CONTEXT.md`) into tracked files. Interactive Demos use **Illustrative Data** only.
 
+A privacy guard (`lib/privacy/`, run by `npm test`) scans content sources and the built site against Robin's own denylist of Confidential Details at `.privacy/denylist.txt` (gitignored — it's never committed, and the guard skips cleanly when it's absent). To add a term, add one plain-text line to that file, grouped under a `#` comment header by category; matching is a case-insensitive substring check.
+
 ## Agent skills
 
 ### Issue tracker

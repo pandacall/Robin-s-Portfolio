@@ -4,6 +4,9 @@
 /aya-cv-infodump.md
 /kuya_a_project_infodump.md
 
+# Privacy guard denylist (Confidential Details, Robin's to maintain): never committed
+/.privacy/denylist.txt
+
 # Local issue tracker (specs and tickets): kept off the public repo
 /.scratch/
 
