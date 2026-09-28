@@ -1,0 +1,779 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-28T06:52:00Z",
+  "title": "Design System: Robin's Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "capiz": {
+        "role": "neutral",
+        "displayName": "Capiz White",
+        "canonical": "oklch(98.5% 0.005 95.1)",
+        "dark": "#191816",
+        "tonalRamp": [
+          "oklch(15% 0.005 95.1)",
+          "oklch(25% 0.005 95.1)",
+          "oklch(35% 0.005 95.1)",
+          "oklch(45% 0.005 95.1)",
+          "oklch(55% 0.005 95.1)",
+          "oklch(65% 0.005 95.1)",
+          "oklch(75% 0.005 95.1)",
+          "oklch(85% 0.005 95.1)"
+        ]
+      },
+      "concrete": {
+        "role": "neutral",
+        "displayName": "Concrete",
+        "canonical": "oklch(87.6% 0.010 87.5)",
+        "dark": "#242320",
+        "tonalRamp": [
+          "oklch(15% 0.010 87.5)",
+          "oklch(25% 0.010 87.5)",
+          "oklch(35% 0.010 87.5)",
+          "oklch(45% 0.010 87.5)",
+          "oklch(55% 0.010 87.5)",
+          "oklch(65% 0.010 87.5)",
+          "oklch(75% 0.010 87.5)",
+          "oklch(85% 0.010 87.5)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(22.8% 0.006 78.2)",
+        "dark": "#EDE8DD",
+        "tonalRamp": [
+          "oklch(15% 0.006 78.2)",
+          "oklch(25% 0.006 78.2)",
+          "oklch(35% 0.006 78.2)",
+          "oklch(45% 0.006 78.2)",
+          "oklch(55% 0.006 78.2)",
+          "oklch(65% 0.006 78.2)",
+          "oklch(75% 0.006 78.2)",
+          "oklch(85% 0.006 78.2)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "oklch(45.9% 0.013 76.5)",
+        "dark": "#ABA598",
+        "tonalRamp": [
+          "oklch(15% 0.013 76.5)",
+          "oklch(25% 0.013 76.5)",
+          "oklch(35% 0.013 76.5)",
+          "oklch(45% 0.013 76.5)",
+          "oklch(55% 0.013 76.5)",
+          "oklch(65% 0.013 76.5)",
+          "oklch(75% 0.013 76.5)",
+          "oklch(85% 0.013 76.5)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3",
+        "canonical": "oklch(61.6% 0.016 80.7)",
+        "dark": "#7B766C",
+        "tonalRamp": [
+          "oklch(15% 0.016 80.7)",
+          "oklch(25% 0.016 80.7)",
+          "oklch(35% 0.016 80.7)",
+          "oklch(45% 0.016 80.7)",
+          "oklch(55% 0.016 80.7)",
+          "oklch(65% 0.016 80.7)",
+          "oklch(75% 0.016 80.7)",
+          "oklch(85% 0.016 80.7)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "oklch(80.5% 0.019 89.4)",
+        "dark": "#3A382F",
+        "tonalRamp": [
+          "oklch(15% 0.019 89.4)",
+          "oklch(25% 0.019 89.4)",
+          "oklch(35% 0.019 89.4)",
+          "oklch(45% 0.019 89.4)",
+          "oklch(55% 0.019 89.4)",
+          "oklch(65% 0.019 89.4)",
+          "oklch(75% 0.019 89.4)",
+          "oklch(85% 0.019 89.4)"
+        ]
+      },
+      "rule-2": {
+        "role": "neutral",
+        "displayName": "Rule 2",
+        "canonical": "oklch(73.0% 0.020 86.2)",
+        "dark": "#4C493F",
+        "tonalRamp": [
+          "oklch(15% 0.020 86.2)",
+          "oklch(25% 0.020 86.2)",
+          "oklch(35% 0.020 86.2)",
+          "oklch(45% 0.020 86.2)",
+          "oklch(55% 0.020 86.2)",
+          "oklch(65% 0.020 86.2)",
+          "oklch(75% 0.020 86.2)",
+          "oklch(85% 0.020 86.2)"
+        ]
+      },
+      "narra": {
+        "role": "primary",
+        "displayName": "Narra",
+        "canonical": "oklch(41.4% 0.073 51.1)",
+        "dark": "#CD9560",
+        "tonalRamp": [
+          "oklch(15% 0.073 51.1)",
+          "oklch(25% 0.073 51.1)",
+          "oklch(35% 0.073 51.1)",
+          "oklch(45% 0.073 51.1)",
+          "oklch(55% 0.073 51.1)",
+          "oklch(65% 0.073 51.1)",
+          "oklch(75% 0.073 51.1)",
+          "oklch(85% 0.073 51.1)"
+        ]
+      },
+      "narra-ink": {
+        "role": "primary",
+        "displayName": "Narra Ink",
+        "canonical": "oklch(98.5% 0.005 95.1)",
+        "dark": "#191816",
+        "tonalRamp": [
+          "oklch(15% 0.005 95.1)",
+          "oklch(25% 0.005 95.1)",
+          "oklch(35% 0.005 95.1)",
+          "oklch(45% 0.005 95.1)",
+          "oklch(55% 0.005 95.1)",
+          "oklch(65% 0.005 95.1)",
+          "oklch(75% 0.005 95.1)",
+          "oklch(85% 0.005 95.1)"
+        ]
+      },
+      "green": {
+        "role": "secondary",
+        "displayName": "Data Green",
+        "canonical": "oklch(32.3% 0.040 164.0)",
+        "dark": "#8CC4A6",
+        "tonalRamp": [
+          "oklch(15% 0.040 164.0)",
+          "oklch(25% 0.040 164.0)",
+          "oklch(35% 0.040 164.0)",
+          "oklch(45% 0.040 164.0)",
+          "oklch(55% 0.040 164.0)",
+          "oklch(65% 0.040 164.0)",
+          "oklch(75% 0.040 164.0)",
+          "oklch(85% 0.040 164.0)"
+        ]
+      },
+      "green-2": {
+        "role": "secondary",
+        "displayName": "Green 2",
+        "canonical": "oklch(54.1% 0.060 160.1)",
+        "dark": "#5E9A7C",
+        "tonalRamp": [
+          "oklch(15% 0.060 160.1)",
+          "oklch(25% 0.060 160.1)",
+          "oklch(35% 0.060 160.1)",
+          "oklch(45% 0.060 160.1)",
+          "oklch(55% 0.060 160.1)",
+          "oklch(65% 0.060 160.1)",
+          "oklch(75% 0.060 160.1)",
+          "oklch(85% 0.060 160.1)"
+        ]
+      },
+      "green-3": {
+        "role": "secondary",
+        "displayName": "Green 3",
+        "canonical": "oklch(76.0% 0.038 160.3)",
+        "dark": "#3C5C4B",
+        "tonalRamp": [
+          "oklch(15% 0.038 160.3)",
+          "oklch(25% 0.038 160.3)",
+          "oklch(35% 0.038 160.3)",
+          "oklch(45% 0.038 160.3)",
+          "oklch(55% 0.038 160.3)",
+          "oklch(65% 0.038 160.3)",
+          "oklch(75% 0.038 160.3)",
+          "oklch(85% 0.038 160.3)"
+        ]
+      },
+      "plate": {
+        "role": "neutral",
+        "displayName": "Plate",
+        "canonical": "oklch(94.0% 0.008 91.5)",
+        "dark": "#2A2825",
+        "tonalRamp": [
+          "oklch(15% 0.008 91.5)",
+          "oklch(25% 0.008 91.5)",
+          "oklch(35% 0.008 91.5)",
+          "oklch(45% 0.008 91.5)",
+          "oklch(55% 0.008 91.5)",
+          "oklch(65% 0.008 91.5)",
+          "oklch(75% 0.008 91.5)",
+          "oklch(85% 0.008 91.5)"
+        ]
+      },
+      "plate-dot": {
+        "role": "neutral",
+        "displayName": "Plate Dot",
+        "canonical": "oklch(84.0% 0.015 84.6)",
+        "dark": "#3E3B35",
+        "tonalRamp": [
+          "oklch(15% 0.015 84.6)",
+          "oklch(25% 0.015 84.6)",
+          "oklch(35% 0.015 84.6)",
+          "oklch(45% 0.015 84.6)",
+          "oklch(55% 0.015 84.6)",
+          "oklch(65% 0.015 84.6)",
+          "oklch(75% 0.015 84.6)",
+          "oklch(85% 0.015 84.6)"
+        ]
+      },
+      "capiz-dark": {
+        "role": "neutral",
+        "displayName": "Capiz White (dark)",
+        "canonical": "oklch(20.9% 0.004 84.6)",
+        "tonalRamp": [
+          "oklch(15% 0.004 84.6)",
+          "oklch(25% 0.004 84.6)",
+          "oklch(35% 0.004 84.6)",
+          "oklch(45% 0.004 84.6)",
+          "oklch(55% 0.004 84.6)",
+          "oklch(65% 0.004 84.6)",
+          "oklch(75% 0.004 84.6)",
+          "oklch(85% 0.004 84.6)"
+        ]
+      },
+      "concrete-dark": {
+        "role": "neutral",
+        "displayName": "Concrete (dark)",
+        "canonical": "oklch(25.6% 0.006 91.6)",
+        "tonalRamp": [
+          "oklch(15% 0.006 91.6)",
+          "oklch(25% 0.006 91.6)",
+          "oklch(35% 0.006 91.6)",
+          "oklch(45% 0.006 91.6)",
+          "oklch(55% 0.006 91.6)",
+          "oklch(65% 0.006 91.6)",
+          "oklch(75% 0.006 91.6)",
+          "oklch(85% 0.006 91.6)"
+        ]
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Ink (dark)",
+        "canonical": "oklch(93.2% 0.016 86.4)",
+        "tonalRamp": [
+          "oklch(15% 0.016 86.4)",
+          "oklch(25% 0.016 86.4)",
+          "oklch(35% 0.016 86.4)",
+          "oklch(45% 0.016 86.4)",
+          "oklch(55% 0.016 86.4)",
+          "oklch(65% 0.016 86.4)",
+          "oklch(75% 0.016 86.4)",
+          "oklch(85% 0.016 86.4)"
+        ]
+      },
+      "ink-2-dark": {
+        "role": "neutral",
+        "displayName": "Ink 2 (dark)",
+        "canonical": "oklch(72.3% 0.020 86.2)",
+        "tonalRamp": [
+          "oklch(15% 0.020 86.2)",
+          "oklch(25% 0.020 86.2)",
+          "oklch(35% 0.020 86.2)",
+          "oklch(45% 0.020 86.2)",
+          "oklch(55% 0.020 86.2)",
+          "oklch(65% 0.020 86.2)",
+          "oklch(75% 0.020 86.2)",
+          "oklch(85% 0.020 86.2)"
+        ]
+      },
+      "ink-3-dark": {
+        "role": "neutral",
+        "displayName": "Ink 3 (dark)",
+        "canonical": "oklch(56.7% 0.016 84.6)",
+        "tonalRamp": [
+          "oklch(15% 0.016 84.6)",
+          "oklch(25% 0.016 84.6)",
+          "oklch(35% 0.016 84.6)",
+          "oklch(45% 0.016 84.6)",
+          "oklch(55% 0.016 84.6)",
+          "oklch(65% 0.016 84.6)",
+          "oklch(75% 0.016 84.6)",
+          "oklch(85% 0.016 84.6)"
+        ]
+      },
+      "rule-dark": {
+        "role": "neutral",
+        "displayName": "Rule (dark)",
+        "canonical": "oklch(34.0% 0.015 96.8)",
+        "tonalRamp": [
+          "oklch(15% 0.015 96.8)",
+          "oklch(25% 0.015 96.8)",
+          "oklch(35% 0.015 96.8)",
+          "oklch(45% 0.015 96.8)",
+          "oklch(55% 0.015 96.8)",
+          "oklch(65% 0.015 96.8)",
+          "oklch(75% 0.015 96.8)",
+          "oklch(85% 0.015 96.8)"
+        ]
+      },
+      "rule-2-dark": {
+        "role": "neutral",
+        "displayName": "Rule 2 (dark)",
+        "canonical": "oklch(40.5% 0.017 93.2)",
+        "tonalRamp": [
+          "oklch(15% 0.017 93.2)",
+          "oklch(25% 0.017 93.2)",
+          "oklch(35% 0.017 93.2)",
+          "oklch(45% 0.017 93.2)",
+          "oklch(55% 0.017 93.2)",
+          "oklch(65% 0.017 93.2)",
+          "oklch(75% 0.017 93.2)",
+          "oklch(85% 0.017 93.2)"
+        ]
+      },
+      "narra-dark": {
+        "role": "primary",
+        "displayName": "Narra (dark)",
+        "canonical": "oklch(71.2% 0.097 63.7)",
+        "tonalRamp": [
+          "oklch(15% 0.097 63.7)",
+          "oklch(25% 0.097 63.7)",
+          "oklch(35% 0.097 63.7)",
+          "oklch(45% 0.097 63.7)",
+          "oklch(55% 0.097 63.7)",
+          "oklch(65% 0.097 63.7)",
+          "oklch(75% 0.097 63.7)",
+          "oklch(85% 0.097 63.7)"
+        ]
+      },
+      "narra-ink-dark": {
+        "role": "primary",
+        "displayName": "Narra Ink (dark)",
+        "canonical": "oklch(20.9% 0.004 84.6)",
+        "tonalRamp": [
+          "oklch(15% 0.004 84.6)",
+          "oklch(25% 0.004 84.6)",
+          "oklch(35% 0.004 84.6)",
+          "oklch(45% 0.004 84.6)",
+          "oklch(55% 0.004 84.6)",
+          "oklch(65% 0.004 84.6)",
+          "oklch(75% 0.004 84.6)",
+          "oklch(85% 0.004 84.6)"
+        ]
+      },
+      "green-dark": {
+        "role": "secondary",
+        "displayName": "Data Green (dark)",
+        "canonical": "oklch(77.3% 0.072 160.7)",
+        "tonalRamp": [
+          "oklch(15% 0.072 160.7)",
+          "oklch(25% 0.072 160.7)",
+          "oklch(35% 0.072 160.7)",
+          "oklch(45% 0.072 160.7)",
+          "oklch(55% 0.072 160.7)",
+          "oklch(65% 0.072 160.7)",
+          "oklch(75% 0.072 160.7)",
+          "oklch(85% 0.072 160.7)"
+        ]
+      },
+      "green-2-dark": {
+        "role": "secondary",
+        "displayName": "Green 2 (dark)",
+        "canonical": "oklch(63.6% 0.078 161.3)",
+        "tonalRamp": [
+          "oklch(15% 0.078 161.3)",
+          "oklch(25% 0.078 161.3)",
+          "oklch(35% 0.078 161.3)",
+          "oklch(45% 0.078 161.3)",
+          "oklch(55% 0.078 161.3)",
+          "oklch(65% 0.078 161.3)",
+          "oklch(75% 0.078 161.3)",
+          "oklch(85% 0.078 161.3)"
+        ]
+      },
+      "green-3-dark": {
+        "role": "secondary",
+        "displayName": "Green 3 (dark)",
+        "canonical": "oklch(44.4% 0.047 160.5)",
+        "tonalRamp": [
+          "oklch(15% 0.047 160.5)",
+          "oklch(25% 0.047 160.5)",
+          "oklch(35% 0.047 160.5)",
+          "oklch(45% 0.047 160.5)",
+          "oklch(55% 0.047 160.5)",
+          "oklch(65% 0.047 160.5)",
+          "oklch(75% 0.047 160.5)",
+          "oklch(85% 0.047 160.5)"
+        ]
+      },
+      "plate-dark": {
+        "role": "neutral",
+        "displayName": "Plate (dark)",
+        "canonical": "oklch(27.8% 0.006 78.2)",
+        "tonalRamp": [
+          "oklch(15% 0.006 78.2)",
+          "oklch(25% 0.006 78.2)",
+          "oklch(35% 0.006 78.2)",
+          "oklch(45% 0.006 78.2)",
+          "oklch(55% 0.006 78.2)",
+          "oklch(65% 0.006 78.2)",
+          "oklch(75% 0.006 78.2)",
+          "oklch(85% 0.006 78.2)"
+        ]
+      },
+      "plate-dot-dark": {
+        "role": "neutral",
+        "displayName": "Plate Dot (dark)",
+        "canonical": "oklch(35.3% 0.011 84.6)",
+        "tonalRamp": [
+          "oklch(15% 0.011 84.6)",
+          "oklch(25% 0.011 84.6)",
+          "oklch(35% 0.011 84.6)",
+          "oklch(45% 0.011 84.6)",
+          "oklch(55% 0.011 84.6)",
+          "oklch(65% 0.011 84.6)",
+          "oklch(75% 0.011 84.6)",
+          "oklch(85% 0.011 84.6)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The hero sentence only, set as four clipped line boxes that rise on load; columns 1 to 8."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Project titles on a spread and section headings, always on a 5-column block; a Project title is a link in ink that turns narra on hover."
+      },
+      "mail": {
+        "displayName": "Mail",
+        "purpose": "The Contact email line in narra with a 2px underline."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "The role name in an Experience row."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "The role and availability sentence under the hero, capped at 34ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Spread prose and Experience descriptions; the only serif text on the page."
+      },
+      "action": {
+        "displayName": "Action",
+        "purpose": "Buttons and the Open the Case Study link."
+      },
+      "ui": {
+        "displayName": "UI",
+        "purpose": "Masthead brand and links, table cells, organisation lines, the Contact side note."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "The Work / Private / Case Study line, Experience dates, the footer."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "The Evidence line and plate captions; the archipelago caption runs one step smaller (0.75rem, 1.4) in Ink 3."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase table column heads only; the Credential tag reuses the size at weight 400. Never above a heading."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing curve; exponential ease-out for every transition and keyframe."
+      },
+      {
+        "name": "hero-rise",
+        "value": "900ms, translateY(110%) to 0 inside clipped line boxes; stagger 60ms / 150ms / 240ms / 330ms",
+        "purpose": "The four lines of the hero sentence on load."
+      },
+      {
+        "name": "hero-below",
+        "value": "700ms opacity and 12px rise, 520ms delay",
+        "purpose": "The lede and buttons after the sentence."
+      },
+      {
+        "name": "scan",
+        "value": "1500ms sweep from top to the map's height, 80ms delay; 1900ms on the pulse",
+        "purpose": "A 2px ink scan line across the archipelago on load and on each pulse."
+      },
+      {
+        "name": "dot-pop",
+        "value": "opacity 480ms, scale 0.2 to 1 in 640ms, delay calc(row * 22ms + 120ms)",
+        "purpose": "Dots appear behind the scan line, north to south."
+      },
+      {
+        "name": "pulse",
+        "value": "every 7000ms from 2600ms; per dot 1400ms fill to ink and back, delay row * 28ms",
+        "purpose": "A slow signal pulse while the map is at least 20% in view and the tab is visible."
+      },
+      {
+        "name": "pointer-signal",
+        "value": "fill 300ms to narra, scale 1.5 in 640ms, no delay; radius 36 map units",
+        "purpose": "Dots near the pointer light in narra and reset on leave."
+      },
+      {
+        "name": "button-wipe",
+        "value": "::before scaleX 0 to 1 from the left in 320ms; colour and border 200ms",
+        "purpose": "Button hover wipes to ink; no lift, no press."
+      },
+      {
+        "name": "arrow-slide",
+        "value": "translateX(6px) in 240ms",
+        "purpose": "The Case Study link's arrow on hover."
+      },
+      {
+        "name": "row-tint",
+        "value": "160ms background-color",
+        "purpose": "Stack index rows tint to a 45% capiz wash on hover."
+      },
+      {
+        "name": "link-underline",
+        "value": "160ms text-decoration-color",
+        "purpose": "Links darken their underline from 50% narra to narra on hover."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce settles every transition and animation instantly and disables smooth scrolling",
+        "purpose": "?motion=off and data-theme are review-only overrides, not product features."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-hero",
+        "value": "1000px",
+        "purpose": "Hero sentence takes the full width; the archipelago moves below it on columns 7 to 12."
+      },
+      {
+        "name": "narrow",
+        "value": "900px",
+        "purpose": "Spread blocks, section headings and content lists go full width in source order."
+      },
+      {
+        "name": "compact",
+        "value": "760px",
+        "purpose": "Hero is a single column; archipelago caps at 300px; hero buttons stack full width."
+      },
+      {
+        "name": "phone-nav",
+        "value": "640px",
+        "purpose": "The Stack index table becomes stacked rows."
+      },
+      {
+        "name": "phone",
+        "value": "560px",
+        "purpose": "Experience rows stack the date above the role."
+      }
+    ],
+    "theme": {
+      "default": "light",
+      "dark": "prefers-color-scheme: dark",
+      "toggle": false,
+      "note": "The prototype's data-theme attribute and ?motion=off query are review-only overrides, not product features."
+    },
+    "fonts": {
+      "display": "Familjen Grotesk",
+      "body": "Literata",
+      "loading": "Google Fonts in the prototype; the production Next.js build should self-host both families."
+    },
+    "production": {
+      "library": "shadcn/ui",
+      "primitives": [
+        "Button",
+        "Table",
+        "Badge",
+        "Tooltip",
+        "Slider",
+        "Sheet"
+      ],
+      "note": "Tokens are mapped onto shadcn's CSS variables with --radius: 0; shadcn's default look (Geist, zinc, rounded cards, dark dashboard) is never used."
+    },
+    "source": {
+      "artifact": "prototype/design/variants/c.html",
+      "data": "prototype/design/assets/ph-map.js",
+      "unusedDeclaredTokens": [
+        "--concrete-2",
+        "--green-soft"
+      ]
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one filled narra action per viewport (Email). Hover wipes to ink from the left in 320ms; square, no lift.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Email</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 50px; padding: 0 24px; font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.005em; text-decoration: none; cursor: pointer; color: var(--ink, #1E1C19); background: transparent; border: 1px solid var(--ink, #1E1C19); border-radius: 0; position: relative; overflow: hidden; isolation: isolate; transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1), border-color 200ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn::before { content: ''; position: absolute; inset: 0; background: var(--ink, #1E1C19); transform: scaleX(0); transform-origin: left; transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1); z-index: -1; } .ds-btn:hover { color: var(--capiz, #FBFAF6); } .ds-btn:hover::before { transform: scaleX(1); } .ds-btn svg { width: 16px; height: 16px; flex: none; } .ds-btn:focus-visible { outline: 2px solid var(--narra, #6B3F24); outline-offset: 3px; } .ds-btn-primary { background: var(--narra, #6B3F24); border-color: var(--narra, #6B3F24); color: var(--narra-ink, #FBFAF6); } .ds-btn-primary:hover { border-color: var(--ink, #1E1C19); color: var(--capiz, #FBFAF6); } @media (prefers-reduced-motion: reduce) { .ds-btn, .ds-btn::before { transition: none; } }"
+    },
+    {
+      "name": "Hairline Button",
+      "kind": "button",
+      "refersTo": "button-hairline",
+      "description": "The default button: transparent with a 1px ink border (Download CV, LinkedIn, GitHub). Hover wipes to ink.",
+      "html": "<a class=\"ds-btn\" href=\"#\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" width=\"16\" height=\"16\"><path d=\"M8 2v8m0 0L5 7m3 3 3-3M3 12.5h10\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>Download CV</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 50px; padding: 0 24px; font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.005em; text-decoration: none; cursor: pointer; color: var(--ink, #1E1C19); background: transparent; border: 1px solid var(--ink, #1E1C19); border-radius: 0; position: relative; overflow: hidden; isolation: isolate; transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1), border-color 200ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn::before { content: ''; position: absolute; inset: 0; background: var(--ink, #1E1C19); transform: scaleX(0); transform-origin: left; transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1); z-index: -1; } .ds-btn:hover { color: var(--capiz, #FBFAF6); } .ds-btn:hover::before { transform: scaleX(1); } .ds-btn svg { width: 16px; height: 16px; flex: none; } .ds-btn:focus-visible { outline: 2px solid var(--narra, #6B3F24); outline-offset: 3px; } .ds-btn-primary { background: var(--narra, #6B3F24); border-color: var(--narra, #6B3F24); color: var(--narra-ink, #FBFAF6); } .ds-btn-primary:hover { border-color: var(--ink, #1E1C19); color: var(--capiz, #FBFAF6); } @media (prefers-reduced-motion: reduce) { .ds-btn, .ds-btn::before { transition: none; } }"
+    },
+    {
+      "name": "Masthead",
+      "kind": "nav",
+      "refersTo": "masthead",
+      "description": "Sticky 60px masthead: brand at left, four links at right over a hairline; nothing else.",
+      "html": "<header class=\"ds-masthead\"><a class=\"ds-brand\" href=\"#\">John Robin Cubi</a><nav class=\"ds-nav\" aria-label=\"Site\"><a href=\"#\">Work</a><a href=\"#\">Stack</a><a href=\"#\">Experience</a><a href=\"#\">Contact</a></nav></header>",
+      "css": ".ds-masthead { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 0 24px; background: color-mix(in srgb, var(--capiz, #FBFAF6) 92%, transparent); border-bottom: 1px solid var(--rule, #C4BFB2); font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; font-size: 0.9375rem; } .ds-brand { font-weight: 600; letter-spacing: -0.01em; color: var(--ink, #1E1C19); text-decoration: none; white-space: nowrap; } .ds-nav { display: flex; gap: 26px; align-items: center; } .ds-nav a { color: var(--ink-2, #5C5750); text-decoration: none; } .ds-nav a:hover { color: var(--ink, #1E1C19); } .ds-nav a:focus-visible, .ds-brand:focus-visible { outline: 2px solid var(--narra, #6B3F24); outline-offset: 3px; }"
+    },
+    {
+      "name": "Diagram Plate",
+      "kind": "card",
+      "refersTo": "plate",
+      "description": "The only framed object: drafting-dot plate paper in a 1px hairline frame with a Plate n caption; diagrams are inline SVG, never screenshots.",
+      "html": "<figure class=\"ds-plate\"><div class=\"ds-plate-frame\"><svg viewBox=\"0 0 560 120\" aria-hidden=\"true\"><defs><marker id=\"ds-ar\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto\"><path d=\"M0 0 10 5 0 10z\" class=\"ds-p-arrow\"/></marker></defs><rect x=\"1\" y=\"28\" width=\"118\" height=\"48\" rx=\"2\" class=\"ds-p-box\"/><text x=\"16\" y=\"56\" class=\"ds-p-text\">Measurements</text><line x1=\"119\" y1=\"52\" x2=\"150\" y2=\"52\" class=\"ds-p-line\" marker-end=\"url(#ds-ar)\"/><rect x=\"151\" y=\"28\" width=\"118\" height=\"48\" rx=\"2\" class=\"ds-p-box ds-hi\"/><text x=\"170\" y=\"56\" class=\"ds-p-text ds-on\">Six pillars</text><line x1=\"269\" y1=\"52\" x2=\"300\" y2=\"52\" class=\"ds-p-line\" marker-end=\"url(#ds-ar)\"/><rect x=\"301\" y=\"28\" width=\"118\" height=\"48\" rx=\"2\" class=\"ds-p-box\"/><text x=\"316\" y=\"56\" class=\"ds-p-text\">Agent draft</text><line x1=\"419\" y1=\"52\" x2=\"450\" y2=\"52\" class=\"ds-p-line\" marker-end=\"url(#ds-ar)\"/><rect x=\"451\" y=\"28\" width=\"108\" height=\"48\" rx=\"2\" class=\"ds-p-box\"/><text x=\"468\" y=\"56\" class=\"ds-p-text\">Signed PDF</text><text x=\"1\" y=\"108\" class=\"ds-p-small\">One run per month · every major provider · results stay with the program</text></svg></div><figcaption><b>Plate 1</b><span>The reporting pipeline, redrawn from the system. Not a screenshot.</span></figcaption></figure>",
+      "css": ".ds-plate { margin: 0; max-width: 640px; font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; } .ds-plate-frame { background: var(--plate, #EDEBE5); background-image: radial-gradient(var(--plate-dot, #CFCAC0) 1px, transparent 1.2px); background-size: 18px 18px; background-position: 9px 9px; padding: clamp(20px, 3vw, 36px); border: 1px solid var(--rule, #C4BFB2); } .ds-plate svg { width: 100%; height: auto; display: block; } .ds-plate figcaption { font-size: 0.8125rem; color: var(--ink-2, #5C5750); margin-top: 12px; line-height: 1.45; display: grid; grid-template-columns: auto 1fr; gap: 12px; } .ds-plate figcaption b { color: var(--ink, #1E1C19); font-weight: 600; white-space: nowrap; } .ds-p-line { stroke: var(--ink-2, #5C5750); fill: none; stroke-width: 1.25; vector-effect: non-scaling-stroke; } .ds-p-box { stroke: var(--ink, #1E1C19); fill: var(--plate, #EDEBE5); stroke-width: 1.25; vector-effect: non-scaling-stroke; } .ds-p-box.ds-hi { fill: var(--green, #1F3A2E); stroke: var(--green, #1F3A2E); } .ds-p-text { font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; font-size: 11.5px; font-weight: 500; fill: var(--ink, #1E1C19); } .ds-p-text.ds-on { fill: var(--capiz, #FBFAF6); } .ds-p-small { font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; font-size: 10px; fill: var(--ink-2, #5C5750); } .ds-p-arrow { fill: var(--ink-2, #5C5750); }"
+    },
+    {
+      "name": "Evidence Line and Case Study Link",
+      "kind": "custom",
+      "refersTo": "evidence-line",
+      "description": "How a spread's prose ends: an Evidence line in caption type over a hairline, then the narra Case Study link whose arrow slides 6px on hover.",
+      "html": "<div class=\"ds-text\"><p>A grading method that scores every telco on six pillars, and an AI pipeline that turns the scores into the monthly report, formatted and ready to sign.</p><p class=\"ds-evidence\"><b>Evidence:</b> internal deployment, write-up only. The full method and a demo on Illustrative Data are in the Case Study.</p><a class=\"ds-more\" href=\"#\">Open the Case Study <svg viewBox=\"0 0 18 18\" aria-hidden=\"true\" width=\"18\" height=\"18\"><path d=\"M3 9h11m0 0-4-4m4 4-4 4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></div>",
+      "css": ".ds-text { max-width: 52ch; font-family: 'Literata', Georgia, serif; font-size: 1.0625rem; line-height: 1.6; color: var(--ink, #1E1C19); } .ds-text p { margin: 0; } .ds-evidence { font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; font-size: 0.8125rem; color: var(--ink-2, #5C5750); margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule, #C4BFB2); line-height: 1.5; } .ds-evidence b { color: var(--ink, #1E1C19); font-weight: 600; } .ds-more { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; color: var(--narra, #6B3F24); } .ds-more svg { width: 18px; height: 18px; transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-more:hover svg { transform: translateX(6px); } .ds-more:focus-visible { outline: 2px solid var(--narra, #6B3F24); outline-offset: 3px; }"
+    },
+    {
+      "name": "Stack Index Row",
+      "kind": "custom",
+      "refersTo": "table-cell",
+      "description": "The Stack as a table on the concrete field: Label heads on an ink rule, hairline rows that tint on hover, and an inline Credential tag.",
+      "html": "<table class=\"ds-table\"><thead><tr><th>Technology</th><th>Used in</th><th>How</th></tr></thead><tbody><tr><td>Google ADK <span class=\"ds-cred\">Credential · 2025</span></td><td><a href=\"#\">Aya</a>, <a href=\"#\">Kuya A</a></td><td>orchestration, 14 scheduled jobs, tool manifests</td></tr><tr><td>Python · Pandas</td><td><a href=\"#\">Oplan Bantay Signal</a></td><td>scoring the six pillars from measurements</td></tr></tbody></table>",
+      "css": ".ds-table { width: 100%; border-collapse: collapse; font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; font-size: 0.9375rem; color: var(--ink, #1E1C19); } .ds-table th { text-align: left; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2, #5C5750); padding: 0 16px 12px 0; border-bottom: 1px solid var(--ink, #1E1C19); } .ds-table td { padding: 14px 16px 14px 0; border-bottom: 1px solid var(--rule, #C4BFB2); vertical-align: top; transition: background-color 160ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-table tr:hover td { background: color-mix(in srgb, var(--capiz, #FBFAF6) 45%, transparent); } .ds-table td:first-child { font-weight: 600; width: 26%; } .ds-table td:nth-child(2) { width: 34%; } .ds-table td a { color: var(--ink, #1E1C19); text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 1px; text-decoration-color: var(--rule-2, #ADA79A); transition: text-decoration-color 160ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-table td a:hover { color: var(--narra, #6B3F24); text-decoration-color: var(--narra, #6B3F24); } .ds-table td a:focus-visible { outline: 2px solid var(--narra, #6B3F24); outline-offset: 3px; } .ds-cred { display: inline-block; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green, #1F3A2E); border: 1px solid var(--green-3, #9DB9A9); padding: 2px 7px; margin-left: 8px; vertical-align: middle; font-weight: 400; }"
+    },
+    {
+      "name": "Experience Row",
+      "kind": "custom",
+      "refersTo": "experience-row",
+      "description": "A date column beside the role, organisation and a one-sentence description linking the Work Projects built in that role, on hairlines.",
+      "html": "<div class=\"ds-xp\"><div class=\"ds-xp-row\"><div class=\"ds-xp-d\">2024 — 2026</div><div><h3>Software &amp; AI Engineer</h3><div class=\"ds-xp-org\">National telecom-monitoring program, Philippine government</div><p>Designed the grading method and built the agents and pipelines around it. Built here: <a href=\"#\">Oplan Bantay Signal</a>, <a href=\"#\">Kuya A</a>, <a href=\"#\">Aya</a>.</p></div></div></div>",
+      "css": ".ds-xp { max-width: 640px; color: var(--ink, #1E1C19); } .ds-xp-row { display: grid; grid-template-columns: 8rem 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--rule, #C4BFB2); border-bottom: 1px solid var(--rule, #C4BFB2); } .ds-xp-d { font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; font-size: 0.875rem; color: var(--ink-2, #5C5750); font-variant-numeric: tabular-nums; padding-top: 4px; } .ds-xp h3 { margin: 0; font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 1.25rem; letter-spacing: -0.02em; line-height: 0.96; } .ds-xp-org { font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; font-size: 0.9375rem; color: var(--ink-2, #5C5750); margin-top: 4px; } .ds-xp p { margin: 10px 0 0; font-family: 'Literata', Georgia, serif; font-size: 1rem; line-height: 1.6; } .ds-xp a { color: var(--narra, #6B3F24); text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 1px; text-decoration-color: color-mix(in srgb, var(--narra, #6B3F24) 50%, transparent); transition: text-decoration-color 160ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-xp a:hover { text-decoration-color: var(--narra, #6B3F24); } @media (max-width: 560px) { .ds-xp-row { grid-template-columns: 1fr; gap: 4px; } }"
+    },
+    {
+      "name": "Dot Archipelago",
+      "kind": "custom",
+      "description": "The signature object: authored island polygons on a 34x48 grid, set bare with one caption beneath. Hover here previews the pulse; on the page it is scanned in on load and pulses every 7s, and returns alone as a 26px mini map in the footer.",
+      "html": "<figure class=\"ds-map\"><div class=\"ds-map-frame\"><svg viewBox=\"0 0 340 480\" role=\"img\" aria-label=\"A dot map of the Philippine archipelago\"><circle cx=\"145\" cy=\"15\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:1\"/><circle cx=\"135\" cy=\"25\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:2\"/><circle cx=\"145\" cy=\"25\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:2\"/><circle cx=\"155\" cy=\"25\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:2\"/><circle cx=\"165\" cy=\"25\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:2\"/><circle cx=\"175\" cy=\"25\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:2\"/><circle cx=\"185\" cy=\"25\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:2\"/><circle cx=\"135\" cy=\"35\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:3\"/><circle cx=\"145\" cy=\"35\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:3\"/><circle cx=\"155\" cy=\"35\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:3\"/><circle cx=\"165\" cy=\"35\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:3\"/><circle cx=\"175\" cy=\"35\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:3\"/><circle cx=\"185\" cy=\"35\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:3\"/><circle cx=\"135\" cy=\"45\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:4\"/><circle cx=\"145\" cy=\"45\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:4\"/><circle cx=\"155\" cy=\"45\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:4\"/><circle cx=\"165\" cy=\"45\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:4\"/><circle cx=\"175\" cy=\"45\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:4\"/><circle cx=\"185\" cy=\"45\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:4\"/><circle cx=\"135\" cy=\"55\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:5\"/><circle cx=\"145\" cy=\"55\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:5\"/><circle cx=\"155\" cy=\"55\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:5\"/><circle cx=\"165\" cy=\"55\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:5\"/><circle cx=\"175\" cy=\"55\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:5\"/><circle cx=\"185\" cy=\"55\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:5\"/><circle cx=\"125\" cy=\"65\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:6\"/><circle cx=\"135\" cy=\"65\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:6\"/><circle cx=\"145\" cy=\"65\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:6\"/><circle cx=\"155\" cy=\"65\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:6\"/><circle cx=\"165\" cy=\"65\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:6\"/><circle cx=\"175\" cy=\"65\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:6\"/><circle cx=\"185\" cy=\"65\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:6\"/><circle cx=\"125\" cy=\"75\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:7\"/><circle cx=\"135\" cy=\"75\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:7\"/><circle cx=\"145\" cy=\"75\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:7\"/><circle cx=\"155\" cy=\"75\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:7\"/><circle cx=\"165\" cy=\"75\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:7\"/><circle cx=\"175\" cy=\"75\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:7\"/><circle cx=\"185\" cy=\"75\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:7\"/><circle cx=\"125\" cy=\"85\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:8\"/><circle cx=\"135\" cy=\"85\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:8\"/><circle cx=\"145\" cy=\"85\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:8\"/><circle cx=\"155\" cy=\"85\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:8\"/><circle cx=\"165\" cy=\"85\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:8\"/><circle cx=\"175\" cy=\"85\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:8\"/><circle cx=\"185\" cy=\"85\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:8\"/><circle cx=\"125\" cy=\"95\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:9\"/><circle cx=\"135\" cy=\"95\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:9\"/><circle cx=\"145\" cy=\"95\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:9\"/><circle cx=\"155\" cy=\"95\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:9\"/><circle cx=\"165\" cy=\"95\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:9\"/><circle cx=\"175\" cy=\"95\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:9\"/><circle cx=\"115\" cy=\"105\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:10\"/><circle cx=\"125\" cy=\"105\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:10\"/><circle cx=\"135\" cy=\"105\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:10\"/><circle cx=\"145\" cy=\"105\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:10\"/><circle cx=\"155\" cy=\"105\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:10\"/><circle cx=\"165\" cy=\"105\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:10\"/><circle cx=\"175\" cy=\"105\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:10\"/><circle cx=\"115\" cy=\"115\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:11\"/><circle cx=\"125\" cy=\"115\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:11\"/><circle cx=\"135\" cy=\"115\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:11\"/><circle cx=\"145\" cy=\"115\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:11\"/><circle cx=\"155\" cy=\"115\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:11\"/><circle cx=\"165\" cy=\"115\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:11\"/><circle cx=\"115\" cy=\"125\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:12\"/><circle cx=\"125\" cy=\"125\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:12\"/><circle cx=\"135\" cy=\"125\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:12\"/><circle cx=\"145\" cy=\"125\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:12\"/><circle cx=\"155\" cy=\"125\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:12\"/><circle cx=\"165\" cy=\"125\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:12\"/><circle cx=\"125\" cy=\"135\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:13\"/><circle cx=\"135\" cy=\"135\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:13\"/><circle cx=\"145\" cy=\"135\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:13\"/><circle cx=\"155\" cy=\"135\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:13\"/><circle cx=\"125\" cy=\"145\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:14\"/><circle cx=\"135\" cy=\"145\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:14\"/><circle cx=\"145\" cy=\"145\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:14\"/><circle cx=\"155\" cy=\"145\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:14\"/><circle cx=\"135\" cy=\"155\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:15\"/><circle cx=\"145\" cy=\"155\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:15\"/><circle cx=\"155\" cy=\"155\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:15\"/><circle cx=\"165\" cy=\"155\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:15\"/><circle cx=\"175\" cy=\"155\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:15\"/><circle cx=\"185\" cy=\"155\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:15\"/><circle cx=\"135\" cy=\"165\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:16\"/><circle cx=\"145\" cy=\"165\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:16\"/><circle cx=\"155\" cy=\"165\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:16\"/><circle cx=\"165\" cy=\"165\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:16\"/><circle cx=\"175\" cy=\"165\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:16\"/><circle cx=\"185\" cy=\"165\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:16\"/><circle cx=\"195\" cy=\"165\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:16\"/><circle cx=\"205\" cy=\"165\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:16\"/><circle cx=\"255\" cy=\"165\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:16\"/><circle cx=\"145\" cy=\"175\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:17\"/><circle cx=\"155\" cy=\"175\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:17\"/><circle cx=\"165\" cy=\"175\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:17\"/><circle cx=\"175\" cy=\"175\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:17\"/><circle cx=\"215\" cy=\"175\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:17\"/><circle cx=\"225\" cy=\"175\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:17\"/><circle cx=\"235\" cy=\"175\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:17\"/><circle cx=\"255\" cy=\"175\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:17\"/><circle cx=\"135\" cy=\"185\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:18\"/><circle cx=\"175\" cy=\"185\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:18\"/><circle cx=\"185\" cy=\"185\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:18\"/><circle cx=\"225\" cy=\"185\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:18\"/><circle cx=\"235\" cy=\"185\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:18\"/><circle cx=\"245\" cy=\"185\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:18\"/><circle cx=\"125\" cy=\"195\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:19\"/><circle cx=\"135\" cy=\"195\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:19\"/><circle cx=\"145\" cy=\"195\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:19\"/><circle cx=\"155\" cy=\"195\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:19\"/><circle cx=\"235\" cy=\"195\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:19\"/><circle cx=\"245\" cy=\"195\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:19\"/><circle cx=\"255\" cy=\"195\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:19\"/><circle cx=\"135\" cy=\"205\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:20\"/><circle cx=\"145\" cy=\"205\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:20\"/><circle cx=\"155\" cy=\"205\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:20\"/><circle cx=\"245\" cy=\"205\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:20\"/><circle cx=\"145\" cy=\"215\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:21\"/><circle cx=\"155\" cy=\"215\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:21\"/><circle cx=\"225\" cy=\"215\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:21\"/><circle cx=\"265\" cy=\"215\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:21\"/><circle cx=\"275\" cy=\"215\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:21\"/><circle cx=\"285\" cy=\"215\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:21\"/><circle cx=\"225\" cy=\"225\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:22\"/><circle cx=\"235\" cy=\"225\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:22\"/><circle cx=\"245\" cy=\"225\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:22\"/><circle cx=\"265\" cy=\"225\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:22\"/><circle cx=\"275\" cy=\"225\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:22\"/><circle cx=\"285\" cy=\"225\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:22\"/><circle cx=\"295\" cy=\"225\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:22\"/><circle cx=\"195\" cy=\"235\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:23\"/><circle cx=\"235\" cy=\"235\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:23\"/><circle cx=\"265\" cy=\"235\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:23\"/><circle cx=\"275\" cy=\"235\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:23\"/><circle cx=\"285\" cy=\"235\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:23\"/><circle cx=\"295\" cy=\"235\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:23\"/><circle cx=\"175\" cy=\"245\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:24\"/><circle cx=\"185\" cy=\"245\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:24\"/><circle cx=\"195\" cy=\"245\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:24\"/><circle cx=\"205\" cy=\"245\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:24\"/><circle cx=\"275\" cy=\"245\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:24\"/><circle cx=\"285\" cy=\"245\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:24\"/><circle cx=\"295\" cy=\"245\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:24\"/><circle cx=\"95\" cy=\"255\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:25\"/><circle cx=\"175\" cy=\"255\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:25\"/><circle cx=\"185\" cy=\"255\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:25\"/><circle cx=\"195\" cy=\"255\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:25\"/><circle cx=\"205\" cy=\"255\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:25\"/><circle cx=\"215\" cy=\"255\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:25\"/><circle cx=\"265\" cy=\"255\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:25\"/><circle cx=\"275\" cy=\"255\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:25\"/><circle cx=\"285\" cy=\"255\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:25\"/><circle cx=\"295\" cy=\"255\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:25\"/><circle cx=\"95\" cy=\"265\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:26\"/><circle cx=\"105\" cy=\"265\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:26\"/><circle cx=\"185\" cy=\"265\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:26\"/><circle cx=\"195\" cy=\"265\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:26\"/><circle cx=\"205\" cy=\"265\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:26\"/><circle cx=\"235\" cy=\"265\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:26\"/><circle cx=\"265\" cy=\"265\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:26\"/><circle cx=\"275\" cy=\"265\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:26\"/><circle cx=\"285\" cy=\"265\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:26\"/><circle cx=\"85\" cy=\"275\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:27\"/><circle cx=\"95\" cy=\"275\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:27\"/><circle cx=\"195\" cy=\"275\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:27\"/><circle cx=\"205\" cy=\"275\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:27\"/><circle cx=\"215\" cy=\"275\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:27\"/><circle cx=\"235\" cy=\"275\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:27\"/><circle cx=\"245\" cy=\"275\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:27\"/><circle cx=\"265\" cy=\"275\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:27\"/><circle cx=\"275\" cy=\"275\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:27\"/><circle cx=\"285\" cy=\"275\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:27\"/><circle cx=\"75\" cy=\"285\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:28\"/><circle cx=\"85\" cy=\"285\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:28\"/><circle cx=\"95\" cy=\"285\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:28\"/><circle cx=\"205\" cy=\"285\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:28\"/><circle cx=\"215\" cy=\"285\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:28\"/><circle cx=\"225\" cy=\"285\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:28\"/><circle cx=\"235\" cy=\"285\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:28\"/><circle cx=\"245\" cy=\"285\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:28\"/><circle cx=\"265\" cy=\"285\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:28\"/><circle cx=\"275\" cy=\"285\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:28\"/><circle cx=\"65\" cy=\"295\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:29\"/><circle cx=\"75\" cy=\"295\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:29\"/><circle cx=\"85\" cy=\"295\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:29\"/><circle cx=\"205\" cy=\"295\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:29\"/><circle cx=\"215\" cy=\"295\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:29\"/><circle cx=\"225\" cy=\"295\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:29\"/><circle cx=\"235\" cy=\"295\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:29\"/><circle cx=\"245\" cy=\"295\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:29\"/><circle cx=\"255\" cy=\"295\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:29\"/><circle cx=\"275\" cy=\"295\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:29\"/><circle cx=\"55\" cy=\"305\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:30\"/><circle cx=\"65\" cy=\"305\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:30\"/><circle cx=\"75\" cy=\"305\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:30\"/><circle cx=\"205\" cy=\"305\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:30\"/><circle cx=\"215\" cy=\"305\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:30\"/><circle cx=\"225\" cy=\"305\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:30\"/><circle cx=\"235\" cy=\"305\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:30\"/><circle cx=\"245\" cy=\"305\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:30\"/><circle cx=\"255\" cy=\"305\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:30\"/><circle cx=\"265\" cy=\"305\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:30\"/><circle cx=\"45\" cy=\"315\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:31\"/><circle cx=\"55\" cy=\"315\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:31\"/><circle cx=\"65\" cy=\"315\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:31\"/><circle cx=\"205\" cy=\"315\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:31\"/><circle cx=\"215\" cy=\"315\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:31\"/><circle cx=\"225\" cy=\"315\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:31\"/><circle cx=\"295\" cy=\"315\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:31\"/><circle cx=\"305\" cy=\"315\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:31\"/><circle cx=\"35\" cy=\"325\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:32\"/><circle cx=\"45\" cy=\"325\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:32\"/><circle cx=\"55\" cy=\"325\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:32\"/><circle cx=\"215\" cy=\"325\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:32\"/><circle cx=\"285\" cy=\"325\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:32\"/><circle cx=\"295\" cy=\"325\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:32\"/><circle cx=\"305\" cy=\"325\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:32\"/><circle cx=\"315\" cy=\"325\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:32\"/><circle cx=\"25\" cy=\"335\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:33\"/><circle cx=\"35\" cy=\"335\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:33\"/><circle cx=\"45\" cy=\"335\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:33\"/><circle cx=\"275\" cy=\"335\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:33\"/><circle cx=\"285\" cy=\"335\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:33\"/><circle cx=\"295\" cy=\"335\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:33\"/><circle cx=\"305\" cy=\"335\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:33\"/><circle cx=\"315\" cy=\"335\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:33\"/><circle cx=\"15\" cy=\"345\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:34\"/><circle cx=\"25\" cy=\"345\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:34\"/><circle cx=\"35\" cy=\"345\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:34\"/><circle cx=\"255\" cy=\"345\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:34\"/><circle cx=\"265\" cy=\"345\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:34\"/><circle cx=\"275\" cy=\"345\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:34\"/><circle cx=\"285\" cy=\"345\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:34\"/><circle cx=\"295\" cy=\"345\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:34\"/><circle cx=\"305\" cy=\"345\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:34\"/><circle cx=\"315\" cy=\"345\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:34\"/><circle cx=\"325\" cy=\"345\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:34\"/><circle cx=\"225\" cy=\"355\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:35\"/><circle cx=\"235\" cy=\"355\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:35\"/><circle cx=\"245\" cy=\"355\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:35\"/><circle cx=\"255\" cy=\"355\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:35\"/><circle cx=\"265\" cy=\"355\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:35\"/><circle cx=\"275\" cy=\"355\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:35\"/><circle cx=\"285\" cy=\"355\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:35\"/><circle cx=\"295\" cy=\"355\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:35\"/><circle cx=\"305\" cy=\"355\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:35\"/><circle cx=\"315\" cy=\"355\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:35\"/><circle cx=\"325\" cy=\"355\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:35\"/><circle cx=\"215\" cy=\"365\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:36\"/><circle cx=\"225\" cy=\"365\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:36\"/><circle cx=\"235\" cy=\"365\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:36\"/><circle cx=\"245\" cy=\"365\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:36\"/><circle cx=\"255\" cy=\"365\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:36\"/><circle cx=\"265\" cy=\"365\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:36\"/><circle cx=\"275\" cy=\"365\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:36\"/><circle cx=\"285\" cy=\"365\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:36\"/><circle cx=\"295\" cy=\"365\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:36\"/><circle cx=\"305\" cy=\"365\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:36\"/><circle cx=\"315\" cy=\"365\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:36\"/><circle cx=\"325\" cy=\"365\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:36\"/><circle cx=\"205\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:37\"/><circle cx=\"215\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:37\"/><circle cx=\"225\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:37\"/><circle cx=\"235\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:37\"/><circle cx=\"245\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:37\"/><circle cx=\"255\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:37\"/><circle cx=\"265\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:37\"/><circle cx=\"275\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:37\"/><circle cx=\"285\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:37\"/><circle cx=\"295\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:37\"/><circle cx=\"305\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:37\"/><circle cx=\"315\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:37\"/><circle cx=\"325\" cy=\"375\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:37\"/><circle cx=\"195\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:38\"/><circle cx=\"205\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:38\"/><circle cx=\"215\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:38\"/><circle cx=\"225\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:38\"/><circle cx=\"235\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:38\"/><circle cx=\"245\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:38\"/><circle cx=\"255\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:38\"/><circle cx=\"265\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:38\"/><circle cx=\"275\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:38\"/><circle cx=\"285\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:38\"/><circle cx=\"295\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:38\"/><circle cx=\"305\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:38\"/><circle cx=\"315\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:38\"/><circle cx=\"325\" cy=\"385\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:38\"/><circle cx=\"185\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:39\"/><circle cx=\"195\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:39\"/><circle cx=\"205\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:39\"/><circle cx=\"215\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:39\"/><circle cx=\"235\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:39\"/><circle cx=\"245\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:39\"/><circle cx=\"255\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:39\"/><circle cx=\"265\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:39\"/><circle cx=\"275\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:39\"/><circle cx=\"285\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:39\"/><circle cx=\"295\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:39\"/><circle cx=\"305\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:39\"/><circle cx=\"315\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:39\"/><circle cx=\"325\" cy=\"395\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:39\"/><circle cx=\"245\" cy=\"405\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:40\"/><circle cx=\"255\" cy=\"405\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:40\"/><circle cx=\"265\" cy=\"405\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:40\"/><circle cx=\"275\" cy=\"405\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:40\"/><circle cx=\"285\" cy=\"405\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:40\"/><circle cx=\"295\" cy=\"405\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:40\"/><circle cx=\"305\" cy=\"405\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:40\"/><circle cx=\"315\" cy=\"405\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:40\"/><circle cx=\"325\" cy=\"405\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:40\"/><circle cx=\"175\" cy=\"415\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:41\"/><circle cx=\"185\" cy=\"415\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:41\"/><circle cx=\"245\" cy=\"415\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:41\"/><circle cx=\"255\" cy=\"415\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:41\"/><circle cx=\"275\" cy=\"415\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:41\"/><circle cx=\"285\" cy=\"415\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:41\"/><circle cx=\"295\" cy=\"415\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:41\"/><circle cx=\"305\" cy=\"415\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:41\"/><circle cx=\"315\" cy=\"415\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:41\"/><circle cx=\"285\" cy=\"425\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:42\"/><circle cx=\"295\" cy=\"425\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:42\"/><circle cx=\"305\" cy=\"425\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:42\"/><circle cx=\"145\" cy=\"435\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:43\"/><circle cx=\"155\" cy=\"435\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:43\"/><circle cx=\"295\" cy=\"435\" r=\"3.1\" class=\"ds-dot ds-w0\" style=\"--r:43\"/><circle cx=\"305\" cy=\"435\" r=\"3.1\" class=\"ds-dot ds-w1\" style=\"--r:43\"/><circle cx=\"115\" cy=\"465\" r=\"3.1\" class=\"ds-dot ds-w2\" style=\"--r:46\"/></svg><div class=\"ds-scan\" aria-hidden=\"true\"></div></div><figcaption>Signal across the archipelago. Dot weight is illustrative, not coverage data.</figcaption></figure>",
+      "css": ".ds-map { position: relative; width: 240px; margin: 0; padding: 12px 0 0; font-family: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; } .ds-map-frame { position: relative; } .ds-map svg { width: 100%; height: auto; display: block; } .ds-dot { fill: var(--green-2, #4F7A63); opacity: 0.55; transform-box: fill-box; transform-origin: center; transition: fill 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 640ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-dot.ds-w1 { fill: var(--green, #1F3A2E); opacity: 0.8; } .ds-dot.ds-w2 { fill: var(--green, #1F3A2E); opacity: 1; } .ds-map:hover .ds-dot { animation: ds-pulse 1400ms cubic-bezier(0.16, 1, 0.3, 1) calc(var(--r) * 28ms) 1; } @keyframes ds-pulse { 0% { fill: var(--green-2, #4F7A63); } 18% { fill: var(--ink, #1E1C19); } 100% { fill: var(--green-2, #4F7A63); } } .ds-scan { position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--ink, #1E1C19) 30%, var(--ink, #1E1C19) 70%, transparent); opacity: 0; pointer-events: none; } .ds-map:hover .ds-scan { animation: ds-scan 1900ms cubic-bezier(0.16, 1, 0.3, 1) 1; } @keyframes ds-scan { 0% { transform: translateY(0); opacity: 0; } 8% { opacity: 0.9; } 90% { opacity: 0.6; } 100% { transform: translateY(339px); opacity: 0; } } .ds-map figcaption { margin-top: 18px; font-size: 0.75rem; color: var(--ink-3, #8A847A); line-height: 1.4; max-width: 34ch; } @media (prefers-reduced-motion: reduce) { .ds-map:hover .ds-dot, .ds-map:hover .ds-scan { animation: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Concrete Atlas",
+    "northStarStatus": "proposed; derived from the Tropical Modernist direction notes and PRODUCT.md, not yet confirmed by Robin",
+    "overview": "The site is built the way a Philippine mid-century building is built: a capiz-white ground, poured concrete-gray fields for the rooms that matter (the hero, the Stack index, Contact), narra wood on the one thing a Visitor is meant to touch, and a deep green that carries every datum. Each Project is an editorial spread, not a card: a large title, a short prose block that ends in an \"Evidence:\" line, and a diagram plate drawn on drafting-dot paper with a hairline frame and a \"Plate n\" caption. Spreads alternate text-left / plate-right and plate-left / text-right on a 12-column grid, so the page reads like a well-set journal rather than a feed.\n\nThe signature object is the dot archipelago: authored island polygons rasterised to a 34 by 48 grid, set bare on the concrete with one caption beneath, scanned in from north to south on load and pulsing slowly while the hero is on screen. It returns as a 26px mini map at the right of the footer, with no words beside it. The Filipino identity lives in the materials (capiz, concrete, narra) and in the archipelago; nothing is labelled as Filipino, and nothing is decorated as such. Motion is one authored moment on load plus quiet control feedback; the rest of the page is still.\n\nConfirmed visual rejections (from the brief): Inter on near-black, purple gradients, glassmorphism, bento stat grids, typewriter titles, skill bars, logo walls, emoji headers, the Brittany Chiang navy/spotlight look, and any Filipino kitsch (Baybayin, flag colours, jeepneys, sun-and-stars). Voice, proposed: plain, specific, first person, no hype.",
+    "keyCharacteristics": [
+      "Editorial spread per Project: title, prose with an \"Evidence:\" line, and a numbered diagram plate.",
+      "Asymmetric 12-column grid; spreads alternate sides, headings sit on 5 columns and content on 6, with a gutter column between.",
+      "Capiz ground, full-bleed concrete fields, narra for links and the primary action only, green for data.",
+      "Familjen Grotesk 600 at tight tracking for everything that names or operates; Literata for prose.",
+      "Hairline rules, tonal fields and one framed plate instead of cards, shadows or glass.",
+      "The bare dot archipelago as the signature object, repeated as a mini map in the footer.",
+      "One authored motion moment on load; light by default, dark follows the system, no toggle."
+    ],
+    "rules": [
+      {
+        "name": "The Narra Once Rule",
+        "body": "Narra appears once per viewport as a filled surface, on the single primary action (Email). Everywhere else narra is a link, a status dot, a focus ring or a pointer highlight, never a background, never a heading, never decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Green Carries Data Rule",
+        "body": "Green is for values: archipelago dots, the focal node and filled shapes in a diagram plate, the Credential tag. It never colours prose, a heading or a button.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Fields Rule",
+        "body": "Concrete is poured under exactly three rooms: the hero, the Stack index and Contact. Fields are full-bleed sections, not boxes; the ground shows between them. The plate paper exists only inside a diagram plate's hairline frame.",
+        "section": "colors"
+      },
+      {
+        "name": "The System Theme Rule",
+        "body": "Light by default; dark follows prefers-color-scheme: dark; there is no toggle. The prototype's data-theme attribute and ?motion=off query are review-only overrides and are not product features.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Familjen Grotesk names and operates; Literata reads. Anything in a heading, button, label, caption, table or nav is the grotesk; running prose is the serif. No third face, no monospace.",
+        "section": "typography"
+      },
+      {
+        "name": "The Semibold Rule",
+        "body": "Every heading is weight 600 with negative tracking; the rest of the grotesk runs at 400 and the serif at 400. There is no 700 anywhere and no light weight.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Kicker Rule",
+        "body": "Headings stand alone. Uppercase labels exist only as column heads inside the Stack index table and inside the Credential tag; they never sit above a heading as an eyebrow or kicker.",
+        "section": "typography"
+      },
+      {
+        "name": "The Alternating Spread Rule",
+        "body": "Consecutive spreads mirror each other. Title and prose share one side; the plate takes the other; the sides swap on every spread so the eye crosses the page as it scrolls.",
+        "section": "layout"
+      },
+      {
+        "name": "The Empty Column Rule",
+        "body": "Two halves of a spread never touch. A full column is left empty between them (column 6 on a normal spread, column 7 on an alternate one) so the gap reads as white space, not as a card edge.",
+        "section": "layout"
+      },
+      {
+        "name": "The Level Legend Rule",
+        "body": "The masthead is the single sticky element on the page. Nothing else pins, floats or follows the scroll.",
+        "section": "layout"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Structure is drawn with 1px rules and full-bleed tonal fields, never with boxes. If a boundary needs more than a hairline, it is a section, not a card.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Elevation Rule",
+        "body": "Elevation is declared once: the diagram plate is the only framed object, and it lifts by paper and hairline, not by shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do lay every Project out as a spread: Headline title over Body prose ending in an \"Evidence:\" line on one side, a numbered diagram plate spanning both rows on the other; alternate sides on each spread (The Alternating Spread Rule).",
+      "Do keep a full empty column between the two halves of a spread and let the ground show there (The Empty Column Rule).",
+      "Do pour concrete under exactly three rooms (hero, Stack index, Contact) as full-bleed fields, never as boxes (The Three Fields Rule).",
+      "Do use narra exactly once per viewport as a filled surface, on the primary action, and otherwise only for links, the status dot, focus and the pointer highlight (The Narra Once Rule).",
+      "Do give green to data only: archipelago dots, the focal node and filled shapes in a plate, the Credential tag (The Green Carries Data Rule).",
+      "Do set every heading in Familjen Grotesk at 600 with -0.035em tracking, and running prose in Literata.",
+      "Do draw every diagram as inline SVG on a plate: drafting-dot paper, 1px hairline frame, \"Plate n\" caption saying it was redrawn; never a screenshot.",
+      "Do keep the dot archipelago bare, as built, with the caption stating that dot weight is illustrative, and repeat it alone as the footer mini map.",
+      "Do keep the masthead sticky (brand plus four links, nothing more) and everything else in the flow.",
+      "Do keep motion to the one load moment (hero rise, archipelago scan, slow pulse) plus control feedback, all on `cubic-bezier(0.16, 1, 0.3, 1)`, and settle everything instantly under `prefers-reduced-motion`.",
+      "Do let the theme follow `prefers-color-scheme`, light by default, with no toggle; self-host Familjen Grotesk and Literata in the production build.",
+      "Do build on shadcn/ui primitives with these tokens mapped onto shadcn's variables and `--radius: 0`."
+    ],
+    "donts": [
+      "Don't set Inter on near-black, or reach for the Brittany Chiang navy/spotlight look; its structure may be borrowed, its look may not.",
+      "Don't use purple gradients, glassmorphism, blur, gradient text, or any gradient as a surface.",
+      "Don't build bento stat grids, skill bars, logo walls, typewriter titles or emoji headers.",
+      "Don't use Baybayin, flag colours, jeepneys, sun-and-stars motifs or any Filipino kitsch; identity lives in the materials and the archipelago.",
+      "Don't put a kicker or eyebrow above a heading; uppercase labels belong only in table heads and the Credential tag.",
+      "Don't use cards as page structure; the diagram plate is the only framed object, and it lives inside a spread.",
+      "Don't add box-shadows, a second elevation model, or a radius on any surface or control.",
+      "Don't fill a button, heading or background with narra beyond the one primary action, and don't put green on prose or buttons.",
+      "Don't add a stat row to a spread, the hero or anywhere else; a number belongs in prose or on a plate, with a Project fact behind it.",
+      "Don't animate anything beyond the load moment and control feedback; no scroll-driven effects, no parallax, no hover lifts.",
+      "Don't ship shadcn's default look (Geist, zinc, rounded cards, dark dashboard), Google Fonts, a theme toggle, or the prototype's `data-theme` / `?motion=off` overrides and floating review bar.",
+      "Don't introduce a third typeface, a monospace, a 700 weight or a light weight."
+    ]
+  }
+}

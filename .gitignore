@@ -1,0 +1,35 @@
+# Private source material — never publish (licensed Ookla data, internal DICT documents, personal contact info)
+/Oplan Bantay Signal/
+/cv/
+/aya-cv-infodump.md
+/kuya_a_project_infodump.md
+
+# Local issue tracker (specs and tickets): kept off the public repo
+/.scratch/
+
+# Impeccable review captures (screenshots, regenerated per run)
+/.impeccable/review/
+
+# Prototype: review-only, stays off main (spec: portfolio-v1 issue 01)
+/prototype/
+
+# Next.js
+/node_modules/
+/.next/
+/out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Testing
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/coverage/
+
+# Misc
+.DS_Store
+*.pem
+npm-debug.log*
+.env*.local
+.vercel
