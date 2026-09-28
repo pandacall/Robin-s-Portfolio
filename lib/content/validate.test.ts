@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { validateProjects } from "./validate";
-import type { Project } from "./types";
+import { validateProjects, validateStack } from "./validate";
+import type { Project, StackItem } from "./types";
 
 function project(overrides: Partial<Project> = {}): Project {
   return {
@@ -61,5 +61,40 @@ describe("validateProjects", () => {
 
   it("accepts a Project Card with no Case Study link", () => {
     expect(() => validateProjects([project()], [])).not.toThrow();
+  });
+});
+
+function stackItem(overrides: Partial<StackItem> = {}): StackItem {
+  return {
+    name: "Python",
+    group: "Languages",
+    usedIn: ["oplan-bantay-signal"],
+    how: "automation pipelines for the monthly measurements",
+    ...overrides,
+  };
+}
+
+describe("validateStack", () => {
+  const knownProjectSlugs = ["oplan-bantay-signal", "kuya-a", "aya"];
+
+  it("accepts a Stack Item backed by a real Project", () => {
+    expect(() =>
+      validateStack([stackItem()], knownProjectSlugs),
+    ).not.toThrow();
+  });
+
+  it("fails when a Stack Item has no backing Project", () => {
+    expect(() =>
+      validateStack([stackItem({ usedIn: [] })], knownProjectSlugs),
+    ).toThrow(/backing project/i);
+  });
+
+  it("fails when a Stack Item is used in a Project that doesn't exist", () => {
+    expect(() =>
+      validateStack(
+        [stackItem({ usedIn: ["does-not-exist"] })],
+        knownProjectSlugs,
+      ),
+    ).toThrow(/does-not-exist/);
   });
 });

@@ -1,5 +1,6 @@
 import { caseStudySlugs as realCaseStudySlugs } from "./case-studies";
-import type { Project } from "./types";
+import { projects as realProjects } from "./projects";
+import type { Project, StackItem } from "./types";
 
 function textFields(project: Project): string[] {
   return [
@@ -42,6 +43,39 @@ export function validateProjects(
           `${project.slug}: the word "resume" must not appear (use "CV" everywhere)`,
         );
         break;
+      }
+    }
+  }
+
+  if (errors.length > 0) {
+    throw new Error(`Content validation failed:\n${errors.join("\n")}`);
+  }
+}
+
+/**
+ * A Stack Item with no backing Project can't be checked, so it isn't a Stack
+ * Item at all (CONTEXT.md) — it belongs on the "Also worked with" line instead.
+ */
+export function validateStack(
+  items: StackItem[],
+  knownProjectSlugs: readonly string[] = realProjects.map(
+    (project) => project.slug,
+  ),
+): void {
+  const errors: string[] = [];
+
+  for (const item of items) {
+    if (item.usedIn.length === 0) {
+      errors.push(
+        `${item.name}: a Stack Item must have at least one backing Project (CONTEXT.md: a technology with no backing Project is not a Stack Item)`,
+      );
+      continue;
+    }
+    for (const slug of item.usedIn) {
+      if (!knownProjectSlugs.includes(slug)) {
+        errors.push(
+          `${item.name}: links to a Project "${slug}" that doesn't exist`,
+        );
       }
     }
   }

@@ -2,10 +2,12 @@ import { Hero } from "@/components/hero";
 import { ProjectSpread } from "@/components/project-spread";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { listFeaturedProjects } from "@/lib/content";
+import { StackIndex } from "@/components/stack-index";
+import { getStack, listFeaturedProjects } from "@/lib/content";
 
 export default function Home() {
   const projects = listFeaturedProjects();
+  const stack = getStack();
 
   return (
     <>
@@ -21,6 +23,7 @@ export default function Home() {
           />
         ))}
       </main>
+      <StackIndex stack={stack} />
       <SiteFooter />
     </>
   );

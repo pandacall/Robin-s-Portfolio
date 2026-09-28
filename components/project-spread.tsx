@@ -17,7 +17,7 @@ export function ProjectSpread({
   const titleId = `plate-${project.slug}-title`;
 
   return (
-    <section className={alt ? "spread alt" : "spread"}>
+    <section id={project.slug} className={alt ? "spread alt" : "spread"}>
       <div className="wrap g">
         <div className="title">
           <h2>{project.name}</h2>
