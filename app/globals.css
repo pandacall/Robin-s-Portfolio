@@ -198,7 +198,7 @@ p + p {
   align-items: start;
 }
 .hero .copy {
-  grid-column: 1 / -1;
+  grid-column: 1 / span 8;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -215,6 +215,23 @@ p + p {
 }
 .hero h1 .ln > span {
   display: block;
+  transform: translateY(110%);
+  transition: transform 900ms var(--ease);
+}
+.hero.ready h1 .ln:nth-child(1) > span {
+  transition-delay: 60ms;
+}
+.hero.ready h1 .ln:nth-child(2) > span {
+  transition-delay: 150ms;
+}
+.hero.ready h1 .ln:nth-child(3) > span {
+  transition-delay: 240ms;
+}
+.hero.ready h1 .ln:nth-child(4) > span {
+  transition-delay: 330ms;
+}
+.hero.ready h1 .ln > span {
+  transform: translateY(0);
 }
 .hero .below {
   margin-top: clamp(28px, 4vw, 56px);
@@ -222,6 +239,15 @@ p + p {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 24px 40px;
   align-items: end;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 700ms var(--ease) 520ms,
+    transform 700ms var(--ease) 520ms;
+}
+.hero.ready .below {
+  opacity: 1;
+  transform: none;
 }
 .hero .lede {
   font-size: 1.1875rem;
@@ -239,7 +265,162 @@ p + p {
   gap: 12px;
   flex-wrap: wrap;
 }
+
+/* ---------- the dot archipelago (hero) ---------- */
+/* Declared before the breakpoints below: the media queries reassign
+   .mapwrap's grid-column/grid-row, and since specificity is equal, cascade
+   order decides — this base rule must come first or it wins at every
+   width. */
+.mapwrap {
+  grid-column: 9 / span 4;
+  grid-row: 1;
+  position: relative;
+  margin: 0;
+  padding: 12px 0 0;
+}
+.mapwrap .frame {
+  position: relative;
+}
+.mapwrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.dot {
+  fill: var(--green-2);
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  transform: scale(0.2);
+  transition:
+    opacity 480ms var(--ease),
+    transform 640ms var(--ease),
+    fill 300ms var(--ease);
+  transition-delay: calc(var(--r) * 22ms + 120ms);
+}
+.dot.w1 {
+  fill: var(--green);
+}
+.dot.w2 {
+  fill: var(--green);
+}
+.mapwrap.ready .dot {
+  opacity: 0.55;
+  transform: scale(1);
+}
+.mapwrap.ready .dot.w1 {
+  opacity: 0.8;
+}
+.mapwrap.ready .dot.w2 {
+  opacity: 1;
+}
+.dot.near {
+  fill: var(--narra);
+  opacity: 1 !important;
+  transform: scale(1.5);
+  transition-delay: 0ms;
+}
+.mapwrap.pulse .dot {
+  animation: pulse 1400ms var(--ease) calc(var(--r) * 28ms) 1;
+}
+@keyframes pulse {
+  0% {
+    fill: var(--green-2);
+  }
+  18% {
+    fill: var(--ink);
+  }
+  100% {
+    fill: var(--green-2);
+  }
+}
+.mapwrap.pulse .dot.w1,
+.mapwrap.pulse .dot.w2 {
+  animation-name: pulse2;
+}
+@keyframes pulse2 {
+  0% {
+    fill: var(--green);
+  }
+  18% {
+    fill: var(--ink);
+  }
+  100% {
+    fill: var(--green);
+  }
+}
+.scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--ink) 30%,
+    var(--ink) 70%,
+    transparent
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+.mapwrap.ready .scan {
+  animation: scan 1500ms var(--ease) 80ms 1;
+}
+.mapwrap.pulse .scan {
+  animation: scan 1900ms var(--ease) 1;
+}
+@keyframes scan {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.9;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(var(--map-h, 560px));
+    opacity: 0;
+  }
+}
+.mapwrap figcaption {
+  font-family: var(--font-disp);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  line-height: 1.4;
+  max-width: 34ch;
+  margin-top: 18px;
+}
+
+@media (max-width: 1000px) {
+  .hero .copy {
+    grid-column: 1 / -1;
+  }
+  .mapwrap {
+    grid-column: 7 / span 6;
+    grid-row: 1;
+    padding-bottom: 0;
+  }
+  .hero .g {
+    row-gap: 24px;
+  }
+}
 @media (max-width: 760px) {
+  .hero .g {
+    grid-template-columns: 1fr;
+  }
+  .hero .copy,
+  .mapwrap {
+    grid-column: 1 / -1;
+  }
+  .mapwrap {
+    grid-row: 2;
+    max-width: 300px;
+  }
   .hero .below {
     grid-template-columns: 1fr;
   }
@@ -747,9 +928,38 @@ footer.site .wrap {
   flex-wrap: wrap;
   align-items: center;
 }
+footer.site .mini {
+  display: inline-flex;
+  align-items: center;
+  font-variant-numeric: tabular-nums;
+}
+footer.site .mini svg {
+  width: 26px;
+  height: auto;
+}
+/* The footer repeat is static and fully opaque in green-2 (DESIGN.md): it
+   never joins the hero's ready/pulse/pointer states. */
+footer.site .mini .dot {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  fill: var(--green-2);
+}
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .hero h1 .ln > span,
+  .hero .below,
+  .dot {
+    transition: none !important;
+  }
+  .hero .scan,
+  .mapwrap.pulse .dot {
+    animation: none !important;
+  }
+  .dot.near {
+    transform: none;
   }
 }
