@@ -93,7 +93,7 @@ describe("a Project's Case Study body", () => {
 });
 
 describe("rubric switch", () => {
-  it("publishes the real method on the shipped site now clearance is confirmed", () => {
+  it("publishes the real method on the shipped site", () => {
     const text = allText(getProjectBySlug("oplan-bantay-signal")!.caseStudy!);
 
     for (const term of [

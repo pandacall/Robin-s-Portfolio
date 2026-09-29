@@ -3,7 +3,7 @@
  * switch that decides which definition the site publishes.
  *
  * The real v3.1 rubric is only published once OASIS clearance for ADR 0001 is
- * confirmed (a launch blocker). Clearance was confirmed on 2026-09-29, so
+ * confirmed (a launch blocker). Clearance is recorded in ADR 0001, so
  * `RUBRIC_SWITCH` is on "real"; it goes back to "placeholder" if that is ever
  * withdrawn. Everything that shows pillar names, weights or bands reads them
  * through `getActiveRubric`, so nothing can outrun clearance.

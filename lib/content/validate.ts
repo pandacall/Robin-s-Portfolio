@@ -153,7 +153,7 @@ function blockTexts(block: CaseStudyBlockSource): string[] {
 /**
  * A Case Study must keep the glossary vocabulary, point its demo slot at a
  * real section, and give every rubric-gated text a non-empty placeholder
- * variant (the site ships on the placeholder until ADR 0001 clearance).
+ * variant (the fallback if the switch ever goes back to placeholder).
  */
 export function validateCaseStudies(
   sources: readonly CaseStudySource[] = realCaseStudySources,

@@ -200,3 +200,21 @@ test("the grader page shows the real v3.1 pillars and no placeholder rubric word
   }
   expect(body).not.toMatch(/placeholder (pillars|weights)/i);
 });
+
+test("the placeholder rubric never reaches the built page or its scripts", async ({
+  page,
+  request,
+}) => {
+  const scripts: string[] = [];
+  page.on("response", (response) => {
+    if (response.url().endsWith(".js")) scripts.push(response.url());
+  });
+  await page.goto(ROUTE);
+  await page.waitForLoadState("networkidle");
+
+  const bodies = [await (await request.get(ROUTE)).text()];
+  for (const url of scripts) bodies.push(await (await request.get(url)).text());
+  for (const body of bodies) {
+    expect(body).not.toContain("Placeholder pillars, weights and bands");
+  }
+});

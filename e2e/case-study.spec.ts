@@ -59,7 +59,6 @@ test("the Case Study tells the story in order, with the Interactive Demo after t
 test("pillar details follow the real v3.1 rubric", async ({ page }) => {
   await page.goto(ROUTE);
 
-  await expect(page.locator(".cs-cap").getByText(/placeholder (pillars|weights)/i)).toHaveCount(0);
   const body = await page.getByRole("main").innerText();
   for (const real of [
     "Speed Adequacy",

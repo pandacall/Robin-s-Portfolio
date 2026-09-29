@@ -40,7 +40,7 @@ Robin builds AI agents that run inside the Philippine government: a telecom grad
 ## Capabilities and Constraints
 
 - **Privacy is a hard constraint.** No Confidential Detail may appear: internal IDs and URLs, credentials, names of officials or colleagues, real per-provider results, city results, complaint counts, internal-only rules, or real DICT or telco logos. Interactive Demos use Illustrative Data only, always visibly labelled. Public headline figures (e.g. Ookla national results) are acceptable placeholders.
-- ADR 0001: the Oplan Bantay Signal Case Study publishes Robin's real Six-Pillar grading method (weights, formulas, thresholds, grade bands), pending OASIS clearance before launch. The prototype uses placeholder pillars and weights.
+- ADR 0001: the Oplan Bantay Signal Case Study publishes Robin's real Six-Pillar grading method (weights, formulas, thresholds, grade bands). OASIS clearance is confirmed (see the ADR), and the rubric switch is on the real v3.1 rubric. The prototype uses placeholder pillars and weights.
 - Terminology is fixed by `CONTEXT.md`: Visitor, Hiring Manager, Project, Origin, Rebuild, Private Project, Case Study, Project Card, Interactive Demo, Confidential Detail, Illustrative Data, Stack, Stack Item, Credential, Experience, CV. "CV" everywhere, never "resume".
 - Must work at phone width and in both light and dark themes.
 - Undecided: final copy for every section (written during implementation), the exact set of Stack Items, and Experience entry wording.

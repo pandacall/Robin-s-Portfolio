@@ -8,7 +8,7 @@ import {
 } from "./rubric";
 
 describe("rubric switch", () => {
-  it("ships on the real v3.1 rubric now ADR 0001 clearance is confirmed", () => {
+  it("ships on the real v3.1 rubric", () => {
     expect(RUBRIC_SWITCH).toBe("real");
     expect(getActiveRubric().kind).toBe("real");
   });

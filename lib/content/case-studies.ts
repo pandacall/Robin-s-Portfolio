@@ -14,7 +14,7 @@ import type { CaseStudySource } from "./types";
  *
  * Text that names pillars, weights, bands or the data sources behind them is
  * gated by the rubric switch (lib/grading/rubric.ts): `only: "real"` blocks and
- * `{ placeholder, real }` text never show real method before ADR 0001 clearance.
+ * `{ placeholder, real }` text follow the switch, so the real method shows only while it is on "real" (ADR 0001).
  */
 const oplanBantaySignal: CaseStudySource = {
   slug: "oplan-bantay-signal",
