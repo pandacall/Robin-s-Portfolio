@@ -65,7 +65,9 @@ test("Contact shows the email, LinkedIn and GitHub, and no phone number anywhere
   await expect(
     page.getByRole("link", { name: "LinkedIn" }),
   ).toHaveAttribute("href", "https://www.linkedin.com/in/john-robin-cubi/");
-  await expect(page.getByRole("link", { name: "GitHub" })).toHaveAttribute(
+  await expect(
+    page.locator("#contact").getByRole("link", { name: "GitHub", exact: true }),
+  ).toHaveAttribute(
     "href",
     "https://github.com/pandacall",
   );

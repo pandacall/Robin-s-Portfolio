@@ -721,6 +721,15 @@ p + p {
 .ledger dd {
   margin: 0;
   color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+.ledger dd a {
+  color: var(--ink-2);
+  text-decoration-color: var(--rule-2);
+}
+.ledger dd a:hover {
+  color: var(--narra);
+  text-decoration-color: var(--narra);
 }
 /* The program's own mark, on a tile that stays light in both themes. */
 .mark {
@@ -874,6 +883,44 @@ p + p {
 .p-line.dash {
   stroke-dasharray: 4 4;
 }
+/* Oplan Tindig's map: the fault, its two risk bands, sites by band, staging areas. */
+.p-fault {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.p-band {
+  fill: none;
+  stroke: var(--green);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-opacity 160ms var(--ease);
+}
+.p-band.medium {
+  stroke-opacity: 0.1;
+}
+.p-band.high {
+  stroke-opacity: 0.2;
+}
+.p-dot.site.high {
+  fill: var(--ink);
+}
+.p-dot.site.medium {
+  fill: var(--green-2);
+}
+.p-dot.site.low {
+  fill: var(--plate);
+  stroke: var(--green-2);
+  stroke-width: 1.25;
+}
+.p-stage {
+  fill: var(--capiz);
+  stroke: var(--ink);
+  stroke-width: 1.25;
+  vector-effect: non-scaling-stroke;
+}
 .p-box,
 .p-line,
 .p-arrow {
@@ -897,6 +944,20 @@ p + p {
 }
 .p-node.lit .p-arrow {
   fill: var(--green);
+}
+.p-node.lit .p-fault {
+  stroke: var(--green);
+  stroke-width: 3;
+}
+.p-node.lit .p-band.medium {
+  stroke-opacity: 0.2;
+}
+.p-node.lit .p-band.high {
+  stroke-opacity: 0.38;
+}
+.p-node.lit .p-stage {
+  stroke: var(--green);
+  fill: color-mix(in srgb, var(--green) 22%, var(--plate));
 }
 @media (max-width: 900px) {
   .spread .title,
@@ -1228,7 +1289,7 @@ p + p {
   align-items: start;
 }
 .contact .portrait {
-  grid-column: 1 / span 4;
+  grid-column: 1 / span 3;
   grid-row: 1 / span 2;
   margin: 0;
   border: 1px solid var(--rule);
@@ -1312,7 +1373,7 @@ p + p {
 }
 @media (max-width: 900px) {
   .contact .portrait {
-    grid-column: 1 / span 5;
+    grid-column: 1 / span 4;
     grid-row: auto;
   }
   .contact .about,
@@ -1322,7 +1383,7 @@ p + p {
 }
 @media (max-width: 560px) {
   .contact .portrait {
-    grid-column: 1 / span 9;
+    grid-column: 1 / span 6;
   }
   .contact .acts {
     display: grid;

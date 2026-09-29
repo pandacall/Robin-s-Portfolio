@@ -97,7 +97,7 @@ export function Box({
       </text>
       {sub && (
         <text
-          x={x + 12}
+          x={x + (pill ? 16 : 12)}
           y={y + h / 2 + 9}
           dominantBaseline="central"
           className={hi ? "p-small on" : "p-small"}

@@ -26,8 +26,20 @@ export interface Project {
   plateCaption: string;
   /** The plate SVG's text alternative for screen readers. */
   plateAlt: string;
-  /** Never allowed on a Work Project. */
+  /** Never allowed on a Work Project unless it carries a `publicClearance`. */
   codeUrl?: string;
+  /** Where the Project runs, when a Visitor can open it. */
+  liveUrl?: string;
+  /** The spread's link to `liveUrl`, e.g. "Open the live dashboard". */
+  liveLabel?: string;
+  /**
+   * Robin's clearance to show a Work Project publicly (code and live links),
+   * recorded as who cleared it and when. Without it, a Work Project is a
+   * Private Project (CONTEXT.md).
+   */
+  publicClearance?: string;
+  /** The ledger's "Built for" row, e.g. the challenge a Personal Project was entered in. */
+  builtFor?: string;
   /** A Personal Project that names the Experience entry its original came from. */
   rebuildOf?: string;
 }

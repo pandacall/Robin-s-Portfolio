@@ -19,6 +19,7 @@ function textFields(project: Project): string[] {
     project.plateAlt,
     ...project.prose,
     ...(project.caseStudyHolds ? [project.caseStudyHolds] : []),
+    ...(project.builtFor ? [project.builtFor] : []),
   ];
 }
 
@@ -29,14 +30,20 @@ export function validateProjects(
   const errors: string[] = [];
 
   for (const project of projects) {
-    if (project.origin === "Work" && !project.private) {
+    const cleared = project.origin === "Work" && Boolean(project.publicClearance);
+    if (project.origin === "Work" && !project.private && !cleared) {
       errors.push(
-        `${project.slug}: a Work Project must be marked Private (CONTEXT.md: every Work Project is a Private Project)`,
+        `${project.slug}: a Work Project must be marked Private (CONTEXT.md: every Work Project is a Private Project unless it is cleared for public release)`,
       );
     }
-    if (project.origin === "Work" && project.codeUrl) {
+    if (project.origin === "Work" && project.codeUrl && !cleared) {
       errors.push(
-        `${project.slug}: a Work Project must never have a code link`,
+        `${project.slug}: a Work Project must never have a code link unless it is cleared for public release`,
+      );
+    }
+    if (project.private && (project.codeUrl || project.liveUrl)) {
+      errors.push(
+        `${project.slug}: a Private Project can't link to its code or a live deployment`,
       );
     }
     if (

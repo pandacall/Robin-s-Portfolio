@@ -8,12 +8,14 @@ import {
 } from "./index";
 
 describe("content collection", () => {
-  it("lists the three featured Projects in spec order", () => {
+  it("lists the featured Projects in page order", () => {
     const featured = listFeaturedProjects();
     expect(featured.map((p) => p.slug)).toEqual([
       "oplan-bantay-signal",
       "kuya-a",
       "aya",
+      "oplan-tindig",
+      "gabay-ofw",
     ]);
   });
 
@@ -28,11 +30,19 @@ describe("content collection", () => {
     expect(getProjectBySlug("does-not-exist")).toBeUndefined();
   });
 
-  it("marks every featured Project Work and Private, with no code link", () => {
+  it("keeps every Work Project Private, with no code link, unless it is cleared", () => {
     for (const project of listFeaturedProjects()) {
-      expect(project.origin).toBe("Work");
+      if (project.origin !== "Work" || project.publicClearance) continue;
       expect(project.private).toBe(true);
       expect(project.codeUrl).toBeUndefined();
+    }
+  });
+
+  it("shows the three agent Case Study Projects as Private Work", () => {
+    for (const slug of ["oplan-bantay-signal", "kuya-a", "aya"]) {
+      const project = getProjectBySlug(slug);
+      expect(project?.origin).toBe("Work");
+      expect(project?.private).toBe(true);
     }
   });
 });
@@ -101,7 +111,7 @@ describe("listExperience", () => {
     }
   });
 
-  it("resolves the DICT OASIS entry to Oplan Bantay Signal, Kuya A and Aya", () => {
+  it("resolves the DICT OASIS entry to the Work Projects built there", () => {
     const entries = listExperience();
     const dict = entries.find((entry) => entry.organisation === "DICT OASIS");
 
@@ -109,6 +119,7 @@ describe("listExperience", () => {
       "oplan-bantay-signal",
       "kuya-a",
       "aya",
+      "oplan-tindig",
     ]);
   });
 

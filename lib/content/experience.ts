@@ -14,7 +14,7 @@ export const experienceEntries: Experience[] = [
     dateRange: "Aug 2025 – May 2026",
     description:
       "Designed the Six-Pillar grading method and built the reporting pipeline behind Oplan Bantay Signal, then built and operated the Kuya A and Aya agents.",
-    projectSlugs: ["oplan-bantay-signal", "kuya-a", "aya"],
+    projectSlugs: ["oplan-bantay-signal", "kuya-a", "aya", "oplan-tindig"],
   },
   {
     role: "Acting Chief of Staff – Technical Staff",

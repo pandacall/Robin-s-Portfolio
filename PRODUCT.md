@@ -35,7 +35,8 @@ Robin builds AI agents that run inside the Philippine government: a telecom grad
   - **Aya** (Work): a multi-agent office assistant on Discord. Demo: a 24-hour timeline of 14 scheduled jobs.
 - Stack is grouped; each Stack Item links to the Projects that use it. Credentials sit beside the AI & Agents group. Unbacked technologies go on one "Also worked with" line.
 - Theme is light by default with dark mode following `prefers-color-scheme`. No toggle.
-- Every Work Project is a Private Project: presented as a write-up labelled "Private — demo on request", never with a code link.
+- Every Work Project is a Private Project: presented as a write-up labelled "Private — demo on request", never with a code link, unless Robin clears it for public release.
+- After the three agent spreads come two public Projects, added 2026-09-29: **Oplan Tindig** (Work, cleared for public release by Robin): a Big One earthquake dashboard of cell sites against the West Valley Fault, with code and live links, and **Gabay OFW** (Personal): a Gemini agent for Filipino workers in the Gulf, built for the Hack2skill Cloud Run AI Challenge, with code and live links. Neither has a Case Study.
 
 ## Capabilities and Constraints
 

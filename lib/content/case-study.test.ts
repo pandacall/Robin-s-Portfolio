@@ -75,7 +75,8 @@ describe("a Project's Case Study body", () => {
   it("is absent for a Project without one", () => {
     expect(getProjectBySlug("no-such-project")).toBeUndefined();
     for (const project of listFeaturedProjects()) {
-      expect(project.caseStudySlug).toBeDefined();
+      if (project.caseStudySlug) continue;
+      expect(getProjectBySlug(project.slug)?.caseStudy).toBeUndefined();
     }
   });
 

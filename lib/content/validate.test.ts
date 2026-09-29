@@ -33,6 +33,37 @@ describe("validateProjects", () => {
     ).toThrow(/code link/i);
   });
 
+  it("accepts a Work Project cleared for public release, with its code link", () => {
+    expect(() =>
+      validateProjects([
+        project({
+          private: false,
+          codeUrl: "https://github.com/example/repo",
+          publicClearance: "Cleared by Robin, 2026-09-29",
+        }),
+      ]),
+    ).not.toThrow();
+  });
+
+  it("fails when a Private Project links to a live deployment", () => {
+    expect(() =>
+      validateProjects([project({ liveUrl: "https://example.com" })]),
+    ).toThrow(/private project/i);
+  });
+
+  it("accepts a public Personal Project with code and live links", () => {
+    expect(() =>
+      validateProjects([
+        project({
+          origin: "Personal",
+          private: false,
+          codeUrl: "https://github.com/example/repo",
+          liveUrl: "https://example.com",
+        }),
+      ]),
+    ).not.toThrow();
+  });
+
   it("fails when the word \"resume\" appears in a Project field", () => {
     expect(() =>
       validateProjects([

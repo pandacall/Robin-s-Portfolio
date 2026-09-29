@@ -1,6 +1,12 @@
 import { expect, test } from "@playwright/test";
 
-const PROJECT_NAMES = ["Oplan Bantay Signal", "Kuya A", "Aya"];
+const PROJECT_NAMES = [
+  "Oplan Bantay Signal",
+  "Kuya A",
+  "Aya",
+  "Oplan Tindig",
+  "Gabay OFW",
+];
 
 test("home page loads with the hero and the Project spreads", async ({ page }) => {
   await page.goto("/");
@@ -72,4 +78,25 @@ test("pointing at a linked term lights the plate node it names, and back", async
   await spread.locator('.plate [data-term="gate"]').hover();
   await expect(spread.locator('.term[data-term="gate"]')).toHaveClass(/\blit\b/);
   await expect(node).not.toHaveClass(/\blit\b/);
+});
+
+test("a public Project links its code and live deployment, and says nothing about Private", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  for (const [slug, code, live] of [
+    ["oplan-tindig", "https://github.com/pandacall/oplan_tindig", "https://oplan-tindig.vercel.app"],
+    [
+      "gabay-ofw",
+      "https://github.com/pandacall/gabay-ofw",
+      "https://gabay-ofw-417534361115.asia-southeast1.run.app",
+    ],
+  ] as const) {
+    const spread = page.locator(`#${slug}`);
+    await expect(spread.locator(".kind")).toContainText("Open source");
+    await expect(spread.locator(".kind")).not.toContainText("Private");
+    await expect(spread.locator(`.ledger a[href="${code}"]`)).toBeVisible();
+    await expect(spread.locator(`a.more[href="${live}"]`)).toBeVisible();
+  }
 });

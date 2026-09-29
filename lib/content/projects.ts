@@ -1,7 +1,9 @@
 import type { Project } from "./types";
 
 /**
- * Featured Projects, in spec order (spec.md: Oplan Bantay Signal, Kuya A, Aya).
+ * Featured Projects, in page order: the three agent systems (spec.md: Oplan
+ * Bantay Signal, Kuya A, Aya), then Oplan Tindig (Work, cleared for public
+ * release) and Gabay OFW (Personal).
  */
 export const projects: Project[] = [
   {
@@ -82,5 +84,58 @@ export const projects: Project[] = [
       "A day of Aya's scheduled jobs, and the end-of-day update pipeline, redrawn from the system. Not a screenshot.",
     plateAlt:
       "Diagram: a 24-hour clock in Manila time with a dot for every run of Aya's 14 scheduled jobs, hourly from 07:00 to 23:00 and clustered at 09:00, 17:00 and 19:00. Beside it, an end-of-day update is drafted by the agent, fuzzy-matched to a tracker task, confirmed, and written to the sheet and tracker. The same behaviour files drive both.",
+  },
+  {
+    slug: "oplan-tindig",
+    name: "Oplan Tindig",
+    origin: "Work",
+    private: false,
+    publicClearance: "Cleared for public release by Robin, 2026-09-29.",
+    codeUrl: "https://github.com/pandacall/oplan_tindig",
+    liveUrl: "https://oplan-tindig.vercel.app",
+    liveLabel: "Open the live dashboard",
+    evidence: "a live dashboard, with its code public.",
+    prose: [
+      "An earthquake-preparedness dashboard for the Big One: it maps the cell sites around Metro Manila against the West Valley Fault, so emergency teams can see which sites sit in the high-risk and medium-risk zones and plan for the outage before it happens.",
+      "I built the dashboard: a CSV upload for each provider's site list, point-in-polygon detection of each site's city and province against official boundary files, risk scored by distance to the fault, the LGU staging areas on the same map, and filters by province, city, provider, status and risk.",
+    ],
+    terms: [
+      { phrase: "West Valley Fault", node: "fault" },
+      { phrase: "high-risk and medium-risk zones", node: "zones" },
+      { phrase: "point-in-polygon", node: "city" },
+      { phrase: "distance to the fault", node: "risk" },
+      { phrase: "LGU staging areas", node: "staging" },
+    ],
+    plateCaption:
+      "Sites against the fault and its risk zones, beside the pipeline that places them. Illustrative sites, not real locations.",
+    plateAlt:
+      "Diagram: a fault line runs north to south, with a high-risk band within 5 km of it and a medium-risk band within 15 km. Illustrative cell sites are scattered across the map, darker inside the bands, with a few staging areas marked. Beside it, the pipeline: a provider's CSV is parsed, each site is placed in its city and province by point-in-polygon, scored by its distance to the fault, banded, and shown on the map with filters.",
+  },
+  {
+    slug: "gabay-ofw",
+    name: "Gabay OFW",
+    origin: "Personal",
+    private: false,
+    codeUrl: "https://github.com/pandacall/gabay-ofw",
+    liveUrl: "https://gabay-ofw-417534361115.asia-southeast1.run.app",
+    liveLabel: "Open the live app",
+    builtFor: "the Hack2skill GenAI Academy APAC Cloud Run AI Challenge.",
+    evidence:
+      "live on Cloud Run; every push runs the backend and browser test suites before it deploys.",
+    prose: [
+      "A Gemini-powered agent for Filipino workers in the Gulf, most often domestic workers, who may be reaching for it under stress. She tells it what's happening in her own words, in Tagalog, Bisaya, Taglish or English. It compares that against the standard employment contract, or, when she mentions danger, triages the situation and routes her to real help.",
+      "I designed it so the model can't invent what matters most: it names only a triage category, and application code looks up the real hotline or Migrant Workers Office from a fixed table. Every fact in her case records where it came from, and each user's data is walled off by Firestore rules tested against the emulator.",
+    ],
+    terms: [
+      { phrase: "her own words", node: "message" },
+      { phrase: "standard employment contract", node: "contract" },
+      { phrase: "a triage category", node: "category" },
+      { phrase: "a fixed table", node: "directory" },
+      { phrase: "Firestore rules", node: "rules" },
+    ],
+    plateCaption:
+      "One message's path, from her words to a real phone number, redrawn from the code.",
+    plateAlt:
+      "Diagram: her message, in any of four languages, reaches a Gemini agent. For a contract question the agent checks it against the standard employment contract and returns findings with a plan. When danger comes up, the agent emits only a triage category; past that line application code owns everything, resolving the category against a fixed directory to a contact card for 1343 Actionline, OWWA 1348 or her country's Migrant Workers Office. Her Case, where every fact has a source, sits behind per-user Firestore rules.",
   },
 ];

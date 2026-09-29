@@ -46,6 +46,11 @@ export function ProgramMark({ logo }: { logo: NonNullable<Project["logo"]> }) {
   );
 }
 
+/** A URL as a Visitor would read it: host and path, no scheme. */
+function displayUrl(url: string): string {
+  return url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+}
+
 /** The shared name that lets a spread's title grow into its Case Study's h1. */
 export function titleTransitionName(slug: string): string {
   return `title-${slug}`;
@@ -80,6 +85,8 @@ export function ProjectSpread({
             {project.private && (
               <span className="lock">Private, demo on request</span>
             )}
+            {project.codeUrl && <span>Open source</span>}
+            {project.liveUrl && <span className="live">Live</span>}
             {project.caseStudySlug && <span>Case Study</span>}
           </p>
           {project.logo && <ProgramMark logo={project.logo} />}
@@ -95,13 +102,42 @@ export function ProjectSpread({
               <dt>Evidence</dt>
               <dd>{sentenceCase(project.evidence)}</dd>
             </div>
+            {project.builtFor && (
+              <div>
+                <dt>Built for</dt>
+                <dd>{sentenceCase(project.builtFor)}</dd>
+              </div>
+            )}
             {caseStudyHref && project.caseStudyHolds && (
               <div>
                 <dt>In the Case Study</dt>
                 <dd>{sentenceCase(project.caseStudyHolds)}</dd>
               </div>
             )}
+            {project.codeUrl && (
+              <div>
+                <dt>Code</dt>
+                <dd>
+                  <a href={project.codeUrl}>{displayUrl(project.codeUrl)}</a>
+                </dd>
+              </div>
+            )}
           </dl>
+          {!caseStudyHref && project.liveUrl && (
+            <a className="more" href={project.liveUrl}>
+              {project.liveLabel ?? "Open it live"}
+              <svg viewBox="0 0 18 18" aria-hidden="true">
+                <path
+                  d="M5 13 13 5m0 0H6.5M13 5v6.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          )}
           {caseStudyHref && (
             <a className="more" href={caseStudyHref}>
               Open the Case Study

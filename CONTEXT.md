@@ -27,7 +27,7 @@ A Personal Project that re-implements the architecture of a Work Project from sc
 _Avoid_: Clone, fork, demo version, replica
 
 **Private Project**:
-A Project whose code cannot be shown. It is presented as a write-up (what it does, how it works, the outcome) with the label "Private — demo on request", and never with a code link. Every Work Project is a Private Project.
+A Project whose code cannot be shown. It is presented as a write-up (what it does, how it works, the outcome) with the label "Private — demo on request", and never with a code link. Every Work Project is a Private Project unless Robin has cleared it for public release; a cleared Work Project records that clearance and may link its code and live deployment (Oplan Tindig).
 _Avoid_: Hidden project, confidential repo
 
 **Case Study**:

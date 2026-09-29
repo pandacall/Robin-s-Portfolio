@@ -11,7 +11,6 @@ export const STACK_GROUP_ORDER = [
 ] as const;
 
 const AGENT_CREDENTIALS = [
-  { name: "Agent Development Kit (ADK)" },
   { name: "Agent Fundamentals" },
   { name: "Enterprise Agents & Use Cases" },
   { name: "Gemini Enterprise Application" },
@@ -26,8 +25,8 @@ export const stackItems: StackItem[] = [
   {
     name: "Python",
     group: "Languages",
-    usedIn: ["oplan-bantay-signal"],
-    how: "pandas automation pipelines behind the monthly six-pillar measurements",
+    usedIn: ["oplan-bantay-signal", "gabay-ofw"],
+    how: "pandas automation pipelines behind the monthly six-pillar measurements, and Gabay OFW's backend",
   },
   {
     name: "Node.js / TypeScript",
@@ -47,6 +46,19 @@ export const stackItems: StackItem[] = [
     usedIn: ["kuya-a", "aya"],
     how: "Kuya A's Gatekeeper sub-agent, and Aya's team of agents on a shared gateway",
     credentials: AGENT_CREDENTIALS,
+  },
+  {
+    name: "Google ADK",
+    group: "AI & Agents",
+    usedIn: ["gabay-ofw"],
+    how: "the agent framework under Gabay OFW's conversations",
+    credentials: [{ name: "Agent Development Kit (ADK)" }],
+  },
+  {
+    name: "Gemini API",
+    group: "AI & Agents",
+    usedIn: ["gabay-ofw"],
+    how: "the model behind Gabay OFW's agent",
   },
   {
     name: "Model Context Protocol (MCP)",
@@ -79,6 +91,24 @@ export const stackItems: StackItem[] = [
     how: "segregates the three Google Workspace identities Kuya A operates under",
   },
   {
+    name: "FastAPI",
+    group: "Web & APIs",
+    usedIn: ["gabay-ofw"],
+    how: "Gabay OFW's backend and its HTTP test seam",
+  },
+  {
+    name: "React",
+    group: "Web & APIs",
+    usedIn: ["oplan-tindig"],
+    how: "the Oplan Tindig dashboard, built on Vite",
+  },
+  {
+    name: "Leaflet / Turf.js",
+    group: "Web & APIs",
+    usedIn: ["oplan-tindig"],
+    how: "Oplan Tindig's fault map, risk bands and point-in-polygon city lookup",
+  },
+  {
     name: "Jira / Atlassian Cloud",
     group: "Web & APIs",
     usedIn: ["aya"],
@@ -103,6 +133,24 @@ export const stackItems: StackItem[] = [
     how: "converts Kuya A's generated documents to PDF and PNG",
   },
   {
+    name: "Firebase Auth / Firestore",
+    group: "Infra & Data",
+    usedIn: ["gabay-ofw"],
+    how: "Gabay OFW's sign-in and per-user data, walled off by security rules",
+  },
+  {
+    name: "Docker / Google Cloud Run",
+    group: "Infra & Data",
+    usedIn: ["gabay-ofw", "oplan-tindig"],
+    how: "Gabay OFW's deploys, with its key in Secret Manager, and Oplan Tindig's container build",
+  },
+  {
+    name: "GitHub Actions",
+    group: "Infra & Data",
+    usedIn: ["gabay-ofw"],
+    how: "runs Gabay OFW's tests and deploys it on every push, keyless through Workload Identity Federation",
+  },
+  {
     name: "cron",
     group: "Infra & Data",
     usedIn: ["kuya-a", "aya"],
@@ -119,11 +167,9 @@ export const alsoWorkedWith: string[] = [
   "C",
   "Bash",
   "OpenAI API",
-  "Google Gemini API",
   "Prompt Engineering",
   "NLP",
   "Sentiment Analysis",
-  "React",
   "Next.js",
   "Express",
   "REST APIs",
@@ -131,7 +177,6 @@ export const alsoWorkedWith: string[] = [
   "Claude Code",
   "PostgreSQL",
   "SQLite (FTS5)",
-  "Google Cloud Platform (GCP)",
   "ETL & Data Pipelines",
   "Debian / WSL2",
   "systemd",
