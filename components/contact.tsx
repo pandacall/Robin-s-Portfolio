@@ -1,3 +1,5 @@
+import { CV_DOWNLOAD_NAME, CV_URL } from "@/lib/cv/cv-link";
+
 const EMAIL = "hello@robincubi.dev";
 const LINKEDIN_URL = "https://www.linkedin.com/in/john-robin-cubi/";
 const GITHUB_URL = "https://github.com/pandacall";
@@ -19,6 +21,9 @@ export function Contact() {
         <div className="acts">
           <a className="btn primary" href={`mailto:${EMAIL}`}>
             Email
+          </a>
+          <a className="btn" href={CV_URL} download={CV_DOWNLOAD_NAME}>
+            Download CV
           </a>
           <a className="btn" href={LINKEDIN_URL}>
             LinkedIn

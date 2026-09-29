@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   assertNoConfidentialDetails,
+  assertNoConfidentialDetailsInPublicPdfs,
   collectContentSourceFiles,
+  collectPublicPdfFiles,
   runPrivacyGuard,
 } from "./guard";
 import type { ScannedFile } from "./scan";
@@ -73,6 +75,41 @@ describe("collectContentSourceFiles", () => {
 
     expect(paths.some((p) => p.startsWith("lib/content/"))).toBe(true);
     expect(paths.some((p) => p.startsWith("components/"))).toBe(true);
+  });
+});
+
+describe("public PDFs", () => {
+  it("collects the text of PDFs shipped from public/, so the public CV can be scanned", async () => {
+    const pdfs = await collectPublicPdfFiles();
+    const cv = pdfs.find(
+      (file) => file.path.replace(/\\/g, "/") === "public/cv/john-robin-cubi.pdf",
+    );
+
+    expect(cv?.content).toContain("Professional Summary");
+    // Wrapped lines are joined, so a multi-word term still matches across a line break.
+    expect(cv?.content).not.toMatch(/\n/);
+  });
+
+  it("fails, naming the PDF, when a denylisted term is inside it", async () => {
+    await expect(
+      assertNoConfidentialDetailsInPublicPdfs(["Professional Summary"]),
+    ).rejects.toThrow(/public\/cv\/john-robin-cubi\.pdf/);
+  });
+
+  it("passes when no denylisted term is inside the PDFs, and skips when the denylist is absent", async () => {
+    await expect(
+      assertNoConfidentialDetailsInPublicPdfs(["Something Unrelated"]),
+    ).resolves.toBeUndefined();
+    await expect(
+      assertNoConfidentialDetailsInPublicPdfs(null),
+    ).resolves.toBeUndefined();
+  });
+
+  it("finds no Confidential Details in the real public PDFs", async () => {
+    // Real, gitignored denylist when present; skips cleanly otherwise.
+    await expect(
+      assertNoConfidentialDetailsInPublicPdfs(),
+    ).resolves.toBeUndefined();
   });
 });
 

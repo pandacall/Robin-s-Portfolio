@@ -8,6 +8,10 @@ This repo is public. The gitignored folders and files (`Oplan Bantay Signal/`, `
 
 A privacy guard (`lib/privacy/`, run by `npm test`) scans content sources and the built site against Robin's own denylist of Confidential Details at `.privacy/denylist.txt` (gitignored — it's never committed, and the guard skips cleanly when it's absent). To add a term, add one plain-text line to that file, grouped under a `#` comment header by category; matching is a case-insensitive substring check.
 
+## Public CV
+
+`public/cv/john-robin-cubi.pdf` is generated, then committed: `npm run build:cv` reads the private `cv/cv.html`, strips the phone number, renders with the local Chrome (set `CHROME_PATH` if it isn't found) and refuses to write the PDF if any phone number is left in its text. The guard also scans the text of every PDF under `public/`. Re-run the script whenever the private CV changes.
+
 ## Agent skills
 
 ### Issue tracker

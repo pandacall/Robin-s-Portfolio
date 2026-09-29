@@ -1,11 +1,13 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
+import { readPdf } from "../cv/pdf-text";
 import { loadDenylist } from "./denylist";
 import { scanForDenylistHits, type DenylistHit, type ScannedFile } from "./scan";
 
 const ROOT = process.cwd();
 const BUILT_SITE_DIR = path.join(ROOT, "out");
+const PUBLIC_DIR = path.join(ROOT, "public");
 
 // Human-authored text: source, content data/MDX and docs. Copy lives in lib/content today,
 // but also directly in components (e.g. the Hero) and app routes — scan all of it, not just
@@ -53,6 +55,23 @@ export function collectBuiltHtmlFiles(): ScannedFile[] {
   return readAsScannedFiles(files);
 }
 
+/**
+ * The PDFs shipped from `public/` (the public CV), as text. Wrapped lines are joined so a
+ * multi-word term still matches across a line break in the PDF.
+ */
+export async function collectPublicPdfFiles(): Promise<ScannedFile[]> {
+  const pdfPaths = walk(PUBLIC_DIR, (filePath) => filePath.endsWith(".pdf"));
+  return Promise.all(
+    pdfPaths.map(async (pdfPath) => {
+      const { text } = await readPdf(new Uint8Array(readFileSync(pdfPath)));
+      return {
+        path: path.relative(ROOT, pdfPath).replace(/\\/g, "/"),
+        content: text.replace(/\s+/g, " "),
+      };
+    }),
+  );
+}
+
 export type PrivacyGuardResult =
   | { skipped: true; notice: string }
   | { skipped: false; hits: DenylistHit[] };
@@ -97,6 +116,13 @@ export function assertNoConfidentialDetails(
       .join("\n");
     throw new Error(`Privacy guard failed:\n${message}`);
   }
+}
+
+/** {@link assertNoConfidentialDetails} over the text of the PDFs shipped from `public/`. */
+export async function assertNoConfidentialDetailsInPublicPdfs(
+  denylist?: string[] | null,
+): Promise<void> {
+  assertNoConfidentialDetails(denylist, await collectPublicPdfFiles());
 }
 
 /**
