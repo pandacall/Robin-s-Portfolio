@@ -803,6 +803,13 @@ p + p {
   height: auto;
   border: 1px solid var(--rule);
   filter: var(--print-filter, none);
+  transition: border-color 160ms var(--ease);
+}
+.plate.screen .shot {
+  display: block;
+}
+.plate.screen .shot:hover img {
+  border-color: var(--ink);
 }
 @media (max-width: 560px) {
   /* The plate's type is drawn in viewBox units, so squeezing a 560-wide plate

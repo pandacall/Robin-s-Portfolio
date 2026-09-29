@@ -56,10 +56,13 @@ export function titleTransitionName(slug: string): string {
   return `title-${slug}`;
 }
 
-/** A public Project's running screen, mounted like a plate; dark mode gets its dark screen. */
+/**
+ * A public Project's running screen, mounted like a plate; dark mode gets its
+ * dark screen. It links to the live deployment, like the spread's live link.
+ */
 function Screen({ project }: { project: Project }) {
   const shot = project.screenshot!;
-  return (
+  const picture = (
     <picture>
       {shot.darkSrc && <source srcSet={shot.darkSrc} media="(prefers-color-scheme: dark)" />}
       <img
@@ -71,6 +74,18 @@ function Screen({ project }: { project: Project }) {
         decoding="async"
       />
     </picture>
+  );
+  if (!project.liveUrl) return picture;
+  return (
+    <a
+      className="shot"
+      href={project.liveUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={project.liveLabel ?? "Open it live"}
+    >
+      {picture}
+    </a>
   );
 }
 

@@ -13,7 +13,7 @@ export const experienceEntries: Experience[] = [
     organisation: "DICT OASIS",
     dateRange: "Aug 2025 – May 2026",
     description:
-      "Designed the Six-Pillar grading method and built the reporting pipeline behind Oplan Bantay Signal, then built and operated the Kuya A and Aya agents.",
+      "Designed the Six-Pillar grading method and built the reporting pipeline behind Oplan Bantay Signal, built and operated the Kuya A and Aya agents, and built the Oplan Tindig dashboard management uses for emergency response.",
     projectSlugs: ["oplan-bantay-signal", "kuya-a", "aya", "oplan-tindig"],
   },
   {

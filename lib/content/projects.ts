@@ -94,9 +94,10 @@ export const projects: Project[] = [
     codeUrl: "https://github.com/pandacall/oplan_tindig",
     liveUrl: "https://oplan-tindig.vercel.app",
     liveLabel: "Open the live dashboard",
-    evidence: "a live dashboard, with its code public.",
+    evidence:
+      "used by DICT management for emergency response and monitoring (DRRM); live, with its code public.",
     prose: [
-      "An earthquake-preparedness dashboard for the Big One: it maps the cell sites around Metro Manila against the West Valley Fault, so emergency teams can see which sites sit in the high-risk and medium-risk zones and plan for the outage before it happens.",
+      "An earthquake-preparedness dashboard for the Big One: it maps the cell sites around Metro Manila against the West Valley Fault, showing which sites sit in the high-risk and medium-risk zones. DICT management uses it for emergency response and monitoring in its disaster risk reduction and management (DRRM) work.",
       "I built the dashboard: a CSV upload for each provider's site list, point-in-polygon detection of each site's city and province against official boundary files, risk scored by distance to the fault, the LGU staging areas on the same map, and filters by province, city, provider, status and risk.",
     ],
     screenshot: {

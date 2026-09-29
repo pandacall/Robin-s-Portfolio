@@ -116,6 +116,12 @@ test("a public Project shows its running screen in place of a drawn plate", asyn
     const figure = page.locator(`#${slug} figure.plate.screen`);
     await expect(figure.locator("svg")).toHaveCount(0);
     await expect(figure.locator("figcaption b")).toHaveText("Screen");
+    const shotLink = figure.locator("a.shot");
+    await expect(shotLink).toHaveAttribute(
+      "href",
+      (await page.locator(`#${slug} a.more`).getAttribute("href"))!,
+    );
+    await expect(shotLink).toHaveAttribute("target", "_blank");
     const img = figure.getByRole("img");
     await img.scrollIntoViewIfNeeded();
     await expect
