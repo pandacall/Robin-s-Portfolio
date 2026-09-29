@@ -792,6 +792,18 @@ p + p {
   height: auto;
   display: block;
 }
+/* A public Project's screenshot, mounted on the plate paper like a print,
+   with a narrower margin than a plate so the screen reads at spread size. */
+.plate.screen .frame {
+  padding: clamp(10px, 1.4vw, 18px);
+}
+.plate.screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  filter: var(--print-filter, none);
+}
 @media (max-width: 560px) {
   /* The plate's type is drawn in viewBox units, so squeezing a 560-wide plate
      into a phone would shrink its labels below reading size. Keep it near 500px
@@ -883,44 +895,6 @@ p + p {
 .p-line.dash {
   stroke-dasharray: 4 4;
 }
-/* Oplan Tindig's map: the fault, its two risk bands, sites by band, staging areas. */
-.p-fault {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 2;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
-}
-.p-band {
-  fill: none;
-  stroke: var(--green);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: stroke-opacity 160ms var(--ease);
-}
-.p-band.medium {
-  stroke-opacity: 0.1;
-}
-.p-band.high {
-  stroke-opacity: 0.2;
-}
-.p-dot.site.high {
-  fill: var(--ink);
-}
-.p-dot.site.medium {
-  fill: var(--green-2);
-}
-.p-dot.site.low {
-  fill: var(--plate);
-  stroke: var(--green-2);
-  stroke-width: 1.25;
-}
-.p-stage {
-  fill: var(--capiz);
-  stroke: var(--ink);
-  stroke-width: 1.25;
-  vector-effect: non-scaling-stroke;
-}
 .p-box,
 .p-line,
 .p-arrow {
@@ -944,20 +918,6 @@ p + p {
 }
 .p-node.lit .p-arrow {
   fill: var(--green);
-}
-.p-node.lit .p-fault {
-  stroke: var(--green);
-  stroke-width: 3;
-}
-.p-node.lit .p-band.medium {
-  stroke-opacity: 0.2;
-}
-.p-node.lit .p-band.high {
-  stroke-opacity: 0.38;
-}
-.p-node.lit .p-stage {
-  stroke: var(--green);
-  fill: color-mix(in srgb, var(--green) 22%, var(--plate));
 }
 @media (max-width: 900px) {
   .spread .title,

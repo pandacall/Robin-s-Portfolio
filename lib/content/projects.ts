@@ -99,17 +99,14 @@ export const projects: Project[] = [
       "An earthquake-preparedness dashboard for the Big One: it maps the cell sites around Metro Manila against the West Valley Fault, so emergency teams can see which sites sit in the high-risk and medium-risk zones and plan for the outage before it happens.",
       "I built the dashboard: a CSV upload for each provider's site list, point-in-polygon detection of each site's city and province against official boundary files, risk scored by distance to the fault, the LGU staging areas on the same map, and filters by province, city, provider, status and risk.",
     ],
-    terms: [
-      { phrase: "West Valley Fault", node: "fault" },
-      { phrase: "high-risk and medium-risk zones", node: "zones" },
-      { phrase: "point-in-polygon", node: "city" },
-      { phrase: "distance to the fault", node: "risk" },
-      { phrase: "LGU staging areas", node: "staging" },
-    ],
-    plateCaption:
-      "Sites against the fault and its risk zones, beside the pipeline that places them. Illustrative sites, not real locations.",
+    screenshot: {
+      src: "/images/oplan-tindig-screen.webp",
+      width: 1600,
+      height: 1000,
+    },
+    plateCaption: "The live dashboard, captured 29 September 2026.",
     plateAlt:
-      "Diagram: a fault line runs north to south, with a high-risk band within 5 km of it and a medium-risk band within 15 km. Illustrative cell sites are scattered across the map, darker inside the bands, with a few staging areas marked. Beside it, the pipeline: a provider's CSV is parsed, each site is placed in its city and province by point-in-polygon, scored by its distance to the fault, banded, and shown on the map with filters.",
+      "Screenshot of the live Oplan Tindig dashboard: a map of Metro Manila and the provinces around it with the West Valley Fault in red and its risk zones shaded, cell sites clustered along it, filters for province, city, status, provider and risk across the top, and a panel of site counts by status and risk.",
   },
   {
     slug: "gabay-ofw",
@@ -126,16 +123,15 @@ export const projects: Project[] = [
       "A Gemini-powered agent for Filipino workers in the Gulf, most often domestic workers, who may be reaching for it under stress. She tells it what's happening in her own words, in Tagalog, Bisaya, Taglish or English. It compares that against the standard employment contract, or, when she mentions danger, triages the situation and routes her to real help.",
       "I designed it so the model can't invent what matters most: it names only a triage category, and application code looks up the real hotline or Migrant Workers Office from a fixed table. Every fact in her case records where it came from, and each user's data is walled off by Firestore rules tested against the emulator.",
     ],
-    terms: [
-      { phrase: "her own words", node: "message" },
-      { phrase: "standard employment contract", node: "contract" },
-      { phrase: "a triage category", node: "category" },
-      { phrase: "a fixed table", node: "directory" },
-      { phrase: "Firestore rules", node: "rules" },
-    ],
+    screenshot: {
+      src: "/images/gabay-ofw-screen.webp",
+      darkSrc: "/images/gabay-ofw-screen-dark.webp",
+      width: 1600,
+      height: 1000,
+    },
     plateCaption:
-      "One message's path, from her words to a real phone number, redrawn from the code.",
+      "The live app's front page, captured 29 September 2026. The conversation itself sits behind Google sign-in.",
     plateAlt:
-      "Diagram: her message, in any of four languages, reaches a Gemini agent. For a contract question the agent checks it against the standard employment contract and returns findings with a plan. When danger comes up, the agent emits only a triage category; past that line application code owns everything, resolving the category against a fixed directory to a contact card for 1343 Actionline, OWWA 1348 or her country's Migrant Workers Office. Her Case, where every fact has a source, sits behind per-user Firestore rules.",
+      "Screenshot of Gabay OFW's front page: the question \"Is your work following your contract?\", a Start now card with Sign in with Google, and three steps: talk to us in your own words, see what may not match, find the right person to call.",
   },
 ];

@@ -22,10 +22,16 @@ export interface Project {
   caseStudyHolds?: string;
   /** The program's own mark, shown with Robin's go-ahead (PRODUCT.md). */
   logo?: { src: string; width: number; height: number; alt: string };
-  /** The sentence after "Plate n" in the plate's figcaption. */
+  /** The sentence after "Plate n" (or "Screen") in the figure's caption. */
   plateCaption: string;
-  /** The plate SVG's text alternative for screen readers. */
+  /** The plate SVG's (or the screenshot's) text alternative. */
   plateAlt: string;
+  /**
+   * A screenshot of the running Project, shown in place of a drawn plate.
+   * Only for a public Project: a Private Project's screens hold real
+   * government data and chats (CONTEXT.md: Case Study), so it keeps a plate.
+   */
+  screenshot?: { src: string; darkSrc?: string; width: number; height: number };
   /** Never allowed on a Work Project unless it carries a `publicClearance`. */
   codeUrl?: string;
   /** Where the Project runs, when a Visitor can open it. */

@@ -106,3 +106,24 @@ test("a public Project links its code and live deployment, and says nothing abou
     await expect(liveLink).toHaveAttribute("rel", "noopener noreferrer");
   }
 });
+
+test("a public Project shows its running screen in place of a drawn plate", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  for (const slug of ["oplan-tindig", "gabay-ofw"]) {
+    const figure = page.locator(`#${slug} figure.plate.screen`);
+    await expect(figure.locator("svg")).toHaveCount(0);
+    await expect(figure.locator("figcaption b")).toHaveText("Screen");
+    const img = figure.getByRole("img");
+    await img.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() => img.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth))
+      .toBeGreaterThan(0);
+  }
+  await expect(page.locator("#gabay-ofw picture source")).toHaveAttribute(
+    "media",
+    "(prefers-color-scheme: dark)",
+  );
+});

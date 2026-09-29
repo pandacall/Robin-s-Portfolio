@@ -56,18 +56,37 @@ export function titleTransitionName(slug: string): string {
   return `title-${slug}`;
 }
 
+/** A public Project's running screen, mounted like a plate; dark mode gets its dark screen. */
+function Screen({ project }: { project: Project }) {
+  const shot = project.screenshot!;
+  return (
+    <picture>
+      {shot.darkSrc && <source srcSet={shot.darkSrc} media="(prefers-color-scheme: dark)" />}
+      <img
+        src={shot.src}
+        alt={project.plateAlt}
+        width={shot.width}
+        height={shot.height}
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+  );
+}
+
 export function ProjectSpread({
   project,
   plateNumber,
   alt = false,
 }: {
   project: Project;
-  plateNumber: number;
+  /** This spread's plate number; unused when the Project shows a screenshot. */
+  plateNumber?: number;
   alt?: boolean;
 }) {
   const Plate = PLATES[project.slug];
-  if (!Plate) {
-    throw new Error(`No diagram plate registered for Project "${project.slug}"`);
+  if (!Plate && !project.screenshot) {
+    throw new Error(`No diagram plate or screenshot for Project "${project.slug}"`);
   }
   const titleId = `plate-${project.slug}-title`;
   const caseStudyHref = project.caseStudySlug && `/work/${project.caseStudySlug}`;
@@ -120,7 +139,6 @@ export function ProjectSpread({
                 <dd>
                   <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
                     {displayUrl(project.codeUrl)}
-                    <span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 </dd>
               </div>
@@ -134,7 +152,6 @@ export function ProjectSpread({
               rel="noopener noreferrer"
             >
               {project.liveLabel ?? "Open it live"}
-              <span className="sr-only"> (opens in a new tab)</span>
               <svg viewBox="0 0 18 18" aria-hidden="true">
                 <path
                   d="M5 13 13 5m0 0H6.5M13 5v6.5"
@@ -163,12 +180,16 @@ export function ProjectSpread({
             </a>
           )}
         </div>
-        <figure className="plate">
+        <figure className={project.screenshot ? "plate screen" : "plate"}>
           <div className="frame">
-            <Plate titleId={titleId} alt={project.plateAlt} />
+            {project.screenshot ? (
+              <Screen project={project} />
+            ) : (
+              Plate && <Plate titleId={titleId} alt={project.plateAlt} />
+            )}
           </div>
           <figcaption>
-            <b>Plate {plateNumber}</b>
+            <b>{project.screenshot ? "Screen" : `Plate ${plateNumber}`}</b>
             <span>{project.plateCaption}</span>
           </figcaption>
         </figure>

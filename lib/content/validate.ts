@@ -41,6 +41,11 @@ export function validateProjects(
         `${project.slug}: a Work Project must never have a code link unless it is cleared for public release`,
       );
     }
+    if (project.private && project.screenshot) {
+      errors.push(
+        `${project.slug}: a Private Project can't show a screenshot; it keeps a redrawn plate`,
+      );
+    }
     if (project.private && (project.codeUrl || project.liveUrl)) {
       errors.push(
         `${project.slug}: a Private Project can't link to its code or a live deployment`,

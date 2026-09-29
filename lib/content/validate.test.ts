@@ -45,6 +45,14 @@ describe("validateProjects", () => {
     ).not.toThrow();
   });
 
+  it("fails when a Private Project shows a screenshot", () => {
+    expect(() =>
+      validateProjects([
+        project({ screenshot: { src: "/images/x.webp", width: 1600, height: 1000 } }),
+      ]),
+    ).toThrow(/screenshot/i);
+  });
+
   it("fails when a Private Project links to a live deployment", () => {
     expect(() =>
       validateProjects([project({ liveUrl: "https://example.com" })]),

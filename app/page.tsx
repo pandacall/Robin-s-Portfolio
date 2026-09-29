@@ -31,7 +31,9 @@ export default function Home() {
           <ProjectSpread
             key={project.slug}
             project={project}
-            plateNumber={index + 1}
+            plateNumber={
+              projects.slice(0, index + 1).filter((p) => !p.screenshot).length
+            }
             alt={index % 2 === 1}
           />
         ))}
