@@ -117,7 +117,7 @@ function StepRow({
       return (
         <div className="rp-row silence" data-step="silence">
           <p className="who">
-            <span className="ring" aria-hidden="true" />
+            <span className="hollow-ring" aria-hidden="true" />
             Kuya A stays silent
           </p>
           <p className="rp-why">{step.caption}</p>

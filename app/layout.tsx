@@ -17,7 +17,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/*
+          Marks the document as scripted before first paint, so the hero's and
+          the archipelago's hidden start states (the load moment) only apply
+          when the script that reveals them will actually run.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+      </head>
       <body>
         {children}
         {/*

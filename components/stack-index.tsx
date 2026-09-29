@@ -28,11 +28,15 @@ export function StackIndex({ stack }: { stack: Stack }) {
                   <tr key={item.name}>
                     <td>
                       {item.name}
-                      {item.credentials.map((credential) => (
-                        <span className="cred" key={credential.name}>
-                          {credential.name}
+                      {item.credentials.length > 0 && (
+                        <span className="creds">
+                          {item.credentials.map((credential) => (
+                            <span className="cred" key={credential.name}>
+                              {credential.name}
+                            </span>
+                          ))}
                         </span>
-                      ))}
+                      )}
                     </td>
                     <td>
                       <ProjectLinks projects={item.usedIn} />

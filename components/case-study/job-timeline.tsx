@@ -63,6 +63,10 @@ export function JobTimeline({
         descriptions, never their internal names, and each flow is simplified.
         A filled dot runs every day, a hollow dot on weekdays only. Every job
         starts in its own fresh session.
+        <span className="tl-hint">
+          {" "}
+          Scroll the timeline sideways to see the full day.
+        </span>
       </p>
 
       <div className="tl-layout">

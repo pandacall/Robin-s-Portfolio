@@ -68,7 +68,7 @@ export function CaseStudyPage({
   return (
     <>
       <SiteHeader />
-      <main className="cs">
+      <main className="cs" id="main-content">
         <header className="cs-head">
           <div className="wrap g">
             <p className="back">

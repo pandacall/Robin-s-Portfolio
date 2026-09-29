@@ -41,7 +41,7 @@
   --concrete: #d9d6cf;
   --ink: #1e1c19;
   --ink-2: #5c5750;
-  --ink-3: #8a847a;
+  --ink-3: #605b52;
   --rule: #c4bfb2;
   --rule-2: #ada79a;
   --narra: #6b3f24;
@@ -66,7 +66,7 @@
     --concrete: #242320;
     --ink: #ede8dd;
     --ink-2: #aba598;
-    --ink-3: #7b766c;
+    --ink-3: #948e82;
     --rule: #3a382f;
     --rule-2: #4c493f;
     --narra: #cd9560;
@@ -100,11 +100,28 @@ body {
   caret-color: var(--narra);
 }
 ::selection {
-  background: rgba(107, 63, 36, 0.16);
+  background: color-mix(in srgb, var(--narra) 22%, transparent);
 }
 :focus-visible {
   outline: 2px solid var(--narra);
   outline-offset: 3px;
+}
+.skip {
+  position: absolute;
+  left: var(--gutter);
+  top: 0;
+  z-index: 60;
+  padding: 12px 16px;
+  font-family: var(--font-disp);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--ink);
+  background: var(--capiz);
+  border: 1px solid var(--ink);
+  transform: translateY(-120%);
+}
+.skip:focus {
+  transform: none;
 }
 * {
   scrollbar-width: thin;
@@ -166,6 +183,9 @@ p + p {
   gap: 16px;
 }
 .top .brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   text-decoration: none;
   color: var(--ink);
   font-weight: 600;
@@ -330,8 +350,10 @@ p + p {
 }
 .hero h1 .ln > span {
   display: block;
-  transform: translateY(110%);
   transition: transform 900ms var(--ease);
+}
+.js .hero h1 .ln > span {
+  transform: translateY(110%);
 }
 .hero.ready h1 .ln:nth-child(1) > span {
   transition-delay: 60ms;
@@ -354,11 +376,13 @@ p + p {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 24px 40px;
   align-items: end;
-  opacity: 0;
-  transform: translateY(12px);
   transition:
     opacity 700ms var(--ease) 520ms,
     transform 700ms var(--ease) 520ms;
+}
+.js .hero .below {
+  opacity: 0;
+  transform: translateY(12px);
 }
 .hero.ready .below {
   opacity: 1;
@@ -405,13 +429,15 @@ p + p {
   fill: var(--green-2);
   transform-box: fill-box;
   transform-origin: center;
-  opacity: 0;
-  transform: scale(0.2);
   transition:
     opacity 480ms var(--ease),
     transform 640ms var(--ease),
     fill 300ms var(--ease);
   transition-delay: calc(var(--r) * 22ms + 120ms);
+}
+.js .dot {
+  opacity: 0;
+  transform: scale(0.2);
 }
 .dot.w1 {
   fill: var(--green);
@@ -514,10 +540,11 @@ p + p {
 @media (max-width: 1000px) {
   .hero .copy {
     grid-column: 1 / -1;
+    grid-row: 1;
   }
   .mapwrap {
     grid-column: 7 / span 6;
-    grid-row: 1;
+    grid-row: 2;
     padding-bottom: 0;
   }
   .hero .g {
@@ -709,6 +736,19 @@ p + p {
   height: auto;
   display: block;
 }
+@media (max-width: 560px) {
+  /* The plate's type is drawn in viewBox units, so squeezing a 560-wide plate
+     into a phone would shrink its labels below reading size. Keep it near 500px
+     and let the frame scroll sideways instead. */
+  .plate .frame {
+    padding: 16px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+  .plate svg {
+    min-width: 500px;
+  }
+}
 .plate figcaption {
   font-family: var(--font-disp);
   font-size: 0.8125rem;
@@ -841,6 +881,12 @@ p + p {
   color: var(--narra);
   text-decoration-color: var(--narra);
 }
+.index td .creds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
 .index td .cred {
   display: inline-block;
   font-family: var(--font-disp);
@@ -851,8 +897,6 @@ p + p {
   color: var(--green);
   border: 1px solid var(--green-3);
   padding: 2px 7px;
-  margin-left: 8px;
-  vertical-align: middle;
 }
 .index .also {
   margin-top: 24px;
@@ -913,7 +957,7 @@ p + p {
 }
 .xp .row {
   display: grid;
-  grid-template-columns: 8rem 1fr;
+  grid-template-columns: 9.5rem 1fr;
   gap: 16px;
   padding: 18px 0;
   border-top: 1px solid var(--rule);
@@ -926,6 +970,7 @@ p + p {
   font-size: 0.875rem;
   color: var(--ink-2);
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
   padding-top: 4px;
 }
 .xp .row h3 {
@@ -1027,6 +1072,16 @@ p + p {
     grid-column: 1 / -1;
   }
 }
+@media (max-width: 560px) {
+  .contact .acts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact .acts .btn {
+    justify-content: center;
+    padding: 0 12px;
+  }
+}
 
 /* ---------- footer ---------- */
 footer.site {
@@ -1077,6 +1132,11 @@ footer.site .mini .dot {
   grid-column: 1 / -1;
   font-family: var(--font-disp);
   font-size: 0.875rem;
+}
+.cs-head .back a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 .cs-head h1 {
   grid-column: 1 / span 8;
@@ -1158,6 +1218,10 @@ footer.site .mini .dot {
 }
 .cs-cap + .cs-rows {
   margin-top: 8px;
+}
+.cs-rows + .cs-cap {
+  margin-top: 0;
+  border-top: 0;
 }
 .cs-rows .row {
   display: grid;
@@ -1584,6 +1648,9 @@ footer.site .mini .dot {
   line-height: 1.5;
   background: color-mix(in srgb, var(--capiz) 60%, transparent);
 }
+.rp-row.tool b {
+  font-weight: 600;
+}
 .rp-row.tool code {
   font-family: var(--font-disp);
   font-weight: 600;
@@ -1604,7 +1671,7 @@ footer.site .mini .dot {
   margin-bottom: 6px;
   font-size: 0.9375rem;
 }
-.rp-row.silence .ring {
+.rp-row.silence .hollow-ring {
   width: 10px;
   height: 10px;
   border: 1.5px solid var(--ink);
@@ -1770,16 +1837,11 @@ footer.site .mini .dot {
   html {
     scroll-behavior: auto;
   }
-  .sheet,
-  .sheet-backdrop {
-    transition: none;
-  }
-  .hero h1 .ln > span,
-  .hero .below,
-  .dot,
-  .rc-pillars .bar i,
-  .toggle-item,
-  .slider-thumb {
+  /* Every state change lands at once: hover wipes, underline colour, row
+     tints, the sheet, the load rise and the dot pops alike. */
+  *,
+  *::before,
+  *::after {
     transition: none !important;
   }
   .hero .scan,
@@ -1865,6 +1927,9 @@ footer.site .mini .dot {
   content: counter(tl-step);
   color: var(--ink-2);
   font-variant-numeric: tabular-nums;
+}
+.tl-hint {
+  display: none;
 }
 .tl-scroll {
   overflow-x: auto;
@@ -2006,8 +2071,6 @@ footer.site .mini .dot {
   .tl-flow {
     grid-column: 2;
     grid-row: 1;
-    position: sticky;
-    top: 96px;
   }
   .tl-scroll {
     grid-column: 1;
@@ -2015,6 +2078,9 @@ footer.site .mini .dot {
   }
 }
 @media (max-width: 700px) {
+  .tl-hint {
+    display: inline;
+  }
   .timeline {
     --tl-hour: 30px;
   }
@@ -2035,10 +2101,5 @@ footer.site .mini .dot {
   .tl-lane {
     min-height: 32px;
     margin-bottom: 6px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .tl-job {
-    transition: none;
   }
 }

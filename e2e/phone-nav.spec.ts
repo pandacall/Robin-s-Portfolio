@@ -73,10 +73,16 @@ test.describe("at phone width (390px)", () => {
     await expect(sheet).toBeVisible();
 
     // Tab well past the number of controls in the sheet: focus must stay inside.
+    // At the sheet's edge its focus guard holds focus for a frame before
+    // wrapping it back to the first control, so wait for focus to settle
+    // rather than sampling the instant after the keypress.
     for (let i = 0; i < 9; i++) {
       await page.keyboard.press("Tab");
-      const inside = await sheet.evaluate((el) => el.contains(document.activeElement));
-      expect(inside).toBe(true);
+      await expect
+        .poll(() =>
+          sheet.evaluate((el) => el.contains(document.activeElement)),
+        )
+        .toBe(true);
     }
 
     await page.keyboard.press("Escape");

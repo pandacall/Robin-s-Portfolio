@@ -20,7 +20,13 @@ export function ProjectSpread({
     <section id={project.slug} className={alt ? "spread alt" : "spread"}>
       <div className="wrap g">
         <div className="title">
-          <h2>{project.name}</h2>
+          <h2>
+            {project.caseStudySlug ? (
+              <a href={`/work/${project.caseStudySlug}`}>{project.name}</a>
+            ) : (
+              project.name
+            )}
+          </h2>
           <p className="kind">
             <span>{project.origin}</span>
             {project.private && (

@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeader skipTo="hero" />
       <Hero />
       <main id="work">
         {projects.map((project, index) => (
