@@ -1061,6 +1061,211 @@ footer.site .mini .dot {
   fill: var(--green-2);
 }
 
+/* ---------- case study page (spec.md module 9) ---------- */
+.p-small.on {
+  fill: var(--capiz);
+}
+.cs-head .wrap {
+  padding-top: clamp(40px, 6vw, 88px);
+  padding-bottom: clamp(36px, 5vw, 72px);
+}
+.cs-head .g {
+  row-gap: 24px;
+  align-items: start;
+}
+.cs-head .back {
+  grid-column: 1 / -1;
+  font-family: var(--font-disp);
+  font-size: 0.875rem;
+}
+.cs-head h1 {
+  grid-column: 1 / span 8;
+  font-size: clamp(2.75rem, 1.1rem + 6vw, 5.5rem);
+}
+.cs-head .kind {
+  grid-column: 1 / span 5;
+  grid-row: 3;
+  font-family: var(--font-disp);
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.cs-head .kind .lock {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.cs-head .kind .lock::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--narra);
+}
+.cs-head .lede {
+  grid-column: 7 / span 6;
+  grid-row: 3;
+  font-size: 1.1875rem;
+  margin-top: -4px;
+}
+.cs-sec {
+  padding: clamp(56px, 8vw, 120px) 0;
+  border-top: 1px solid var(--rule);
+}
+.cs-sec .g {
+  row-gap: 24px;
+  align-items: start;
+}
+.cs-sec h2,
+.cs-demo h2 {
+  grid-column: 1 / span 5;
+  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.75rem);
+}
+.cs-sec .body {
+  grid-column: 7 / span 6;
+  font-size: 1.0625rem;
+}
+.cs-sec h2 .nb {
+  white-space: nowrap;
+}
+.cs-h3 {
+  margin: 40px 0 12px;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+.cs-sec .body > .cs-h3:first-child {
+  margin-top: 0;
+}
+.cs-cap {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-disp);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.cs-cap b {
+  color: var(--ink);
+  font-weight: 600;
+}
+.cs-rows {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+.cs-cap + .cs-rows {
+  margin-top: 8px;
+}
+.cs-rows .row {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 16px;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule);
+}
+.cs-rows .row:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+.cs-rows .lead {
+  padding-top: 3px;
+  font-family: var(--font-disp);
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.cs-rows p {
+  font-size: 1rem;
+}
+.cs-rows p + p {
+  margin-top: 6px;
+}
+.cs-rows .name {
+  font-family: var(--font-disp);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.cs-rows .why {
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+}
+.cs-bands {
+  width: 100%;
+  margin-top: 8px;
+  border-collapse: collapse;
+  font-family: var(--font-disp);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+.cs-bands th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding: 0 16px 12px 0;
+  border-bottom: 1px solid var(--ink);
+}
+.cs-bands td {
+  padding: 12px 16px 12px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.cs-bands td:nth-child(2) {
+  font-weight: 600;
+}
+.cs-plate {
+  margin: 32px 0 8px;
+}
+.cs-demo {
+  background: var(--concrete);
+  padding: clamp(56px, 8vw, 120px) 0;
+}
+.cs-demo .g {
+  row-gap: 24px;
+  align-items: start;
+}
+.cs-demo .slot {
+  grid-column: 7 / span 6;
+  min-height: 240px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ink);
+}
+.cs-demo .empty {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-disp);
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+.cs-demo .empty b {
+  color: var(--ink);
+  font-weight: 600;
+}
+@media (max-width: 900px) {
+  .cs-head h1,
+  .cs-head .kind,
+  .cs-head .lede,
+  .cs-sec h2,
+  .cs-sec .body,
+  .cs-demo h2,
+  .cs-demo .slot {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+@media (max-width: 560px) {
+  .cs-rows .row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

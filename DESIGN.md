@@ -318,7 +318,7 @@ There are no cards. The diagram plate is the only framed container, and it is an
 - **Caption:** a two-column figcaption 12px below the frame: "Plate n" in ink at 600, then one sentence in ink-2 caption type stating what was redrawn and that it is illustrative.
 
 ### Inputs / Fields
-None are built on the home page. The Case Study's grader (sliders and presets) is not yet in this variant; when it is built, its controls inherit the square, hairline, narra-focus language above and are labelled Illustrative Data in place.
+None are built on the home page. The Case Study's grader (sliders and presets) is reserved as the demo slot on the Case Study page and not yet built; when it is built, its controls inherit the square, hairline, narra-focus language above and are labelled Illustrative Data in place.
 
 ### Navigation
 - **Masthead:** sticky, capiz at 92% over the page, 60px minimum height, hairline below; brand name at left in the grotesk (600, 0.9375rem, -0.01em), four links (Work, Stack, Experience, Contact) at right with a 26px gap, and nothing else.
@@ -339,6 +339,11 @@ A two-column row (8rem date column, then content) on top hairlines with 18px pad
 
 ### Dot Archipelago
 The signature object. Authored island polygons rasterised to a 34 by 48 grid and drawn as circles (radius 3.1 on a 10-unit cell) in an inline SVG; each dot carries a weight 0 to 2 that sets its colour (`green-2` at 55% opacity, `green` at 80%, `green` at 100%) and a `--r` row index that drives its stagger. Dot weight is illustrative, not coverage data, and the caption beneath says so. The map sits bare on columns 9 to 12 of the hero, 12px below the row's top, with its caption ("Signal across the archipelago. Dot weight is illustrative, not coverage data.") 18px beneath in ink-3 at 0.75rem. On load a 2px ink scan line sweeps from the top to the bottom of the map (1500ms, 80ms after the hero is ready) and the dots pop in behind it, each row 22ms after the last (120ms base), scaling from 0.2 to 1 over 640ms. From 2.6s on, while the map is at least 20% in view and the tab is visible, a pulse runs every 7s: the scan line sweeps again (1900ms) and each dot flashes to ink and back over 1400ms, 28ms per row. Dots within 36 units of the pointer turn narra and scale to 1.5 with no delay, and reset when the pointer leaves. The footer repeats the map at 26px wide (radius 3.565), alone at the right, static and fully opaque in `green-2`. `prefers-reduced-motion` renders every dot in place with no scan, no pulse and no pointer scale.
+
+### Case Study page
+One page per Case Study at `/work/<slug>`, set in the home page's system with no new components. The head is the Project name as a Display-scale `h1` on columns 1 to 8, then a row with the Meta line ("Work", the narra-dotted "Private, demo on request", "Case Study") on columns 1 to 5 and the lede (Body serif at 1.1875rem) on 7 to 12. Each section is a hairline-topped spread of a Headline on columns 1 to 5 and a reading column on 7 to 12, with column 6 left empty (The Empty Column Rule); a hyphenated word in a heading never breaks. The reading column holds Body prose, `h3` Titles, hairline-ruled rows (an 8rem label or date column, then text; the pillar rows carry the weight as the label), a hairline table with the same Label heads as the Stack index, and diagram plates numbered in reading order. Outcome figures are their own rows under a source line, and Robin's contribution sits under its own `h3`, never in the same row. Below 900px everything stacks in source order; below 560px a row's label stacks above its text.
+
+The Interactive Demo slot is the one concrete field a Case Study adds to The Three Fields Rule: a full-bleed section after the method, a Headline on columns 1 to 5 and a slot on 7 to 12 opened by a 1px ink rule (the table-head rule), with no frame. Until the demo is built the slot carries a two-line Illustrative Data note.
 
 ### Footer
 A hairline-topped footer in Meta type, ink-2, padded 24px above and 56px below: "© 2026 John Robin Cubi" at left and the 26px mini archipelago at right, with no words beside it. Nothing else lives in the footer.

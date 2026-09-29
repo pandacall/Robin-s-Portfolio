@@ -9,6 +9,7 @@ export const projects: Project[] = [
     name: "Oplan Bantay Signal",
     origin: "Work",
     private: true,
+    caseStudySlug: "oplan-bantay-signal",
     evidence: "internal deployment, write-up only.",
     prose: [
       "A six-pillar method for grading every major Philippine telco on service quality, and an AI-assisted pipeline that turns the monthly measurements into a signed report.",

@@ -83,3 +83,84 @@ export interface ResolvedExperience {
   description: string;
   projects: Project[];
 }
+
+/** A piece of Case Study text; `real` is only published once ADR 0001 clearance is confirmed. */
+export type RubricText = string | { placeholder: string; real: string };
+
+/** The blocks a Case Study section is built from. Rubric-shaped blocks follow the active rubric. */
+export type CaseStudyBlockSource = { only?: "placeholder" | "real" } & (
+  | { type: "p"; text: RubricText }
+  | { type: "h3"; text: string }
+  /** The active rubric's pillars, weights and what/why. */
+  | { type: "pillars" }
+  /** The active rubric's grade bands. */
+  | { type: "bands" }
+  /** Dated rows, e.g. the method's evolution. */
+  | { type: "timeline"; entries: { when: string; what: RubricText }[] }
+  /** Labelled rows, e.g. the steps of a monthly cycle. */
+  | { type: "steps"; rows: { label: string; text: RubricText }[] }
+  /** A redrawn diagram plate; `plate` names an entry in the Case Study plate registry. */
+  | { type: "plate"; plate: string; caption: string; alt: string }
+  /** National outcomes credited to their source, stated apart from Robin's own contribution. */
+  | {
+      type: "outcomes";
+      source: { name: string; url: string };
+      figures: { label: string; value: string }[];
+      contribution: string;
+    }
+  /** A sentence pointing at other Projects on the home page. */
+  | { type: "see-also"; lead: string; links: { label: string; href: string }[] }
+);
+
+export interface CaseStudySectionSource {
+  id: string;
+  heading: string;
+  blocks: CaseStudyBlockSource[];
+}
+
+/** A Case Study as authored, before the active rubric is applied. */
+export interface CaseStudySource {
+  slug: string;
+  /** Sentence under the title. */
+  lede: string;
+  sections: CaseStudySectionSource[];
+  /** The Interactive Demo slot (spec.md module 9) sits after this section. */
+  demoAfter: string;
+}
+
+export type CaseStudyBlock =
+  | { type: "p"; text: string }
+  | { type: "h3"; text: string }
+  | { type: "pillars"; versionLabel: string; pillars: RubricPillarView[] }
+  | { type: "bands"; bands: { range: string; letter: string; label: string }[] }
+  | { type: "timeline"; entries: { when: string; what: string }[] }
+  | { type: "steps"; rows: { label: string; text: string }[] }
+  | { type: "plate"; plate: string; caption: string; alt: string }
+  | {
+      type: "outcomes";
+      source: { name: string; url: string };
+      figures: { label: string; value: string }[];
+      contribution: string;
+    }
+  | { type: "see-also"; lead: string; links: { label: string; href: string }[] };
+
+export interface RubricPillarView {
+  name: string;
+  weight: number;
+  measures: string;
+  why: string;
+}
+
+export interface CaseStudySection {
+  id: string;
+  heading: string;
+  blocks: CaseStudyBlock[];
+}
+
+/** A Case Study resolved for the active rubric (spec.md module 1: a Project's Case Study body). */
+export interface CaseStudy {
+  slug: string;
+  lede: string;
+  sections: CaseStudySection[];
+  demoAfter: string;
+}
