@@ -3,8 +3,11 @@ import { listCaseStudyProjects } from "../content";
 export const SITE_NAME = "John Robin Cubi";
 export const SITE_URL = "https://robincubi.dev";
 
-const HOME_TITLE = `${SITE_NAME} — Software & AI Engineer`;
-const HOME_DESCRIPTION = `I build AI agents that run inside the Philippine government. ${SITE_NAME} is a Software & AI Engineer, open to AI Engineer roles, remote or Metro Manila.`;
+export const HOME_HEADLINE = "Software & AI Engineer";
+export const HOME_HOOK = "I build AI agents that run inside the Philippine government.";
+
+const HOME_TITLE = `${SITE_NAME} — ${HOME_HEADLINE}`;
+const HOME_DESCRIPTION = `${HOME_HOOK} ${SITE_NAME} is a Software & AI Engineer, open to AI Engineer roles, remote or Metro Manila.`;
 
 /** A prerendered page and the metadata that names it in search results and link previews. */
 export interface SitePage {
@@ -41,6 +44,7 @@ export function getPage(path: string): SitePage {
   return page;
 }
 
+/** The page's public URL. The home page has no trailing slash, matching the canonical tag Next emits. */
 export function absoluteUrl(path: string): string {
-  return `${SITE_URL}${path}`;
+  return path === "/" ? SITE_URL : `${SITE_URL}${path}`;
 }

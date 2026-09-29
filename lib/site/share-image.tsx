@@ -7,7 +7,7 @@ import {
   ARCHIPELAGO_ROWS,
   CELL,
 } from "../dot-archipelago-data";
-import { SITE_NAME, getPage } from "./pages";
+import { HOME_HEADLINE, HOME_HOOK, SITE_NAME, getPage } from "./pages";
 
 export const SHARE_IMAGE_SIZE = { width: 1200, height: 630 };
 
@@ -23,8 +23,6 @@ const COLOR = {
   green2: "#4F7A63",
 };
 
-const HOME_HEADLINE = "Software & AI Engineer";
-const HOME_LEDE = "I build AI agents that run inside the Philippine government.";
 const CASE_STUDY_META = "Work · Private, demo on request · Case Study";
 const DOMAIN = "robincubi.dev";
 
@@ -135,7 +133,7 @@ export async function renderShareImage(pagePath: string): Promise<ImageResponse>
                   color: COLOR.ink2,
                 }}
               >
-                {HOME_LEDE}
+                {HOME_HOOK}
               </div>
             )}
           </div>

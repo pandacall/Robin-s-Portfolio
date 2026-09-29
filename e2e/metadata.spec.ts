@@ -2,6 +2,8 @@ import { expect, test, type APIRequestContext, type Page } from "@playwright/tes
 
 const ORIGIN = "https://robincubi.dev";
 
+const canonicalUrl = (path: string) => (path === "/" ? ORIGIN : `${ORIGIN}${path}`);
+
 /** Every internal page reachable by links from the home page, found by crawling the built site. */
 async function crawlPages(page: Page, request: APIRequestContext) {
   const pages = new Set<string>();
@@ -65,7 +67,7 @@ test("every page has a unique title and description, a canonical URL and link-pr
     expect(
       await page.locator('link[rel="canonical"]').getAttribute("href"),
       path,
-    ).toBe(path === "/" ? ORIGIN : `${ORIGIN}${path}`);
+    ).toBe(canonicalUrl(path));
     // Search engines may index every page.
     await expect(page.locator('meta[name="robots"][content*="noindex"]'), path).toHaveCount(0);
 
@@ -112,9 +114,10 @@ test("the sitemap lists every prerendered page and robots allows indexing", asyn
 
   const sitemap = await (await request.get("/sitemap.xml")).text();
   const listed = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
-    .map((match) => match[1].replace(ORIGIN, "") || "/")
+    .map((match) => match[1])
     .sort();
-  expect(listed).toEqual(pages);
+  // Each entry is the page's canonical URL.
+  expect(listed).toEqual(pages.map(canonicalUrl).sort());
 
   const robots = await (await request.get("/robots.txt")).text();
   expect(robots).toMatch(/^User-Agent: \*$/im);

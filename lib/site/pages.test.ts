@@ -49,9 +49,9 @@ describe("site pages", () => {
     }
   });
 
-  it("builds absolute URLs on the site origin, with no trailing slash on the origin", () => {
+  it("builds absolute URLs on the site origin, the home page without a trailing slash", () => {
     expect(SITE_URL).toBe("https://robincubi.dev");
-    expect(absoluteUrl("/")).toBe("https://robincubi.dev/");
+    expect(absoluteUrl("/")).toBe("https://robincubi.dev");
     expect(absoluteUrl("/work/aya")).toBe("https://robincubi.dev/work/aya");
   });
 
