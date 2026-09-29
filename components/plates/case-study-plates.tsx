@@ -1,4 +1,5 @@
 import type { ReactElement } from "react";
+import { AyaEndOfDayPlate } from "./aya-end-of-day-plate";
 import { DocumentPipelinePlate } from "./document-pipeline-plate";
 import { KuyaAPlate } from "./kuya-a-plate";
 import { ReportingPipelinePlate } from "./reporting-pipeline-plate";
@@ -11,4 +12,5 @@ export const CASE_STUDY_PLATES: Record<
   "reporting-pipeline": ReportingPipelinePlate,
   "kuya-a-architecture": KuyaAPlate,
   "document-pipeline": DocumentPipelinePlate,
+  "aya-end-of-day": AyaEndOfDayPlate,
 };

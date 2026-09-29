@@ -40,6 +40,7 @@ export const projects: Project[] = [
     name: "Aya",
     origin: "Work",
     private: true,
+    caseStudySlug: "aya",
     evidence: "operated solo for a team of 8+ from August 2025 to May 2026, running 14 scheduled jobs a day.",
     prose: [
       "A multi-agent office assistant I designed, built and operated alone for a team of 8+: it turned end-of-day updates into tracked, confirmed records, and ran a full day of scheduling, reminders and reporting through 14 scheduled jobs.",

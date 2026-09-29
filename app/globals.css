@@ -1791,3 +1791,254 @@ footer.site .mini .dot {
     transform: none;
   }
 }
+
+/*
+ * The Aya job timeline (Interactive Demo): a 24-hour axis in Asia/Manila time
+ * with a lane per job, and the selected job's flow in a plate beside it. Green
+ * carries the data (the run dots); the selected row takes a plate wash and an
+ * ink rule, never a narra fill. The timeline scrolls inside its own region
+ * when the slot is narrow, so the axis is never squashed.
+ */
+.timeline {
+  --tl-label: 12.5rem;
+  --tl-hour: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: var(--font-disp);
+}
+.tl-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.tl-flow {
+  padding: 16px;
+  border: 1px solid var(--rule);
+  background: var(--plate);
+  background-image: radial-gradient(var(--plate-dot) 1px, transparent 1.2px);
+  background-size: 18px 18px;
+  background-position: 9px 9px;
+  scroll-margin-top: 96px;
+}
+.tl-flow-head {
+  margin: 0 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.tl-flow h3 {
+  margin: 0;
+  font-family: var(--font-disp);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.tl-flow-when {
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.tl-flow ol {
+  list-style: none;
+  counter-reset: tl-step;
+  margin: 14px 0 0;
+  padding: 0;
+}
+.tl-flow li {
+  counter-increment: tl-step;
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  padding: 8px 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+.tl-flow li::before {
+  content: counter(tl-step);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.tl-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+.tl-inner {
+  min-width: calc(var(--tl-label) + 24 * var(--tl-hour));
+}
+.tl-axis {
+  display: grid;
+  grid-template-columns: var(--tl-label) minmax(0, 1fr);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--ink);
+}
+.tl-axis-lane,
+.tl-lane {
+  position: relative;
+  display: block;
+  margin-inline: 8px;
+}
+.tl-axis-lane {
+  height: 20px;
+}
+.tl-tick {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.tl-tick.first {
+  transform: none;
+}
+.tl-tick.last {
+  transform: translateX(-100%);
+}
+.tl-jobs {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--rule);
+}
+.tl-job {
+  display: grid;
+  grid-template-columns: var(--tl-label) minmax(0, 1fr);
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--rule);
+  border-left: 3px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease);
+}
+.tl-job:hover {
+  background: color-mix(in srgb, var(--capiz) 45%, transparent);
+}
+.tl-job[aria-pressed="true"] {
+  background: var(--plate);
+  border-left-color: var(--ink);
+}
+.tl-job:focus-visible {
+  position: relative;
+  z-index: 1;
+}
+.tl-label {
+  position: sticky;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+}
+.tl-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+.tl-when {
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.tl-lane {
+  align-self: stretch;
+  min-height: 44px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--rule) 0,
+    var(--rule) 1px,
+    transparent 1px,
+    transparent calc(100% / 24)
+  );
+  border-right: 1px solid var(--rule);
+}
+.tl-lane::before {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 1px;
+  background: var(--rule-2);
+}
+.tl-run {
+  position: absolute;
+  top: 50%;
+  box-sizing: border-box;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border: 1.5px solid var(--green);
+  border-radius: 50%;
+  background: var(--green);
+}
+.tl-run[data-days="weekdays"] {
+  background: var(--capiz);
+}
+.tl-job[aria-pressed="true"] .tl-run {
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+}
+.tl-job[aria-pressed="true"] .tl-run[data-days="weekdays"] {
+  background: var(--plate);
+}
+@media (min-width: 1180px) {
+  .tl-layout {
+    grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  }
+  .tl-flow {
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: 96px;
+  }
+  .tl-scroll {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+@media (max-width: 700px) {
+  .timeline {
+    --tl-hour: 30px;
+  }
+  .tl-inner {
+    min-width: calc(24 * var(--tl-hour));
+  }
+  .tl-axis,
+  .tl-job {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tl-corner {
+    display: none;
+  }
+  .tl-label {
+    max-width: calc(100vw - 2 * var(--gutter) - 8px);
+    padding-bottom: 2px;
+  }
+  .tl-lane {
+    min-height: 32px;
+    margin-bottom: 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tl-job {
+    transition: none;
+  }
+}

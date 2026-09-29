@@ -73,7 +73,10 @@ describe("a Project's Case Study body", () => {
   });
 
   it("is absent for a Project without one", () => {
-    expect(getProjectBySlug("aya")?.caseStudy).toBeUndefined();
+    expect(getProjectBySlug("no-such-project")).toBeUndefined();
+    for (const project of listFeaturedProjects()) {
+      expect(project.caseStudySlug).toBeDefined();
+    }
   });
 
   it("leaves featured listings light: no Case Study body on the list", () => {
@@ -259,6 +262,76 @@ describe("Kuya A Case Study content", () => {
       /Bayanihan|SIM Tracker/i,
       /\bOSEC\b|\bDICT\b/,
       /Secretary/,
+    ]) {
+      expect(text, String(banned)).not.toMatch(banned);
+    }
+  });
+});
+
+describe("Aya Case Study content", () => {
+  const project = getProjectBySlug("aya")!;
+  const caseStudy = project.caseStudy!;
+  const text = allText(caseStudy);
+
+  it("is linked from its Project and tells the story in order, with the demo after the pipeline", () => {
+    expect(project.caseStudySlug).toBe("aya");
+    expect(caseStudy.sections.map((s) => s.id)).toEqual([
+      "brief",
+      "behaviour",
+      "pipeline",
+      "agents",
+      "debugging",
+    ]);
+    expect(caseStudy.demoAfter).toBe("pipeline");
+    expect(caseStudy.demoTitle).toBe("Explore the day's 14 jobs");
+  });
+
+  it("is written in the past tense for Robin's tenure, August 2025 to May 2026, solo, for a team of 8+", () => {
+    expect(text).toMatch(/August 2025/);
+    expect(text).toMatch(/May 2026/);
+    expect(text).toMatch(/alone/);
+    expect(text).toMatch(/team of 8\+/);
+    expect(text).toMatch(/\bI (designed|built|ran|operated)\b/);
+  });
+
+  it("covers behaviour as code, the end-of-day pipeline, the multi-agent decisions and the debugging stories", () => {
+    for (const topic of [
+      /version-controlled Markdown/,
+      /human confirmation|asks the submitter to confirm/i,
+      /fuzzy/i,
+      /a sentiment-analysis agent system/,
+      /separate agents/,
+      /isolation/i,
+      /staggered schedules/,
+      /shared database/,
+      /migrated to Claude skills/,
+      /seven days/,
+      /timezone|Asia\/Manila/i,
+      /silently returned nothing|silently returning nothing/,
+    ]) {
+      expect(text, String(topic)).toMatch(topic);
+    }
+  });
+
+  it("has a redrawn plate with a text alternative", () => {
+    const plates = caseStudy.sections
+      .flatMap((s) => s.blocks)
+      .filter((b) => b.type === "plate");
+    expect(plates.map((p) => p.plate)).toEqual(["aya-end-of-day"]);
+    for (const plate of plates) expect(plate.alt.length).toBeGreaterThan(40);
+  });
+
+  it("never names the confidential project, an internal tool, a colleague or an ID", () => {
+    for (const banned of [
+      /OpenClaw/i,
+      /Jira|Atlassian|mcporter/i,
+      /\bgws\b/i,
+      /\bDICT\b|\bOASIS\b/,
+      /Planas|Ferrer/,
+      /DICTMIDLAP/i,
+      /\b\d{15,}\b/,
+      /@[a-z]+\.gov\.ph/i,
+      /\bOT-\d+/,
     ]) {
       expect(text, String(banned)).not.toMatch(banned);
     }

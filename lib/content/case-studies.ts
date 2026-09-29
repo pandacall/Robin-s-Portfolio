@@ -437,15 +437,218 @@ const kuyaA: CaseStudySource = {
   ],
 };
 
+/*
+ * Aya (spec.md modules 5 and 9). Written from the private Aya infodump under
+ * the Confidential Detail rule: Robin's own methods only. The office, the
+ * colleagues, every channel, server, spreadsheet, tracker and account ID, the
+ * agent framework and the internal tools are left unnamed and described by
+ * what they do. The second agent system on the gateway is only ever "a
+ * sentiment-analysis agent system": its name, subject and data are not given.
+ *
+ * DRAFT for Robin's approval: every word is Robin's to approve before launch.
+ * Two things to confirm: "later migrated to Claude skills" comes from the spec
+ * and is not in the infodump, the cron story leaves out the times because the
+ * infodump gives them inconsistently (5 AM UTC against 5 PM PHT), and the token health check is placed at 00:00,
+ * 06:00, 12:00 and 18:00 (the infodump says only "every 6h").
+ */
+const aya: CaseStudySource = {
+  slug: "aya",
+  lede: "A multi-agent office assistant I designed, built and ran alone from August 2025 to May 2026, for a team of 8+. It turned end-of-day updates into confirmed records and carried the office's daily reminders, schedules and reports through 14 scheduled jobs.",
+  demoAfter: "pipeline",
+  demoTitle: "Explore the day's 14 jobs",
+  sections: [
+    {
+      id: "brief",
+      heading: "What it was",
+      blocks: [
+        {
+          type: "p",
+          text: "Aya was an assistant for a government office of 8+ people, and it lived where the team already talked, in Discord. Between August 2025 and May 2026 it collected end-of-day updates, posted the daily schedule, sent reminders for deadlines, briefed each person on their open tasks, drafted memos and time records, and kept a searchable archive of the office's conversation so it could answer questions about what had been said.",
+        },
+        {
+          type: "p",
+          text: "I designed it, built it and operated it alone. It ran around the clock on one workstation. Most of the work was not the model. It was deciding what should be a rule, what should be a schedule and what should always wait for a person.",
+        },
+      ],
+    },
+    {
+      id: "behaviour",
+      heading: "Behaviour as code",
+      blocks: [
+        {
+          type: "p",
+          text: "Aya's personality, rules and workflows were not buried in a prompt field. They were version-controlled Markdown files that the agent read at the start of every session: one for tone and escalation, one for the step-by-step workflow of each recurring task, one for the team directory, one for the quirks of each tool, one for long-term memory.",
+        },
+        {
+          type: "p",
+          text: "That made behaviour something I could diff and review like code. A teammate who had never opened the repository could read exactly what Aya was told to do and propose a change in plain language, and Aya could suggest edits to its own files. I accepted the cost, slightly more tokens on every turn, because a rule I could read and roll back was worth more than a rule I had to guess at.",
+        },
+        {
+          type: "p",
+          text: "It also made per-person tuning cheap. A few lines in a workflow file changed how Aya spoke to one teammate, with no retraining and no code.",
+        },
+      ],
+    },
+    {
+      id: "pipeline",
+      heading: "The end-of-day pipeline",
+      blocks: [
+        {
+          type: "p",
+          text: "The most used feature replaced a manual, error-prone copy-and-paste process. A teammate sent Aya their end-of-day update in Discord. From there it moved through five steps, and the fourth was always a person.",
+        },
+        {
+          type: "plate",
+          plate: "aya-end-of-day",
+          caption:
+            "The end-of-day update pipeline, redrawn from the system and illustrative. Not a screenshot.",
+          alt: "Diagram of the end-of-day pipeline in five steps. A teammate submits an update in Discord, the agent formalises the wording, the update is fuzzy-matched to one of the submitter's open tracker tasks, the submitter confirms the match, and only then is it written to a sheet and the tracker.",
+        },
+        {
+          type: "steps",
+          rows: [
+            {
+              label: "Submit",
+              text: "A message or a direct message in Discord.",
+            },
+            {
+              label: "Formalise",
+              text: "The LLM tidied the grammar and professionalised the phrasing without changing the meaning, then posted the result to the office's accomplishment channel, the source of truth.",
+            },
+            {
+              label: "Match",
+              text: "Aya looked up the submitter's open tasks in the tracker and fuzzy-matched the update to one of them.",
+            },
+            {
+              label: "Confirm",
+              text: "Aya asked the submitter to confirm the match in chat, a step of human confirmation. Nothing was written on a guess.",
+            },
+            {
+              label: "Write",
+              text: "On confirmation it logged the update to a Google Sheet, commented on the matched task and moved its status. A strict date-format check guarded the sheet.",
+            },
+          ],
+        },
+        {
+          type: "p",
+          text: "The day ended with a report for leadership. A PDF listed who had submitted, who was absent and who had simply not submitted. Those last two mean different things, one is leave and the other is missing reporting, so the report rendered them differently. Before that, a cascade of reminders nudged the people who had not submitted, first in the channel, then by direct message with their open tasks, then once more.",
+        },
+        {
+          type: "p",
+          text: "That cascade was one small part of a larger day. Explore all 14 jobs below: when each one ran and what each did.",
+        },
+      ],
+    },
+    {
+      id: "agents",
+      heading: "More than one agent",
+      blocks: [
+        {
+          type: "p",
+          text: "When a sentiment-analysis agent system came along, I could have added it to Aya as more scheduled jobs. Instead I added it as separate agents on the same gateway, and kept Aya's own agent small. I made that call for four reasons, all of them about isolation.",
+        },
+        {
+          type: "steps",
+          rows: [
+            {
+              label: "Behaviour",
+              text: "Each agent had its own behaviour files, so Aya stayed focused on office work.",
+            },
+            {
+              label: "Tools",
+              text: "Each agent had only the tools it needed. The agents that gathered data could not post to Discord, and Aya could not browse the web.",
+            },
+            {
+              label: "Failures",
+              text: "A stuck data-gathering agent could not block the end-of-day reminder that had to go out at 5 PM.",
+            },
+            {
+              label: "Context",
+              text: "The new agents never spent tokens loading Aya's fourteen job instructions.",
+            },
+          ],
+        },
+        {
+          type: "h3",
+          text: "Coordinating without messages",
+        },
+        {
+          type: "p",
+          text: "The framework offered a way for agents to message each other. I chose not to use it, because under load it serialised every cross-agent message and timed out. Instead the agents coordinated through staggered schedules and a shared database: the agents that gathered data wrote, and the analysing agent read later. No agent ever waited on another, and a failure stayed where it happened.",
+        },
+        {
+          type: "p",
+          text: "The shared database was SQLite: one instance, one writer, full-text search built in and nothing to operate. It was the only datastore, the searchable archive of the office's Discord messages included.",
+        },
+        {
+          type: "h3",
+          text: "Every job in a fresh session",
+        },
+        {
+          type: "p",
+          text: "Each scheduled job ran in its own isolated session and carried its complete instruction with it. A reminder firing at 5 PM never disturbed the conversation Aya was having with the team, and the job never needed that conversation's history.",
+        },
+        {
+          type: "p",
+          text: "Later I migrated to Claude skills.",
+        },
+      ],
+    },
+    {
+      id: "debugging",
+      heading: "Things that broke",
+      blocks: [
+        {
+          type: "p",
+          text: "A system that runs every day on a workstation fails in specific, boring ways. These were the ones worth writing down, and each became a line in a file Aya or I read.",
+        },
+        {
+          type: "steps",
+          rows: [
+            {
+              label: "A token that died every week",
+              text: "The Google login broke every seven days, quietly. The cause was the OAuth consent screen, left in testing mode, which expires refresh tokens after seven days. I added a health check every six hours that posts an alert in Discord before the token fully expires. Publishing the app, the lasting fix, stayed on the roadmap.",
+            },
+            {
+              label: "The wrong hour",
+              text: "A reminder meant for the end of the working day fired at the wrong hour. I had written the cron hours in UTC even though the job's timezone was already set to Asia/Manila. The rule became: write the hours in the target timezone, always. Then I audited all 14 jobs against it.",
+            },
+            {
+              label: "A query that returned nothing",
+              text: "A tracker query silently returned nothing when it filtered by a person's display name. Names work in the tracker's interface but not in its query language, which needs account IDs. I switched every query to IDs and kept the mapping in the team directory file.",
+            },
+            {
+              label: "A second agent that took over",
+              text: "The first time I added a second agent, Aya stopped answering in Discord. Adding a list of agents without redeclaring the original as the default let the new one take all the traffic. I wrote it up as the team's configuration reference so the next person would not hit it.",
+            },
+            {
+              label: "Dates that drifted",
+              text: "After a partial month of misaligned rows in the accomplishment sheet, I added a strict date validator to the logging script.",
+            },
+          ],
+        },
+        {
+          type: "see-also",
+          lead: "The same habits, a gate before anything goes out and silence unless there is something to deliver, run through my other two agents:",
+          links: [
+            { label: "Oplan Bantay Signal", href: "/work/oplan-bantay-signal" },
+            { label: "Kuya A", href: "/work/kuya-a" },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
 export const caseStudySources: readonly CaseStudySource[] = [
   oplanBantaySignal,
   kuyaA,
+  aya,
 ];
 
 /**
  * Slugs of Case Studies that actually exist as a route (spec.md module 9).
  * A Project's `caseStudySlug` must appear here or content validation fails.
- * Aya joins in ticket 13.
  */
 export const caseStudySlugs: readonly string[] = caseStudySources.map(
   (source) => source.slug,

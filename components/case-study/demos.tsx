@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
 import { ChatReplay } from "@/components/case-study/chat-replay";
+import { JobTimeline } from "@/components/case-study/job-timeline";
 import { ReportCardGrader } from "@/components/case-study/report-card-grader";
 import { getActiveRubric } from "@/lib/grading/rubric";
 import { kuyaScript } from "@/lib/replay/kuya-script";
+import { ayaJobs } from "@/lib/timeline/aya-jobs";
 
 /** An Interactive Demo and how much room its slot needs. */
 export interface CaseStudyDemo {
@@ -21,6 +23,17 @@ export function caseStudyDemo(slug: string): CaseStudyDemo | undefined {
   }
   if (slug === "kuya-a") {
     return { node: <ChatReplay script={kuyaScript} />, wide: true };
+  }
+  if (slug === "aya") {
+    return {
+      node: (
+        <JobTimeline
+          jobs={ayaJobs}
+          initialJobId="end-of-day-accomplishment-report"
+        />
+      ),
+      wide: true,
+    };
   }
   return undefined;
 }
