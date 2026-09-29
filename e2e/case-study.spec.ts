@@ -56,14 +56,10 @@ test("the Case Study tells the story in order, with the Interactive Demo after t
   await expect(plate.getByRole("img")).toHaveAccessibleName(/monthly cycle/);
 });
 
-test("pillar details follow the placeholder rubric until clearance", async ({
-  page,
-}) => {
+test("pillar details follow the real v3.1 rubric", async ({ page }) => {
   await page.goto(ROUTE);
 
-  await expect(
-    page.locator(".cs-cap").getByText("Placeholder pillars, weights and bands"),
-  ).toBeVisible();
+  await expect(page.locator(".cs-cap").getByText(/placeholder (pillars|weights)/i)).toHaveCount(0);
   const body = await page.getByRole("main").innerText();
   for (const real of [
     "Speed Adequacy",
@@ -72,8 +68,9 @@ test("pillar details follow the placeholder rubric until clearance", async ({
     "Geographic Coverage",
     "National Leader",
   ]) {
-    expect(body).not.toContain(real);
+    expect(body).toContain(real);
   }
+  expect(body).not.toMatch(/placeholder (pillars|weights)/i);
 });
 
 test("national outcomes credit Ookla with a link, apart from Robin's contribution", async ({

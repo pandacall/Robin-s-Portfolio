@@ -8,9 +8,9 @@ import {
 } from "./rubric";
 
 describe("rubric switch", () => {
-  it("ships on the placeholder until ADR 0001 clearance is confirmed", () => {
-    expect(RUBRIC_SWITCH).toBe("placeholder");
-    expect(getActiveRubric().kind).toBe("placeholder");
+  it("ships on the real v3.1 rubric now ADR 0001 clearance is confirmed", () => {
+    expect(RUBRIC_SWITCH).toBe("real");
+    expect(getActiveRubric().kind).toBe("real");
   });
 
   it("returns the definition the switch names", () => {

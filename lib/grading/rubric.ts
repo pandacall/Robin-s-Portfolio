@@ -3,8 +3,9 @@
  * switch that decides which definition the site publishes.
  *
  * The real v3.1 rubric is only published once OASIS clearance for ADR 0001 is
- * confirmed (a launch blocker), so `RUBRIC_SWITCH` stays on "placeholder"
- * until then. Everything that shows pillar names, weights or bands reads them
+ * confirmed (a launch blocker). Clearance was confirmed on 2026-09-29, so
+ * `RUBRIC_SWITCH` is on "real"; it goes back to "placeholder" if that is ever
+ * withdrawn. Everything that shows pillar names, weights or bands reads them
  * through `getActiveRubric`, so nothing can outrun clearance.
  *
  * Each pillar also carries the input it reads and how that input is scored
@@ -91,7 +92,7 @@ export interface Rubric {
  * The single content switch. Set to "real" only when ADR 0001 clearance is
  * confirmed with OASIS.
  */
-export const RUBRIC_SWITCH: RubricKind = "placeholder";
+export const RUBRIC_SWITCH: RubricKind = "real";
 
 /** Clearly labelled stand-in: none of these names, weights or bands is the real method. */
 export const PLACEHOLDER_RUBRIC: Rubric = {

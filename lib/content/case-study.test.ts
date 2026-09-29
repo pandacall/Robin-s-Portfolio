@@ -93,8 +93,22 @@ describe("a Project's Case Study body", () => {
 });
 
 describe("rubric switch", () => {
-  it("publishes none of the real method while the switch is on placeholder", () => {
+  it("publishes the real method on the shipped site now clearance is confirmed", () => {
     const text = allText(getProjectBySlug("oplan-bantay-signal")!.caseStudy!);
+
+    for (const term of [
+      ...REAL_RUBRIC.pillars.map((p) => p.name),
+      "Geographic Coverage",
+      "National Leader",
+    ]) {
+      expect(text, term).toContain(term);
+    }
+    expect(text).not.toMatch(/placeholder (pillars|weights|and)/i);
+    expect(text).not.toContain("until the published method is cleared");
+  });
+
+  it("publishes none of the real method when the switch is on placeholder", () => {
+    const text = allText(resolveCaseStudy(obs, "placeholder"));
 
     for (const term of REAL_ONLY_TERMS) {
       expect(text, term).not.toContain(term);

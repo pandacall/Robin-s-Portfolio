@@ -6,3 +6,7 @@ The Oplan Bantay Signal Case Study publishes Robin's real Six-Pillar grading met
 
 - Only the method is published. Everything it is applied to stays private: real per-provider scores, city results, complaint counts, internal-only grading rules and the monthly reports themselves (see **Confidential Detail** in `CONTEXT.md`).
 - If the method changes after publication (a v3.2), the Case Study describes the version current when Robin left (v3.1, May 2026) and says so.
+
+## Clearance
+
+OASIS clearance to publish the full Six-Pillar v3.1 method was confirmed by Robin on 2026-09-29, and the real rubric is live on the Case Study.

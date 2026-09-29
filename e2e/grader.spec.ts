@@ -189,23 +189,14 @@ test("dark mode: the Report Card sits on the dark plate paper", async ({
   ).toBe("rgb(237, 232, 221)");
 });
 
-test("no real method text or values reach the built page or its scripts", async ({
+test("the grader page shows the real v3.1 pillars and no placeholder rubric wording", async ({
   page,
-  request,
 }) => {
-  const scripts: string[] = [];
-  page.on("response", (response) => {
-    if (response.url().endsWith(".js")) scripts.push(response.url());
-  });
   await page.goto(ROUTE);
-  await page.waitForLoadState("networkidle");
 
-  const html = await (await request.get(ROUTE)).text();
-  const bodies = [html];
-  for (const url of scripts) bodies.push(await (await request.get(url)).text());
-  for (const body of bodies) {
-    for (const real of ["Speed Adequacy", "Consumer Sentiment", "National Leader"]) {
-      expect(body).not.toContain(real);
-    }
+  const body = await page.getByRole("main").innerText();
+  for (const real of ["Speed Adequacy", "Consumer Sentiment", "National Leader"]) {
+    expect(body).toContain(real);
   }
+  expect(body).not.toMatch(/placeholder (pillars|weights)/i);
 });
