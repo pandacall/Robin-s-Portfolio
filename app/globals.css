@@ -184,6 +184,121 @@ p + p {
   color: var(--ink);
 }
 
+/* ---------- phone nav (sheet) ----------
+   Below 640px the four inline links give way to a Menu control that opens
+   a sheet. The sheet is a portal, so its rules are not scoped under .top. */
+.sheet-trigger {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-right: -8px;
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  color: var(--ink-2);
+  font: inherit;
+  cursor: pointer;
+  transition: color 160ms var(--ease);
+}
+.sheet-trigger:hover {
+  color: var(--ink);
+}
+.sheet-glyph {
+  display: block;
+  width: 18px;
+  height: 7px;
+  border-block: 1.5px solid currentColor;
+}
+@media (max-width: 639.98px) {
+  .top nav.inline {
+    display: none;
+  }
+  .sheet-trigger {
+    display: inline-flex;
+  }
+}
+
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: color-mix(in srgb, var(--ink) 42%, transparent);
+  transition: opacity 240ms var(--ease);
+}
+.sheet-backdrop[data-starting-style],
+.sheet-backdrop[data-ending-style] {
+  opacity: 0;
+}
+.sheet {
+  position: fixed;
+  inset-block: 0;
+  right: 0;
+  z-index: 31;
+  display: flex;
+  flex-direction: column;
+  width: min(22rem, 100%);
+  padding: 0 var(--gutter) 32px;
+  background: var(--capiz);
+  color: var(--ink);
+  border-left: 1px solid var(--rule);
+  border-radius: 0;
+  font-family: var(--font-disp);
+  transition: transform 320ms var(--ease);
+}
+.sheet[data-starting-style],
+.sheet[data-ending-style] {
+  transform: translateX(100%);
+}
+.sheet-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.9375rem;
+}
+.sheet-title {
+  margin: 0;
+  color: var(--ink-2);
+  font-family: var(--font-disp);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: inherit;
+}
+.sheet-close {
+  min-height: 44px;
+  margin-right: -8px;
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.sheet nav {
+  display: flex;
+  flex-direction: column;
+}
+.sheet nav a {
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.96;
+  text-decoration: none;
+  transition: color 160ms var(--ease);
+}
+.sheet nav a:hover {
+  color: var(--narra);
+}
+
 /* ---------- hero ---------- */
 .hero {
   background: var(--concrete);
@@ -949,6 +1064,10 @@ footer.site .mini .dot {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .sheet,
+  .sheet-backdrop {
+    transition: none;
   }
   .hero h1 .ln > span,
   .hero .below,

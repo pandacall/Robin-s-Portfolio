@@ -323,7 +323,7 @@ None are built on the home page. The Case Study's grader (sliders and presets) i
 ### Navigation
 - **Masthead:** sticky, capiz at 92% over the page, 60px minimum height, hairline below; brand name at left in the grotesk (600, 0.9375rem, -0.01em), four links (Work, Stack, Experience, Contact) at right with a 26px gap, and nothing else.
 - **Links:** UI type at 0.9375rem, ink-2 at rest, ink on hover, no underline.
-- **Mobile:** no rule changes the masthead. (The prototype hides the third and fourth links by nth-child below 640px; see the not-canonized note, not a rule.)
+- **Mobile:** below 640px the four links give way to a Menu control at the right of the masthead (grotesk text in ink-2, two thin bars, 44px target) that opens a Sheet from the right: capiz ground, 1px `rule` left edge, zero radius, an ink-at-42% backdrop. Its head repeats the masthead's 60px hairline with "Menu" in ink-2 and a "Close" action; the links stack below at 1.75rem grotesk (600, -0.035em) on 64px hairline rows, turning narra on hover. Links are never hidden. (The prototype's nth-child hiding is not a rule.)
 
 ### Tables (Stack index)
 The Stack is a three-column table (Technology 26%, Used in 34%, How) in UI type on the concrete field. Column heads are Labels in ink-2 on an ink rule; rows sit on hairlines with 14px cell padding and tint to a 45% capiz wash on hover (160ms). The technology cell is 600; Project links in the "Used in" cell are ink with a `rule-2` underline that turns narra on hover. A Credential sits inline after its technology as a tag: green text, 0.75rem, 0.04em uppercase, 1px `green-3` border, 2px by 7px padding. Below 640px the table collapses to stacked rows on hairlines with no head and no hover tint. Unbacked technologies go on one "Also worked with:" line in ink-2 with a bold ink lead-in.
@@ -348,7 +348,7 @@ One authored moment on load, then quiet feedback. Everything uses `cubic-bezier(
 - **Hero rise:** the four lines of the sentence rise from 110% to 0 inside clipped line boxes over 900ms, staggered 60, 150, 240 and 330ms; the lede and buttons fade and rise 12px over 700ms, 520ms in.
 - **Archipelago scan:** the scan line and row-staggered dot pop described above; then the 7s pulse while the hero is on screen.
 - **Pointer signal:** dots near the pointer light in narra (300ms fill, 640ms scale).
-- **Controls:** buttons wipe to ink in 320ms; the Case Study arrow slides 6px in 240ms; table rows tint in 160ms; link underlines darken in 160ms; Project titles turn narra with no transition.
+- **Controls:** buttons wipe to ink in 320ms; the Case Study arrow slides 6px in 240ms; table rows tint in 160ms; link underlines darken in 160ms; the phone-nav Sheet slides in from the right in 320ms over a 240ms backdrop fade; Project titles turn narra with no transition.
 - **Reduced motion:** `prefers-reduced-motion: reduce` settles every transition and animation instantly and turns off smooth scrolling. `?motion=off` and `data-theme` are review-only overrides, not product features.
 
 ### Production note (Next.js)
