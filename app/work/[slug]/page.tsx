@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CaseStudyPage } from "@/components/case-study/case-study-page";
 import { caseStudyDemo } from "@/components/case-study/demos";
 import { listCaseStudyProjects } from "@/lib/content";
+import { pageMetadata } from "@/lib/site/metadata";
 
 // Every Case Study prerenders at build time; an unknown slug is a 404, never a runtime lookup.
 export const dynamicParams = false;
@@ -25,10 +26,7 @@ export async function generateMetadata(
   const { slug } = await props.params;
   const project = findProject(slug);
   if (!project) return {};
-  return {
-    title: `${project.name}: Case Study — John Robin Cubi`,
-    description: project.caseStudy.lede,
-  };
+  return pageMetadata(`/work/${project.caseStudySlug}`);
 }
 
 export default async function WorkPage(props: PageProps<"/work/[slug]">) {

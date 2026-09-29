@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { About } from "@/components/about";
 import { Contact } from "@/components/contact";
 import { Experience } from "@/components/experience";
@@ -12,6 +13,9 @@ import {
   listExperience,
   listFeaturedProjects,
 } from "@/lib/content";
+import { pageMetadata } from "@/lib/site/metadata";
+
+export const metadata: Metadata = pageMetadata("/");
 
 export default function Home() {
   const projects = listFeaturedProjects();
