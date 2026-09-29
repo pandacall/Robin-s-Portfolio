@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { DotArchipelago } from "@/components/dot-archipelago";
 import { CV_DOWNLOAD_NAME, CV_URL } from "@/lib/cv/cv-link";
+import { EMAIL } from "@/lib/site/contact";
 
 const HOOK_LINES = [
   "I build AI agents",
@@ -57,7 +58,7 @@ export function Hero() {
                 </span>
               </p>
               <div className="acts">
-                <a className="btn primary" href="mailto:hello@robincubi.dev">
+                <a className="btn primary" href={`mailto:${EMAIL}`}>
                   Email
                 </a>
                 <a className="btn" href={CV_URL} download={CV_DOWNLOAD_NAME}>

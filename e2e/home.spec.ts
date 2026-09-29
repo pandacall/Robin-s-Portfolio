@@ -19,7 +19,7 @@ test("home page loads with the hero and the Project spreads", async ({ page }) =
   const hero = page.locator("#hero");
   await expect(hero.getByRole("link", { name: "Email" })).toHaveAttribute(
     "href",
-    "mailto:hello@robincubi.dev",
+    "mailto:johncubi11@gmail.com",
   );
   await expect(hero.getByRole("link", { name: "Download CV" })).toBeVisible();
 

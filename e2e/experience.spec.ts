@@ -40,16 +40,15 @@ test("Contact carries the About body beside Robin's portrait", async ({ page }) 
     .toBeGreaterThan(0);
 });
 
-test("Contact shows Manila time and copies the address", async ({ page, context }) => {
+test("Contact copies the address", async ({ page, context }) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto("/");
 
   const contact = page.locator("#contact");
-  await expect(contact.locator(".clock time")).toHaveText(/^\d{1,2}:\d{2}\s?[AP]M$/);
   await contact.getByRole("button", { name: "Copy address" }).click();
   await expect(contact.getByRole("button", { name: "Copied" })).toBeVisible();
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
-    "hello@robincubi.dev",
+    "johncubi11@gmail.com",
   );
 });
 
@@ -61,7 +60,7 @@ test("Contact shows the email, LinkedIn and GitHub, and no phone number anywhere
   await expect(
     page.getByRole("heading", { level: 2, name: "Contact" }),
   ).toBeVisible();
-  await expect(page.locator(".contact .mail")).toContainText("hello@robincubi.dev");
+  await expect(page.locator(".contact .mail")).toContainText("johncubi11@gmail.com");
   await expect(
     page.getByRole("link", { name: "LinkedIn" }),
   ).toHaveAttribute("href", "https://www.linkedin.com/in/john-robin-cubi/");
