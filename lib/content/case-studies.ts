@@ -20,6 +20,7 @@ const oplanBantaySignal: CaseStudySource = {
   slug: "oplan-bantay-signal",
   lede: "A monthly grade for how well each major Philippine telco serves the people using it, and the pipeline that turns the measurements into reports a Secretary can sign.",
   demoAfter: "method",
+  demoTitle: "Try the grader",
   sections: [
     {
       id: "problem",
@@ -228,12 +229,223 @@ const oplanBantaySignal: CaseStudySource = {
   ],
 };
 
-export const caseStudySources: readonly CaseStudySource[] = [oplanBantaySignal];
+/*
+ * Kuya A (spec.md modules 4 and 9). Written from the private Kuya A infodump
+ * under the Confidential Detail rule: Robin's own methods only. The office and
+ * its people stay unnamed (the principal, the staff), and no chat or account
+ * ID, internal tool or programme name, or real screenshot appears. The
+ * standing pre-send checklist and the scheduled jobs are described by what
+ * they do, never by their internal names.
+ *
+ * DRAFT for Robin's approval: every word is Robin's to approve before launch.
+ * One thing to confirm: the spec says "in daily use since Feb 2026", while the
+ * infodump says "in production since March 2025". This follows the spec.
+ */
+const kuyaA: CaseStudySource = {
+  slug: "kuya-a",
+  lede: "An executive-assistant agent that has been in daily use in a Cabinet-level office since February 2026. It answers staff in Telegram, produces the principal's documents, and stays quiet when quiet is the right answer.",
+  demoAfter: "architecture",
+  demoTitle: "Watch a replay",
+  sections: [
+    {
+      id: "brief",
+      heading: "What it is",
+      blocks: [
+        {
+          type: "p",
+          text: "Kuya A is an executive-assistant agent for a Cabinet-level office. It has been in daily use since February 2026 and is still in use. The principal and the executive support staff talk to it in Telegram. It answers scheduling questions, builds the daily schedule, delivers morning briefers, tracks the directives the principal gives, and drafts meeting documents.",
+        },
+        {
+          type: "p",
+          text: "The stakes shape everything. What it produces lands in front of a Cabinet-level official, in briefings, schedules and meeting records, and nothing sits downstream to catch a mistake. Kuya A is the last check, so most of the design is about what it must never send.",
+        },
+        {
+          type: "p",
+          text: "I designed it, built it and operate it alone: one Linux server, one operator. That is why its rules are written down, and why every mistake it makes becomes a line in a log it reads before its next answer.",
+        },
+      ],
+    },
+    {
+      id: "architecture",
+      heading: "Architecture",
+      blocks: [
+        {
+          type: "p",
+          text: "Telegram is the only interface, but it is not one conversation. Four chats have four sets of rules. A gateway routes each chat to the agent with that chat's rules, and the agent reaches out to Google Workspace, a document pipeline and a set of scheduled jobs.",
+        },
+        {
+          type: "plate",
+          plate: "kuya-a-architecture",
+          caption:
+            "Telegram to gateway to agent, redrawn from the system and illustrative. Not a screenshot.",
+          alt: "Diagram: principal and staff Telegram chats route through an agent gateway and Gatekeeper sub-agent to Google Workspace, a document pipeline and scheduled jobs, guarded by a pre-send gate check.",
+        },
+        { type: "h3", text: "Four chats, four sets of rules" },
+        {
+          type: "steps",
+          rows: [
+            {
+              label: "Principal chat",
+              text: "Silent by default. It speaks only when someone tags it and it has a concrete deliverable in hand.",
+            },
+            {
+              label: "Staff chat",
+              text: "Full assistant mode: it answers questions, posts the daily digests and takes requests for documents.",
+            },
+            {
+              label: "Dev chat",
+              text: "Where alerts go, such as a failed token check or a job that did not run.",
+            },
+            {
+              label: "Operator DM",
+              text: "Me, for maintenance and re-authorisation.",
+            },
+          ],
+        },
+        {
+          type: "p",
+          text: "Access is an allowlist. Direct messages are accepted only from approved people, and groups only from approved chats.",
+        },
+        { type: "h3", text: "A Gatekeeper sub-agent" },
+        {
+          type: "p",
+          text: "Looking up a person can mean reading several tabs across several Google Sheets, which would fill the main agent's context window with rows it never needed. A Gatekeeper sub-agent does those reads and hands back one answer, so the main agent's working memory stays clean. A quick local lookup answers first, and the full cascade over the live sheets runs only when it has to.",
+        },
+        { type: "h3", text: "Scheduled work" },
+        {
+          type: "p",
+          text: "More than ten scheduled jobs do the routine work: the morning brief, tomorrow's schedule the evening before, end-of-day and end-of-week digests of open directives, a token health check every six hours, a daily refresh of the search index and a nightly memory log. Every job, date stamp and document header uses Asia/Manila time explicitly, so nothing drifts to UTC.",
+        },
+      ],
+    },
+    {
+      id: "documents",
+      heading: "The document pipeline",
+      blocks: [
+        {
+          type: "p",
+          text: "Whatever leaves Kuya A for staff or the principal is a document or an image, not a wall of chat text. The daily schedule is the clearest case, and I built it from scratch: no Word, no template service, no document library.",
+        },
+        {
+          type: "plate",
+          plate: "document-pipeline",
+          caption:
+            "The schedule pipeline, redrawn from the system and illustrative. Not a screenshot.",
+          alt: "Diagram of the document pipeline in five steps. A schedule comes from the calendar or from chat text, per-date overrides are applied, the document is built directly as Open XML with every string escaped first, LibreOffice makes a PDF, and pdftoppm makes the image.",
+        },
+        {
+          type: "steps",
+          rows: [
+            {
+              label: "Source",
+              text: "Google Calendar by default, or a schedule typed into the chat. Typed schedules arrive in about five different layouts, so the parser accepts pipes, commas, parentheses and @-marks, and falls back cleanly when it cannot find a venue.",
+            },
+            {
+              label: "Overrides",
+              text: "The calendar and the printed schedule often differ, because the people who own the schedule edit what gets printed. A per-date override file corrects venues, renames meetings, shifts times and drops events without touching the calendar itself.",
+            },
+            {
+              label: "Build",
+              text: "The document is assembled as Open XML directly. The header and page setup come from a template and the body is built in memory and injected. There is no library to keep updating, and I control every edge case. Every string that enters the XML is escaped first.",
+            },
+            {
+              label: "Convert",
+              text: "LibreOffice runs headless to make the PDF and pdftoppm makes the image. Both are subprocesses, so the pipeline cleans up its temporary files and fails cleanly when LibreOffice hangs.",
+            },
+            {
+              label: "Reuse",
+              text: "The same pattern produces the morning brief, meeting minutes, talking points and briefers. The morning brief goes to staff for review first and reaches the principal only once someone approves it.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "identities",
+      heading: "Three Google identities",
+      blocks: [
+        {
+          type: "p",
+          text: "Kuya A works as three separate Google identities, each holding only the scopes it needs. One has read-only access to the office's calendar, Drive and mail. One writes to the sheets the agent maintains. One is a second calendar account for scheduling in parallel. Each token expires and refreshes in its own way.",
+        },
+        {
+          type: "steps",
+          rows: [
+            {
+              label: "Scopes",
+              text: "Segregated by identity, so no single token can do everything. The account that writes to sheets is not the one that reads the office's mail.",
+            },
+            {
+              label: "Health checks",
+              text: "Every six hours a lightweight call probes each token. A failure posts an alert to the dev chat before anyone notices a missing schedule.",
+            },
+            {
+              label: "Re-authorisation",
+              text: "When a token does expire, I re-authorise it in two steps from any device, without the client secret ever appearing in a chat.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "guardrails",
+      heading: "Guardrails",
+      blocks: [
+        {
+          type: "p",
+          text: "The principal's chat is the highest-stakes surface, so nothing reaches it without passing several checks. The replay above shows the last one in action.",
+        },
+        {
+          type: "steps",
+          rows: [
+            {
+              label: "Dedup",
+              text: "A hash of every outgoing message is checked before each send and remembered for an hour, so a retry can never double-post.",
+            },
+            {
+              label: "Gate check",
+              text: "A three-part hard gate validates a proposed reply before it can reach the principal's chat.",
+            },
+            {
+              label: "Silence",
+              text: "In the principal's chat it stays quiet unless it is tagged and has a concrete deliverable in hand. When the principal gives staff a directive, it never adds a second voice.",
+            },
+            {
+              label: "Checklist",
+              text: "A standing pre-send checklist, kept in a file the agent reads before it answers, covers what must be true before anything goes out.",
+            },
+            {
+              label: "Directives",
+              text: "Directives are logged in a Google Sheet tracker with a hidden internal ID, and a similarity check runs before each new row, so a repeated or paraphrased directive does not create a duplicate.",
+            },
+            {
+              label: "Lessons",
+              text: "Every mistake becomes a written rule in a lessons log, so the same error does not ship twice.",
+            },
+          ],
+        },
+        {
+          type: "see-also",
+          lead: "The same habits, a gate before anything goes out and silence unless there is something to deliver, run through my other two agents:",
+          links: [
+            { label: "Oplan Bantay Signal", href: "/work/oplan-bantay-signal" },
+            { label: "Aya", href: "/#aya" },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export const caseStudySources: readonly CaseStudySource[] = [
+  oplanBantaySignal,
+  kuyaA,
+];
 
 /**
  * Slugs of Case Studies that actually exist as a route (spec.md module 9).
  * A Project's `caseStudySlug` must appear here or content validation fails.
- * Kuya A and Aya join in tickets 12 and 13.
+ * Aya joins in ticket 13.
  */
 export const caseStudySlugs: readonly string[] = caseStudySources.map(
   (source) => source.slug,

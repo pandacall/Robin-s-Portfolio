@@ -73,7 +73,7 @@ describe("a Project's Case Study body", () => {
   });
 
   it("is absent for a Project without one", () => {
-    expect(getProjectBySlug("kuya-a")?.caseStudy).toBeUndefined();
+    expect(getProjectBySlug("aya")?.caseStudy).toBeUndefined();
   });
 
   it("leaves featured listings light: no Case Study body on the list", () => {
@@ -130,6 +130,7 @@ describe("rubric switch", () => {
       slug: "fixture",
       lede: "lede",
       demoAfter: "a",
+      demoTitle: "Demo",
       sections: [
         {
           id: "a",
@@ -202,6 +203,68 @@ describe("Oplan Bantay Signal Case Study content", () => {
   });
 });
 
+describe("Kuya A Case Study content", () => {
+  const project = getProjectBySlug("kuya-a")!;
+  const caseStudy = project.caseStudy!;
+  const text = allText(caseStudy);
+
+  it("is linked from its Project and tells the story in order, with the demo after the architecture", () => {
+    expect(project.caseStudySlug).toBe("kuya-a");
+    expect(caseStudy.sections.map((s) => s.id)).toEqual([
+      "brief",
+      "architecture",
+      "documents",
+      "identities",
+      "guardrails",
+    ]);
+    expect(caseStudy.demoAfter).toBe("architecture");
+    expect(caseStudy.demoTitle).toBe("Watch a replay");
+  });
+
+  it("is written in the present tense: in daily use since February 2026", () => {
+    expect(text).toMatch(/in daily use since February 2026/);
+    expect(text).toMatch(/is still in use/);
+  });
+
+  it("covers the architecture, the document pipeline, the identities and the guardrails", () => {
+    for (const topic of [
+      /Gatekeeper/,
+      /Open XML/,
+      /LibreOffice/,
+      /three separate Google identities/,
+      /probes each token/,
+      /two steps from any device/,
+      /hash of every outgoing message/,
+      /stays quiet unless it is tagged/,
+    ]) {
+      expect(text, String(topic)).toMatch(topic);
+    }
+  });
+
+  it("has redrawn plates that each carry a text alternative", () => {
+    const plates = caseStudy.sections
+      .flatMap((s) => s.blocks)
+      .filter((b) => b.type === "plate");
+    expect(plates.map((p) => p.plate)).toEqual([
+      "kuya-a-architecture",
+      "document-pipeline",
+    ]);
+    for (const plate of plates) expect(plate.alt.length).toBeGreaterThan(40);
+  });
+
+  it("names no internal tool, programme or office", () => {
+    for (const banned of [
+      /Zero-Error/i,
+      /OpenClaw/i,
+      /Bayanihan|SIM Tracker/i,
+      /\bOSEC\b|\bDICT\b/,
+      /Secretary/,
+    ]) {
+      expect(text, String(banned)).not.toMatch(banned);
+    }
+  });
+});
+
 describe("validateCaseStudies", () => {
   it("passes for the real content", () => {
     expect(() => validateCaseStudies(caseStudySources)).not.toThrow();
@@ -212,6 +275,7 @@ describe("validateCaseStudies", () => {
       slug: "bad",
       lede: "Send your resume.",
       demoAfter: "a",
+      demoTitle: "Demo",
       sections: [{ id: "a", heading: "A", blocks: [] }],
     };
     expect(() => validateCaseStudies([bad])).toThrow(/resume/);
@@ -222,6 +286,7 @@ describe("validateCaseStudies", () => {
       slug: "bad",
       lede: "ok",
       demoAfter: "nope",
+      demoTitle: "Demo",
       sections: [{ id: "a", heading: "A", blocks: [] }],
     };
     expect(() => validateCaseStudies([bad])).toThrow(/demo/i);
@@ -232,6 +297,7 @@ describe("validateCaseStudies", () => {
       slug: "bad",
       lede: "ok",
       demoAfter: "a",
+      demoTitle: "Demo",
       sections: [
         {
           id: "a",

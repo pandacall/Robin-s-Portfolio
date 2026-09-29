@@ -18,8 +18,8 @@ test("the home spread's Open the Case Study link opens the Case Study", async ({
   await page.goto("/");
 
   const links = page.getByRole("link", { name: "Open the Case Study" });
-  await expect(links).toHaveCount(1);
-  await links.click();
+  await expect(links).toHaveCount(2);
+  await links.first().click();
 
   await expect(page).toHaveURL(new RegExp(`${ROUTE}$`));
   await expect(

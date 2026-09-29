@@ -1471,6 +1471,282 @@ footer.site .mini .dot {
 .slider-thumb input {
   outline: none;
 }
+/*
+ * The Kuya A chat replay (Interactive Demo): controls, a scripted chat log and
+ * a tool-call side panel. Square and hairline like the grader; no green (it
+ * carries data only) and no narra fill (the page's one narra surface is
+ * elsewhere).
+ */
+.cs-demo .slot.wide {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+.replay {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: var(--font-disp);
+}
+.rp-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.rp-controls .btn {
+  min-height: 44px;
+  padding: 0 18px;
+}
+.rp-controls .btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.rp-controls .btn:disabled::before {
+  display: none;
+}
+.rp-controls .btn:disabled:hover {
+  color: var(--ink);
+}
+.rp-progress {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.rp-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 24px;
+  align-items: start;
+}
+.rp-log {
+  height: 460px;
+  overflow-y: auto;
+  padding: 16px;
+  background: var(--plate);
+  background-image: radial-gradient(var(--plate-dot) 1px, transparent 1.2px);
+  background-size: 18px 18px;
+  background-position: 9px 9px;
+  border: 1px solid var(--rule);
+}
+.rp-empty {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+.rp-divider {
+  margin: 20px 0 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.rp-log > div:first-of-type .rp-divider {
+  margin-top: 0;
+}
+.rp-row {
+  max-width: 34rem;
+  margin: 0 0 12px;
+  animation: rp-in 260ms var(--ease) both;
+}
+.rp-row p {
+  margin: 0;
+}
+.rp-row .who {
+  margin-bottom: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.rp-row .who small {
+  font-weight: 400;
+  color: var(--ink-2);
+}
+.rp-row .bubble {
+  padding: 10px 14px;
+  border: 1px solid var(--ink);
+  background: var(--capiz);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+.rp-row.out {
+  margin-left: auto;
+}
+.rp-row.out .bubble {
+  background: var(--ink);
+  color: var(--capiz);
+}
+.rp-row.tool {
+  padding: 8px 12px;
+  border-left: 2px solid var(--ink);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  background: color-mix(in srgb, var(--capiz) 60%, transparent);
+}
+.rp-row.tool code {
+  font-family: var(--font-disp);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.rp-row.tool .note {
+  color: var(--ink-2);
+}
+.rp-row.silence {
+  padding: 12px 14px;
+  border: 1px dashed var(--ink-2);
+  background: transparent;
+}
+.rp-row.silence .who {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 0.9375rem;
+}
+.rp-row.silence .ring {
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+}
+.rp-why {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.rp-img {
+  margin-top: 6px;
+  padding: 14px;
+  border: 1px solid var(--rule-2);
+  background: var(--capiz);
+  color: var(--ink);
+}
+.rp-img .title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.rp-img .sub {
+  margin-bottom: 8px;
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+.rp-img table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+.rp-img td {
+  padding: 6px 8px 6px 0;
+  border-top: 1px solid var(--rule);
+  vertical-align: top;
+}
+.rp-img td:first-child {
+  width: 8.5rem;
+  color: var(--ink-2);
+}
+.rp-img td small {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+.rp-panel {
+  padding: 16px;
+  border: 1px solid var(--rule);
+  background: var(--plate);
+  background-image: radial-gradient(var(--plate-dot) 1px, transparent 1.2px);
+  background-size: 18px 18px;
+  background-position: 9px 9px;
+}
+.rp-panel-head {
+  margin: 0 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.rp-panel-head + .rp-fields div:first-child {
+  border-top: 0;
+}
+.rp-tool {
+  margin: 0 0 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.rp-tool code {
+  font-family: var(--font-disp);
+  overflow-wrap: anywhere;
+}
+.rp-sub {
+  margin: 12px 0 4px;
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+}
+.rp-fields {
+  margin: 0;
+  font-size: 0.875rem;
+}
+.rp-fields div {
+  display: grid;
+  grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr);
+  gap: 12px;
+  padding: 6px 0;
+  border-top: 1px solid var(--rule);
+}
+.rp-fields dt {
+  color: var(--ink-2);
+}
+.rp-fields dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.rp-outcome {
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--ink);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+@keyframes rp-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 900px) {
+  .cs-demo .slot.wide {
+    grid-row: auto;
+  }
+  .rp-stage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .rp-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .rp-controls .btn {
+    justify-content: center;
+  }
+  .rp-log {
+    height: 420px;
+    padding: 12px;
+  }
+  .rp-fields div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+}
+
 @media (max-width: 900px) {
   .cs-head h1,
   .cs-head .kind,
@@ -1507,7 +1783,8 @@ footer.site .mini .dot {
     transition: none !important;
   }
   .hero .scan,
-  .mapwrap.pulse .dot {
+  .mapwrap.pulse .dot,
+  .rp-row {
     animation: none !important;
   }
   .dot.near {

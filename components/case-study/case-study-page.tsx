@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { CaseStudyBlockView } from "@/components/case-study/case-study-block";
+import type { CaseStudyDemo } from "@/components/case-study/demos";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import type { CaseStudy, CaseStudyBlock, Project } from "@/lib/content/types";
@@ -9,12 +10,20 @@ import type { CaseStudy, CaseStudyBlock, Project } from "@/lib/content/types";
  * The Interactive Demo slot (spec.md module 9): a concrete field on the page
  * that holds the Case Study's demo. Without one it carries a short note.
  */
-function DemoSlot({ children }: { children?: ReactNode }) {
+function DemoSlot({
+  title,
+  wide,
+  children,
+}: {
+  title: string;
+  wide?: boolean;
+  children?: ReactNode;
+}) {
   return (
     <section className="cs-demo" id="demo" aria-labelledby="demo-title">
       <div className="wrap g">
-        <h2 id="demo-title">Try the grader</h2>
-        <div className="slot" data-demo-slot>
+        <h2 id="demo-title">{title}</h2>
+        <div className={wide ? "slot wide" : "slot"} data-demo-slot>
           {children ?? (
             <p className="empty">
               <b>Interactive Demo</b>
@@ -48,7 +57,7 @@ export function CaseStudyPage({
 }: {
   project: Project;
   caseStudy: CaseStudy;
-  demo?: ReactNode;
+  demo?: CaseStudyDemo;
 }) {
   // Plates are numbered in reading order across the whole page.
   const plateNumbers = new Map<CaseStudyBlock, number>();
@@ -99,7 +108,11 @@ export function CaseStudyPage({
                 </div>
               </div>
             </section>
-            {section.id === caseStudy.demoAfter && <DemoSlot>{demo}</DemoSlot>}
+            {section.id === caseStudy.demoAfter && (
+              <DemoSlot title={caseStudy.demoTitle} wide={demo?.wide}>
+                {demo?.node}
+              </DemoSlot>
+            )}
           </div>
         ))}
       </main>

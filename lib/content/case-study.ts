@@ -88,6 +88,7 @@ export function resolveCaseStudy(
     slug: source.slug,
     lede: source.lede,
     demoAfter: source.demoAfter,
+    demoTitle: source.demoTitle,
     sections: source.sections.map((section) => ({
       id: section.id,
       heading: section.heading,

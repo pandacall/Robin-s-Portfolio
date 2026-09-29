@@ -24,6 +24,7 @@ export const projects: Project[] = [
     name: "Kuya A",
     origin: "Work",
     private: true,
+    caseStudySlug: "kuya-a",
     evidence: "in daily use in a Cabinet-level office since February 2026, still in use.",
     prose: [
       "An executive-assistant agent for a Cabinet-level office: Telegram contexts route through an agent gateway to a Gatekeeper sub-agent, segregated Google Workspace identities, a document pipeline built from scratch, and a daily set of scheduled jobs.",

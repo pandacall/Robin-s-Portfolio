@@ -126,6 +126,8 @@ export interface CaseStudySource {
   sections: CaseStudySectionSource[];
   /** The Interactive Demo slot (spec.md module 9) sits after this section. */
   demoAfter: string;
+  /** The slot's heading, e.g. "Try the grader". */
+  demoTitle: string;
 }
 
 export type CaseStudyBlock =
@@ -163,4 +165,5 @@ export interface CaseStudy {
   lede: string;
   sections: CaseStudySection[];
   demoAfter: string;
+  demoTitle: string;
 }
