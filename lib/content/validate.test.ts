@@ -62,6 +62,22 @@ describe("validateProjects", () => {
   it("accepts a Project Card with no Case Study link", () => {
     expect(() => validateProjects([project()], [])).not.toThrow();
   });
+
+  it("accepts a linked term that appears in the prose", () => {
+    expect(() =>
+      validateProjects([
+        project({ terms: [{ phrase: "six-pillar method", node: "pillars" }] }),
+      ]),
+    ).not.toThrow();
+  });
+
+  it("fails when a linked term doesn't appear in the prose", () => {
+    expect(() =>
+      validateProjects([
+        project({ terms: [{ phrase: "agent gateway", node: "gateway" }] }),
+      ]),
+    ).toThrow(/linked term/i);
+  });
 });
 
 function stackItem(overrides: Partial<StackItem> = {}): StackItem {

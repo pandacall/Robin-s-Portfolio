@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { CaseStudyBlockView } from "@/components/case-study/case-study-block";
 import type { CaseStudyDemo } from "@/components/case-study/demos";
+import { ProgramMark, titleTransitionName } from "@/components/project-spread";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import type { CaseStudy, CaseStudyBlock, Project } from "@/lib/content/types";
@@ -74,7 +75,9 @@ export function CaseStudyPage({
             <p className="back">
               <Link href="/#work">All work</Link>
             </p>
-            <h1>{project.name}</h1>
+            <h1 style={{ viewTransitionName: titleTransitionName(project.slug) }}>
+              {project.name}
+            </h1>
             <p className="kind">
               <span>{project.origin}</span>
               {project.private && (
@@ -82,6 +85,7 @@ export function CaseStudyPage({
               )}
               <span>Case Study</span>
             </p>
+            {project.logo && <ProgramMark logo={project.logo} />}
             <p className="lede">{caseStudy.lede}</p>
           </div>
         </header>

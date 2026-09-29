@@ -8,10 +8,20 @@ export interface Project {
   private: boolean;
   /** Set only when this Project has a Case Study route. */
   caseStudySlug?: string;
-  /** The spread's closing "Evidence:" line. */
+  /** The spread ledger's "Evidence" row. */
   evidence: string;
   /** The spread's prose, as plain paragraphs. */
   prose: string[];
+  /**
+   * Phrases in the prose that name a node on the spread's plate. Hovering one
+   * lights the node it names, and the other way round. Each `phrase` must
+   * appear verbatim in `prose`; `node` matches a `data-term` on the plate.
+   */
+  terms?: { phrase: string; node: string }[];
+  /** The ledger's "In the Case Study" row: what a Visitor finds there. */
+  caseStudyHolds?: string;
+  /** The program's own mark, shown with Robin's go-ahead (PRODUCT.md). */
+  logo?: { src: string; width: number; height: number; alt: string };
   /** The sentence after "Plate n" in the plate's figcaption. */
   plateCaption: string;
   /** The plate SVG's text alternative for screen readers. */

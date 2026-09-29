@@ -18,6 +18,7 @@ function textFields(project: Project): string[] {
     project.plateCaption,
     project.plateAlt,
     ...project.prose,
+    ...(project.caseStudyHolds ? [project.caseStudyHolds] : []),
   ];
 }
 
@@ -45,6 +46,13 @@ export function validateProjects(
       errors.push(
         `${project.slug}: links to a Case Study "${project.caseStudySlug}" that doesn't exist`,
       );
+    }
+    for (const term of project.terms ?? []) {
+      if (!project.prose.some((paragraph) => paragraph.includes(term.phrase))) {
+        errors.push(
+          `${project.slug}: the linked term "${term.phrase}" doesn't appear in the prose`,
+        );
+      }
     }
     for (const field of textFields(project)) {
       if (/\bresume\b/i.test(field)) {

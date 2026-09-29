@@ -1,15 +1,23 @@
 import { expect, test } from "@playwright/test";
 
-test("Stack index renders grouped rows with working Project links", async ({
+test("the Stack lists each technology with working Project links", async ({
   page,
   request,
 }) => {
   await page.goto("/");
 
   await expect(
-    page.getByRole("heading", { level: 2, name: "Stack index" }),
+    page.getByRole("heading", { level: 2, name: "Stack" }),
   ).toBeVisible();
 
+  const items = page.locator(".stack-row li");
+  expect(await items.count()).toBeGreaterThan(0);
+  for (const item of await items.all()) {
+    await expect(item.locator(".in a").first()).toBeVisible();
+  }
+
+  // The full table sits behind a disclosure; its links must work too.
+  await page.getByText("How each one is used").click();
   const rows = page.locator(".index tbody tr");
   const rowCount = await rows.count();
   expect(rowCount).toBeGreaterThan(0);
@@ -36,7 +44,7 @@ test("Stack index renders grouped rows with working Project links", async ({
   }
 });
 
-test("Stack index collapses to stacked rows with no head below 640px", async ({
+test("the full Stack table collapses to stacked rows with no head below 640px", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });

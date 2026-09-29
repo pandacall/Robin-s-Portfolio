@@ -24,13 +24,33 @@ test("Experience lists roles resolved to their Work Projects", async ({ page }) 
   await expect(dict.getByRole("link", { name: "Aya" })).toBeVisible();
 });
 
-test("About renders a short first-person section", async ({ page }) => {
+test("Contact carries the About body beside Robin's portrait", async ({ page }) => {
   await page.goto("/");
 
-  await expect(
-    page.getByRole("heading", { level: 2, name: "About" }),
-  ).toBeVisible();
-  await expect(page.locator(".about")).toContainText("University of the Philippines Diliman");
+  const contact = page.locator("#contact");
+  await expect(contact.locator(".about")).toContainText(
+    "University of the Philippines Diliman",
+  );
+  const portrait = contact.getByRole("img", { name: /John Robin Cubi/ });
+  await portrait.scrollIntoViewIfNeeded();
+  await expect(portrait).toBeVisible();
+  // Lazy-loaded: wait for the decode rather than reading it the moment it scrolls in.
+  await expect
+    .poll(() => portrait.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth))
+    .toBeGreaterThan(0);
+});
+
+test("Contact shows Manila time and copies the address", async ({ page, context }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.goto("/");
+
+  const contact = page.locator("#contact");
+  await expect(contact.locator(".clock time")).toHaveText(/^\d{1,2}:\d{2}\s?[AP]M$/);
+  await contact.getByRole("button", { name: "Copy address" }).click();
+  await expect(contact.getByRole("button", { name: "Copied" })).toBeVisible();
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
+    "hello@robincubi.dev",
+  );
 });
 
 test("Contact shows the email, LinkedIn and GitHub, and no phone number anywhere", async ({

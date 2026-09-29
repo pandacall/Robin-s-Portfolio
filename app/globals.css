@@ -51,9 +51,15 @@
   --green-3: #9db9a9;
   --plate: #edebe5;
   --plate-dot: #cfcac0;
+  /* A light tile for raster marks that only read on a light ground (the
+     portrait's frame, the program logo); the same in both themes. */
+  --tile: #fbfaf6;
 
   --radius: 0rem;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Scroll-linked parts: a gentler ease-out, so a plate keeps drawing while it
+     is still moving up the viewport instead of finishing on arrival. */
+  --ease-scroll: cubic-bezier(0.33, 1, 0.68, 1);
   --gutter: clamp(16px, 4vw, 56px);
   --font-disp: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Literata", Georgia, serif;
@@ -76,6 +82,8 @@
     --green-3: #3c5c4b;
     --plate: #2a2825;
     --plate-dot: #3e3b35;
+    /* Raster prints step down a little at night so they don't glare. */
+    --print-filter: brightness(0.9);
     color-scheme: dark;
   }
 }
@@ -691,18 +699,57 @@ p + p {
 .spread.alt .text {
   grid-column: 8 / span 5;
 }
-.evidence {
-  font-family: var(--font-disp);
-  font-size: 0.8125rem;
-  color: var(--ink-2);
-  margin-top: 16px;
-  padding-top: 12px;
+/* The spread's ledger: what backs the Project, and what its Case Study holds. */
+.ledger {
+  margin: 24px 0 0;
   border-top: 1px solid var(--rule);
+  font-family: var(--font-disp);
+  font-size: 0.875rem;
   line-height: 1.5;
 }
-.evidence b {
-  color: var(--ink);
+.ledger div {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.ledger dt {
   font-weight: 600;
+  color: var(--ink);
+}
+.ledger dd {
+  margin: 0;
+  color: var(--ink-2);
+}
+/* The program's own mark, on a tile that stays light in both themes. */
+.mark {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 10px 14px;
+  background: var(--tile);
+  border: 1px solid var(--rule);
+}
+.mark img {
+  display: block;
+  height: 44px;
+  width: auto;
+}
+/* A phrase in the prose that names a node on the plate (term-links.tsx). */
+.term {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--green-2);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.24em;
+  transition:
+    background-color 160ms var(--ease),
+    text-decoration-color 160ms var(--ease);
+}
+.term.lit {
+  background: color-mix(in srgb, var(--green) 12%, transparent);
+  text-decoration-style: solid;
+  text-decoration-color: var(--green);
 }
 .more {
   display: inline-flex;
@@ -797,6 +844,60 @@ p + p {
 .p-arrow {
   fill: var(--ink-2);
 }
+.p-track {
+  stroke: var(--rule);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.p-bar {
+  fill: var(--green);
+}
+.p-dot {
+  fill: var(--green);
+}
+.p-dot.hollow {
+  fill: var(--plate);
+  stroke: var(--green);
+  stroke-width: 1.5;
+}
+.p-num {
+  font-family: var(--font-disp);
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  fill: var(--green);
+}
+.p-text.num,
+.p-small.num {
+  font-variant-numeric: tabular-nums;
+}
+.p-line.dash {
+  stroke-dasharray: 4 4;
+}
+.p-box,
+.p-line,
+.p-arrow {
+  transition:
+    fill 160ms var(--ease),
+    stroke 160ms var(--ease);
+}
+/* A node lit from its phrase in the prose, or pointed at directly. */
+.p-node.lit .p-box {
+  fill: color-mix(in srgb, var(--green) 22%, var(--plate));
+  stroke: var(--green);
+  stroke-width: 2;
+}
+.p-node.lit .p-box.hi {
+  fill: var(--green);
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+.p-node.lit .p-line {
+  stroke: var(--green);
+}
+.p-node.lit .p-arrow {
+  fill: var(--green);
+}
 @media (max-width: 900px) {
   .spread .title,
   .spread .text,
@@ -809,45 +910,179 @@ p + p {
   }
 }
 
-/* ---------- stack index ---------- */
-.index {
-  background: var(--concrete);
-  padding: clamp(56px, 8vw, 120px) 0;
-}
-.index .head {
+/* ---------- section head (Stack, Experience, Contact) ----------
+   One tier below a Project title: the Projects stay the largest thing on the
+   page after the hero. An ink rule opens the section, the heading sits on
+   columns 1 to 5 and an aside on 7 to 12. */
+.sec-head {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: 24px;
-  row-gap: 16px;
-  align-items: end;
-  margin-bottom: 32px;
+  row-gap: 12px;
+  align-items: baseline;
+  padding-top: 18px;
+  border-top: 1px solid var(--ink);
+  margin-bottom: clamp(32px, 4vw, 48px);
 }
-.index h2 {
+.sec-head h2 {
   grid-column: 1 / span 5;
-  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.75rem);
+  font-size: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
-.index .head p {
-  grid-column: 7 / span 5;
+.sec-head .aside {
+  grid-column: 7 / span 6;
   color: var(--ink-2);
   font-size: 1rem;
+  max-width: 54ch;
 }
-.stack-group + .stack-group {
-  margin-top: 40px;
+@media (max-width: 900px) {
+  .sec-head h2,
+  .sec-head .aside {
+    grid-column: 1 / -1;
+  }
 }
-.stack-group h3 {
+
+/* ---------- stack ---------- */
+.index {
+  background: var(--concrete);
+  padding: clamp(56px, 7vw, 104px) 0;
+}
+.stack-list {
+  margin: 0;
+}
+.stack-row {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 12px;
+  padding: 20px 0;
+  border-top: 1px solid var(--rule);
+}
+.stack-row:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+.stack-row dt {
+  grid-column: 1 / span 3;
   font-family: var(--font-disp);
-  font-size: 1.25rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
 }
-.index table {
+.stack-row dd {
+  grid-column: 4 / -1;
+  margin: 0;
+}
+.stack-row ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14.5rem, 1fr));
+  gap: 16px 24px;
+  font-family: var(--font-disp);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+.stack-row li b {
+  display: block;
+  font-weight: 600;
+  color: var(--ink);
+}
+.stack-row li .in {
+  color: var(--ink-2);
+}
+.stack-row li .in a,
+.stack-more td a {
+  color: var(--ink-2);
+  text-decoration-color: var(--rule-2);
+}
+.stack-row li .in a:hover,
+.stack-more td a:hover {
+  color: var(--narra);
+  text-decoration-color: var(--narra);
+}
+.stack-row .creds {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-family: var(--font-disp);
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+.stack-row .creds .lead {
+  margin-right: 4px;
+}
+.index .cred {
+  display: inline-block;
+  font-family: var(--font-disp);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--green);
+  border: 1px solid var(--green-3);
+  padding: 2px 7px;
+}
+.index .also {
+  margin-top: 20px;
+  font-family: var(--font-disp);
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+  max-width: 90ch;
+}
+.index .also b {
+  color: var(--ink);
+  font-weight: 600;
+}
+.stack-more {
+  margin-top: 20px;
+}
+.stack-more summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-family: var(--font-disp);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+.stack-more summary::-webkit-details-marker {
+  display: none;
+}
+.stack-more summary::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 240ms var(--ease);
+}
+.stack-more[open] summary::before {
+  transform: translateY(2px) rotate(225deg);
+}
+.stack-more .stack-group {
+  margin-top: 28px;
+}
+.stack-more h3 {
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+.stack-more table {
   width: 100%;
   border-collapse: collapse;
   font-family: var(--font-disp);
   font-size: 0.9375rem;
 }
-.index th {
+.stack-more th {
   text-align: left;
   font-weight: 600;
   font-size: 0.75rem;
@@ -857,194 +1092,170 @@ p + p {
   padding: 0 16px 12px 0;
   border-bottom: 1px solid var(--ink);
 }
-.index td {
-  padding: 14px 16px 14px 0;
+.stack-more td {
+  padding: 12px 16px 12px 0;
   border-bottom: 1px solid var(--rule);
   vertical-align: top;
   transition: background-color 160ms var(--ease);
 }
-.index tr:hover td {
+.stack-more tr:hover td {
   background: color-mix(in srgb, var(--capiz) 45%, transparent);
 }
-.index td:first-child {
+.stack-more td:first-child {
   font-weight: 600;
   width: 26%;
 }
-.index td:nth-child(2) {
-  width: 34%;
-}
-.index td a {
-  color: var(--ink);
-  text-decoration-color: var(--rule-2);
-}
-.index td a:hover {
-  color: var(--narra);
-  text-decoration-color: var(--narra);
-}
-.index td .creds {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
-}
-.index td .cred {
-  display: inline-block;
-  font-family: var(--font-disp);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--green);
-  border: 1px solid var(--green-3);
-  padding: 2px 7px;
-}
-.index .also {
-  margin-top: 24px;
-  font-family: var(--font-disp);
-  font-size: 0.9375rem;
-  color: var(--ink-2);
-}
-.index .also b {
-  color: var(--ink);
-  font-weight: 600;
+.stack-more td:nth-child(2) {
+  width: 30%;
 }
 @media (max-width: 900px) {
-  .index h2,
-  .index .head p {
+  .stack-row dt,
+  .stack-row dd {
     grid-column: 1 / -1;
   }
 }
 @media (max-width: 640px) {
-  .index table,
-  .index thead,
-  .index tbody,
-  .index tr,
-  .index th,
-  .index td {
+  .stack-more table,
+  .stack-more thead,
+  .stack-more tbody,
+  .stack-more tr,
+  .stack-more th,
+  .stack-more td {
     display: block;
   }
-  .index thead {
+  .stack-more thead {
     display: none;
   }
-  .index tr {
+  .stack-more tr {
     padding: 12px 0;
     border-bottom: 1px solid var(--rule);
   }
-  .index td {
+  .stack-more td {
     padding: 2px 0;
     border: 0;
     width: auto !important;
   }
-  .index tr:hover td {
+  .stack-more tr:hover td {
     background: transparent;
   }
 }
 
-/* ---------- experience ---------- */
+/* ---------- experience ----------
+   A ledger across the full grid: date, role, then what was built there. */
 .xp {
-  padding: clamp(56px, 8vw, 120px) 0;
-  border-top: 1px solid var(--rule);
-}
-.xp .g {
-  row-gap: 20px;
-}
-.xp h2 {
-  grid-column: 1 / span 5;
-  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.75rem);
-}
-.xp .list {
-  grid-column: 7 / span 6;
+  padding: clamp(56px, 7vw, 104px) 0;
 }
 .xp .row {
   display: grid;
-  grid-template-columns: 9.5rem 1fr;
-  gap: 16px;
-  padding: 18px 0;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 8px;
+  padding: 20px 0;
   border-top: 1px solid var(--rule);
+}
+.xp .row:first-child {
+  border-top: 0;
+  padding-top: 0;
 }
 .xp .row:last-child {
   border-bottom: 1px solid var(--rule);
 }
 .xp .d {
+  grid-column: 1 / span 2;
   font-family: var(--font-disp);
   font-size: 0.875rem;
   color: var(--ink-2);
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-  padding-top: 4px;
+  padding-top: 3px;
+}
+.xp .role {
+  grid-column: 3 / span 4;
 }
 .xp .row h3 {
   font-size: 1.25rem;
   letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 .xp .org {
   font-family: var(--font-disp);
   font-size: 0.9375rem;
   color: var(--ink-2);
-  margin-top: 4px;
+  margin-top: 6px;
 }
 .xp .row p {
-  margin-top: 10px;
+  grid-column: 7 / -1;
   font-size: 1rem;
+  max-width: 60ch;
 }
 @media (max-width: 900px) {
-  .xp h2,
-  .xp .list {
-    grid-column: 1 / -1;
+  .xp .d {
+    grid-column: 1 / span 3;
+  }
+  .xp .role {
+    grid-column: 4 / -1;
+  }
+  .xp .row p {
+    grid-column: 4 / -1;
   }
 }
 @media (max-width: 560px) {
-  .xp .row {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
-}
-
-/* ---------- about ---------- */
-.about {
-  padding: clamp(56px, 8vw, 120px) 0;
-  border-top: 1px solid var(--rule);
-}
-.about .g {
-  row-gap: 20px;
-}
-.about h2 {
-  grid-column: 1 / span 5;
-  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.75rem);
-}
-.about .text {
-  grid-column: 7 / span 6;
-  font-size: 1.0625rem;
-}
-@media (max-width: 900px) {
-  .about h2,
-  .about .text {
+  .xp .d,
+  .xp .role,
+  .xp .row p {
     grid-column: 1 / -1;
   }
 }
 
-/* ---------- contact ---------- */
+/* ---------- contact (with the About body and the portrait) ---------- */
 .contact {
   background: var(--concrete);
-  padding-top: clamp(56px, 8vw, 120px);
-  padding-bottom: clamp(56px, 8vw, 120px);
+  padding: clamp(56px, 7vw, 104px) 0 clamp(64px, 8vw, 120px);
 }
-.contact .g {
-  row-gap: 24px;
-  align-items: end;
+.contact .now {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-family: var(--font-disp);
+  font-size: 0.9375rem;
 }
-.contact .lead {
-  grid-column: 1 / span 8;
+.contact .now .clock {
+  color: var(--ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
-.contact h2 {
-  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.75rem);
+.contact .body {
+  row-gap: 32px;
+  align-items: start;
+}
+.contact .portrait {
+  grid-column: 1 / span 4;
+  grid-row: 1 / span 2;
+  margin: 0;
+  border: 1px solid var(--rule);
+  background: var(--tile);
+}
+.contact .portrait img {
+  display: block;
+  filter: var(--print-filter, none);
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.contact .about {
+  grid-column: 7 / span 6;
+  font-size: 1.0625rem;
+  max-width: 60ch;
+}
+.contact .reach {
+  grid-column: 7 / -1;
+  align-self: end;
 }
 .contact .mail {
   font-family: var(--font-disp);
   font-size: clamp(1.75rem, 1rem + 3vw, 3.5rem);
   font-weight: 600;
   letter-spacing: -0.035em;
-  margin-top: 20px;
   line-height: 1;
 }
 .contact .mail a {
@@ -1052,27 +1263,67 @@ p + p {
   text-decoration-thickness: 2px;
   text-underline-offset: 0.12em;
 }
+.contact .mail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 20px;
+  margin-top: 10px;
+  min-height: 44px;
+}
 .contact .side {
-  grid-column: 9 / span 4;
   font-family: var(--font-disp);
   color: var(--ink-2);
   font-size: 0.9375rem;
-  line-height: 1.55;
+}
+.copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-disp);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+.copy svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.copy:hover span {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--rule-2);
 }
 .contact .acts {
-  grid-column: 1 / -1;
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 8px;
+  margin-top: 24px;
 }
 @media (max-width: 900px) {
-  .contact .lead,
-  .contact .side {
+  .contact .portrait {
+    grid-column: 1 / span 5;
+    grid-row: auto;
+  }
+  .contact .about,
+  .contact .reach {
     grid-column: 1 / -1;
   }
 }
 @media (max-width: 560px) {
+  .contact .portrait {
+    grid-column: 1 / span 9;
+  }
   .contact .acts {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1169,6 +1420,13 @@ footer.site .mini .dot {
   grid-row: 3;
   font-size: 1.1875rem;
   margin-top: -4px;
+}
+.cs-head .mark {
+  /* Shares the meta line's row, under it, so it sits level with the lede. */
+  grid-column: 1 / span 5;
+  grid-row: 3;
+  justify-self: start;
+  margin-top: 40px;
 }
 .cs-sec {
   padding: clamp(56px, 8vw, 120px) 0;
@@ -1817,6 +2075,7 @@ footer.site .mini .dot {
 @media (max-width: 900px) {
   .cs-head h1,
   .cs-head .kind,
+  .cs-head .mark,
   .cs-head .lede,
   .cs-sec h2,
   .cs-sec .body,
@@ -1824,6 +2083,9 @@ footer.site .mini .dot {
   .cs-demo .slot {
     grid-column: 1 / -1;
     grid-row: auto;
+  }
+  .cs-head .mark {
+    margin-top: 0;
   }
 }
 @media (max-width: 560px) {
@@ -2101,5 +2363,101 @@ footer.site .mini .dot {
   .tl-lane {
     min-height: 32px;
     margin-bottom: 6px;
+  }
+}
+
+/*
+ * Evidence motion (DESIGN.md "Motion"). Everything here is additive: without
+ * scroll-driven animation or View Transition support, or under reduced
+ * motion, the page renders finished and navigates plainly.
+ *
+ * - A spread's blocks settle 14px into place as they enter; nothing fades.
+ * - A plate draws its connectors, grows its bars and places its dots as it
+ *   scrolls up the viewport, in the order each part's `--i` gives it.
+ * - Opening a Case Study grows the spread's title into the Case Study's h1
+ *   (a shared view-transition-name), over a short cross-fade.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-group(*) {
+    animation-duration: 460ms;
+    animation-timing-function: var(--ease);
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 220ms;
+  }
+
+  @supports (animation-timeline: view()) {
+    .spread .title,
+    .spread .text,
+    .spread .plate {
+      animation: settle both var(--ease);
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+    .spread .plate {
+      view-timeline: --plate block;
+    }
+    .spread .plate .draw {
+      stroke-dasharray: 1;
+      animation: plate-draw both var(--ease-scroll);
+      animation-timeline: --plate;
+      animation-range: cover calc(6% + var(--i, 0) * 3%)
+        cover calc(34% + var(--i, 0) * 3%);
+    }
+    .spread .plate .p-head,
+    .spread .plate .fade {
+      animation: plate-fade both var(--ease-scroll);
+      animation-timeline: --plate;
+      animation-range: cover calc(28% + var(--i, 0) * 3%)
+        cover calc(36% + var(--i, 0) * 3%);
+    }
+    .spread .plate .p-bar {
+      transform-box: fill-box;
+      transform-origin: left center;
+      animation: plate-grow both var(--ease-scroll);
+      animation-timeline: --plate;
+      animation-range: cover calc(10% + var(--i, 0) * 3%)
+        cover calc(36% + var(--i, 0) * 3%);
+    }
+    .spread .plate .p-dot {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: plate-pop both var(--ease-scroll);
+      animation-timeline: --plate;
+      animation-range: cover calc(10% + var(--i, 0) * 2%)
+        cover calc(18% + var(--i, 0) * 2%);
+    }
+  }
+}
+@keyframes settle {
+  from {
+    translate: 0 14px;
+  }
+}
+@keyframes plate-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes plate-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes plate-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes plate-pop {
+  from {
+    transform: scale(0);
   }
 }

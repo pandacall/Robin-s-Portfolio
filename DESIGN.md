@@ -49,6 +49,12 @@ typography:
     fontWeight: 600
     lineHeight: 1
     letterSpacing: "-0.035em"
+  section:
+    fontFamily: "Familjen Grotesk, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem)"
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: "-0.03em"
   title:
     fontFamily: "Familjen Grotesk, Helvetica Neue, Arial, sans-serif"
     fontSize: "1.25rem"
@@ -190,7 +196,7 @@ components:
 
 The site is built the way a Philippine mid-century building is built: a capiz-white ground, poured concrete-gray fields for the rooms that matter (the hero, the Stack index, Contact), narra wood on the one thing a Visitor is meant to touch, and a deep green that carries every datum. Each Project is an editorial spread, not a card: a large title, a short prose block that ends in an "Evidence:" line, and a diagram plate drawn on drafting-dot paper with a hairline frame and a "Plate n" caption. Spreads alternate text-left / plate-right and plate-left / text-right on a 12-column grid, so the page reads like a well-set journal rather than a feed.
 
-The signature object is the dot archipelago: authored island polygons rasterised to a 34 by 48 grid, set bare on the concrete with one caption beneath, scanned in from north to south on load and pulsing slowly while the hero is on screen. It returns as a 26px mini map at the right of the footer, with no words beside it. The Filipino identity lives in the materials (capiz, concrete, narra) and in the archipelago; nothing is labelled as Filipino, and nothing is decorated as such. Motion is one authored moment on load plus quiet control feedback; the rest of the page is still.
+The signature object is the dot archipelago: authored island polygons rasterised to a 34 by 48 grid, set bare on the concrete with one caption beneath, scanned in from north to south on load and pulsing slowly while the hero is on screen. It returns as a 26px mini map at the right of the footer, with no words beside it. The Filipino identity lives in the materials (capiz, concrete, narra) and in the archipelago; nothing is labelled as Filipino, and nothing is decorated as such. Motion is one authored moment on load, quiet control feedback, and evidence motion on the spreads: each plate draws itself in as it scrolls into view, the prose and the plate point at each other, and a spread's title grows into its Case Study's heading. Nothing moves for decoration.
 
 Confirmed visual rejections (from the brief): Inter on near-black, purple gradients, glassmorphism, bento stat grids, typewriter titles, skill bars, logo walls, emoji headers, the Brittany Chiang navy/spotlight look, and any Filipino kitsch (Baybayin, flag colours, jeepneys, sun-and-stars). Voice, proposed: plain, specific, first person, no hype.
 
@@ -201,7 +207,9 @@ Confirmed visual rejections (from the brief): Inter on near-black, purple gradie
 - Familjen Grotesk 600 at tight tracking for everything that names or operates; Literata for prose.
 - Hairline rules, tonal fields and one framed plate instead of cards, shadows or glass.
 - The bare dot archipelago as the signature object, repeated as a mini map in the footer.
-- One authored motion moment on load; light by default, dark follows the system, no toggle.
+- One authored motion moment on load, plus evidence motion on the spreads (plates that draw in, prose linked to plates, a title that grows into its Case Study); light by default, dark follows the system, no toggle.
+- Two heading tiers: Project titles at Headline size, the supporting sections (Stack, Experience, Contact) one tier down at Section size.
+- A person on the page: Robin's portrait and the About body share the Contact field.
 
 ## Colors
 
@@ -229,7 +237,7 @@ A warm near-neutral palette of shell, concrete and ink, with narra brown as the 
 ### Named Rules
 **The Narra Once Rule.** Narra appears once per viewport as a filled surface, on the single primary action (Email). Everywhere else narra is a link, a status dot, a focus ring or a pointer highlight, never a background, never a heading, never decoration.
 
-**The Green Carries Data Rule.** Green is for values: archipelago dots, the focal node and filled shapes in a diagram plate, the Credential tag, and the Report Card grader's pillar bars and grade letter. It never colours prose, a heading or a button.
+**The Green Carries Data Rule.** Green is for values: archipelago dots, the focal node and filled shapes in a diagram plate, the Credential tag, and the Report Card grader's pillar bars and grade letter. It never colours prose, a heading or a button. The one exception is a linked term: its dotted underline is `green-2`, and while it is lit it takes a 12% green wash behind ink text, because it names a datum on the plate.
 
 **The Three Fields Rule.** Concrete is poured under exactly three rooms: the hero, the Stack index and Contact. Fields are full-bleed sections, not boxes; the ground shows between them. The plate paper exists only inside a diagram plate's hairline frame.
 
@@ -245,7 +253,8 @@ A warm near-neutral palette of shell, concrete and ink, with narra brown as the 
 
 ### Hierarchy
 - **Display** (600, `clamp(2.75rem, 1.1rem + 6vw, 5.5rem)`, 0.96, -0.035em): the hero sentence only, set as four clipped line boxes that rise on load, spanning columns 1 to 8.
-- **Headline** (600, `clamp(2.25rem, 1.2rem + 3.6vw, 4.75rem)`, 0.96, -0.035em): Project titles on a spread and the section headings (Stack index, Experience, Contact), always on a 5-column block. A Project title is a link in ink that turns narra on hover.
+- **Headline** (600, `clamp(2.25rem, 1.2rem + 3.6vw, 4.75rem)`, 0.96, -0.035em): Project titles on a spread and a Case Study's section headings, always on a 5-column block. A Project title is a link in ink that turns narra on hover.
+- **Section** (600, `clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem)`, 1, -0.03em): the home page's supporting section heads (Stack, Experience, Contact), one tier below a Project title so the work stays the largest thing after the hero.
 - **Mail** (600, `clamp(1.75rem, 1rem + 3vw, 3.5rem)`, 1, -0.035em): the Contact email line, in narra with a 2px underline.
 - **Title** (600, 1.25rem, 0.96, -0.02em): the role name in an Experience row.
 - **Lede** (Literata 400, 1.1875rem, 1.6): the role and availability sentence under the hero, capped at 34ch, with the role name in the grotesk at 600.
@@ -266,7 +275,7 @@ A warm near-neutral palette of shell, concrete and ink, with narra brown as the 
 
 ## Layout
 
-One 12-column grid (`repeat(12, minmax(0, 1fr))`, 24px column gap) inside a 1320px container with a `clamp(16px, 4vw, 56px)` side gutter. The grid is asymmetric and alternating. A spread places its title on columns 1 to 5 in the first grid row and its prose on the same columns in the second; its plate sits on columns 7 to 12 and spans both rows (`grid-row: 1 / span 2`, `align-self: start`), so the plate's top aligns with the title and the prose hangs beside the plate's body. The next spread (`.alt`) mirrors this: plate on 1 to 6 spanning both rows, title and prose on 8 to 12. Column 6 (or 7) is left empty as a gutter between the two halves. The Stack index and Experience headings sit on columns 1 to 5 with their content on 7 to 11 or 7 to 12; Contact sits on 1 to 8 with a side note on 9 to 12; the hero sentence takes 1 to 8 and the archipelago 9 to 12, bare, with 12px above it.
+One 12-column grid (`repeat(12, minmax(0, 1fr))`, 24px column gap) inside a 1320px container with a `clamp(16px, 4vw, 56px)` side gutter. The grid is asymmetric and alternating. A spread places its title on columns 1 to 5 in the first grid row and its prose on the same columns in the second; its plate sits on columns 7 to 12 and spans both rows (`grid-row: 1 / span 2`, `align-self: start`), so the plate's top aligns with the title and the prose hangs beside the plate's body. The next spread (`.alt`) mirrors this: plate on 1 to 6 spanning both rows, title and prose on 8 to 12. Column 6 (or 7) is left empty as a gutter between the two halves. A supporting section opens with a Section head across the full grid (heading on 1 to 5, aside on 7 to 12, on a 1px ink rule), and each then takes its own shape: the Stack is one hairline row per group (group name on 1 to 3, its items on 4 to 12), Experience is a ledger (date on 1 to 2, role on 3 to 6, description on 7 to 12), and Contact sets the portrait on 1 to 4 beside the About body and the ways to reach Robin on 7 to 12; the hero sentence takes 1 to 8 and the archipelago 9 to 12, bare, with 12px above it.
 
 Vertical rhythm is section-scaled: spreads and sections pad `clamp(56px, 8vw, 120px)` top and bottom; the hero pads `clamp(40px, 6vw, 88px)` top and `clamp(36px, 5vw, 72px)` bottom, with `clamp(28px, 4vw, 56px)` between the sentence and the lede row. Grid rows inside a spread are 32px apart (the prose block pulls up 4px to sit on the title's baseline rhythm); the archipelago caption sits 18px beneath the map; Experience rows pad 18px on hairlines; table cells pad 14px. Inline gaps step 4, 6, 8, 10, 12, 14, 16, 18, 24, 26, 32, 40.
 
@@ -329,17 +338,35 @@ None are built on the home page. The Case Study demos are the only place they ap
 - **Skip link:** the first Tab stop on every page, an ink-framed capiz "Skip to content" that sits above the masthead until it takes focus, and jumps to the page's own content. The masthead itself still holds only the brand and the four links.
 - **Mobile:** below 640px the four links give way to a Menu control at the right of the masthead (grotesk text in ink-2, two thin bars, 44px target) that opens a Sheet from the right: capiz ground, 1px `rule` left edge, zero radius, an ink-at-42% backdrop. Its head repeats the masthead's 60px hairline with "Menu" in ink-2 and a "Close" action; the links stack below at 1.75rem grotesk (600, -0.035em) on 64px hairline rows, turning narra on hover. Links are never hidden. (The prototype's nth-child hiding is not a rule.)
 
-### Tables (Stack index)
-The Stack is a three-column table (Technology 26%, Used in 34%, How) in UI type on the concrete field. Column heads are Labels in ink-2 on an ink rule; rows sit on hairlines with 14px cell padding and tint to a 45% capiz wash on hover (160ms). The technology cell is 600; Project links in the "Used in" cell are ink with a `rule-2` underline that turns narra on hover. A Credential sits under its technology's name as a tag (several wrap in a row, 6px apart): green text, 0.75rem, 0.04em uppercase, 1px `green-3` border, 2px by 7px padding. Below 640px the table collapses to stacked rows on hairlines with no head and no hover tint. Unbacked technologies go on one "Also worked with:" line in ink-2 with a bold ink lead-in.
+### Section head
+The head of a supporting home section: a 1px ink rule, 18px of space, then the heading in Section type on columns 1 to 5 and an aside on 7 to 12 (Body serif at 1rem in ink-2, or for Contact the live line), baseline-aligned. It sits 32 to 48px above the section's content. It is not a kicker: nothing sits above the heading but the rule.
+
+### Stack
+The home page shows the Stack compactly: one hairline row per group, the group name (grotesk 600, 1.0625rem) on columns 1 to 3, then its Stack Items in an auto-filling grid (at least 14.5rem a cell) on 4 to 12: each item's name in UI type at 600, and under it the Projects that use it as ink-2 links. A group's Credentials follow its items on one line ("Credentials, Multi-Agent Systems:" in ink-2, then the tags). The "Also worked with:" line closes the list, and a disclosure, "How each one is used" (grotesk 600 with a small chevron, 44px target), opens the full table below.
+
+### Tables (the full Stack)
+Inside the disclosure, the Stack is a three-column table (Technology 26%, Used in 34%, How) in UI type on the concrete field. Column heads are Labels in ink-2 on an ink rule; rows sit on hairlines with 14px cell padding and tint to a 45% capiz wash on hover (160ms). The technology cell is 600; Project links in the "Used in" cell are ink with a `rule-2` underline that turns narra on hover. A Credential sits under its technology's name as a tag (several wrap in a row, 6px apart): green text, 0.75rem, 0.04em uppercase, 1px `green-3` border, 2px by 7px padding. Below 640px the table collapses to stacked rows on hairlines with no head and no hover tint. Unbacked technologies go on one "Also worked with:" line in ink-2 with a bold ink lead-in.
 
 ### Spread (Project)
-The page's core object. Title block: the Project name as a Headline link, then a Meta line reading "Work", a narra-dotted "Private, demo on request", and "Case Study" when one exists, 14px apart. Prose block: Body serif, then an Evidence line (caption type, ink-2, 16px above, 12px of padding over a hairline, with "Evidence:" in ink at 600), then the Case Study link when one exists. Plate block: the diagram plate. The Project name in the title is a link to its Case Study whenever one exists. Title and prose stack on one side across two grid rows; the plate takes the other side and spans both rows, top-aligned; the sides alternate per spread (see Layout).
+The page's core object. Title block: the Project name as a Headline link, then a Meta line reading "Work", a narra-dotted "Private, demo on request", and "Case Study" when one exists, 14px apart, then the program's own mark when the Project has one (see Program mark). Prose block: Body serif with its linked terms, then the ledger, then the Case Study link when one exists. The ledger is two hairline rows in Meta type (an 8.5rem label column in ink at 600, the value in ink-2): "Evidence", what backs the Project, and "In the Case Study", what a Visitor finds there (the published method, the replay, the timeline). Each home plate has its own drawing: Oplan Bantay Signal's pipeline over the six pillar weights as green bars (read from the active rubric), Kuya A's path of one message through deduplication, the gateway, the Gatekeeper and the pre-send gate, and Aya's 24-hour clock of every scheduled run beside its end-of-day pipeline. Plates are 560 units wide and as tall as their drawing needs. Plate block: the diagram plate. The Project name in the title is a link to its Case Study whenever one exists. Title and prose stack on one side across two grid rows; the plate takes the other side and spans both rows, top-aligned; the sides alternate per spread (see Layout).
+
+### Linked terms
+Phrases in a spread's prose that name a node on its plate (`terms` on the Project, validated to appear verbatim). A term keeps ink text with a 1.5px dotted `green-2` underline at 0.24em offset. Pointing at a term lights it (solid green underline, 12% green wash) and the node it names (a 22% green wash, 2px green stroke; an already-green node takes a 2.5px ink stroke), and pointing at a node lights its term, all in 160ms. A handful per spread (four or five), never every noun. Terms are not tab stops; the plate's text alternative already names every node.
+
+### Program mark
+A Project's own logo, used only when Robin supplies it and says it may be published (Oplan Bantay Signal). It sits on a `tile` (a light capiz that stays light in both themes) with 10 by 14px padding and a 1px `rule` frame, 44px tall, under the Meta line on the spread and in the Case Study head. It is the one place a raster mark and its own colours appear.
+
+### Contact
+The last concrete field holds the person and the action together. A Section head with the live line as its aside ("Manila 4:04 PM" in the grotesk at 600, tabular, then "Open to AI Engineer roles, remote or in Metro Manila" in ink-2; before hydration it reads "Manila UTC+8"). Below it, the portrait on columns 1 to 4 spanning two rows, the About body (Body serif) on 7 to 12, then the email line in Mail type, a "Copy address" control (grotesk 600, a drawn 16px icon, "Copied" for 2.4s, shown only when the clipboard is available) beside "One email is enough.", and the four buttons (Email filled, Download CV, LinkedIn, GitHub).
+
+### Portrait
+Robin's photograph, cropped 4:5 and warmed so its white ground matches capiz, framed by a 1px `rule` on the `tile`; square, no shadow, lazy-loaded. In dark mode it steps down to 90% brightness so the print doesn't glare. Below 900px it takes 5 columns, below 560px 9.
 
 ### Case Study Link
 "Open the Case Study" in Action type and narra, with an 18px inline arrow that slides 6px right on hover (240ms). It appears only on a spread that has a Case Study.
 
 ### Experience Row
-A two-column row (9.5rem date column, so a range like "Aug 2025 – May 2026" holds one line, then content) on top hairlines with 18px padding: the date in Meta type, ink-2, tabular; the role as a Title; the organisation in UI type, ink-2; a one-sentence description in Body serif at 1rem that links the Work Projects built in that role. Below 560px the date stacks above the role.
+A ledger row across the full grid on top hairlines with 20px padding (the first row has no top rule, since the Section head's ink rule sits above it): the date in Meta type, ink-2, tabular, on columns 1 to 2; the role as a Title with the organisation in UI type, ink-2, beneath it, on 3 to 6; a one-sentence description in Body serif at 1rem that links the Work Projects built in that role, on 7 to 12. Below 900px the date takes 1 to 3 and the rest 4 to 12; below 560px everything stacks, date first.
 
 ### Dot Archipelago
 The signature object. Authored island polygons rasterised to a 34 by 48 grid and drawn as circles (radius 3.1 on a 10-unit cell) in an inline SVG; each dot carries a weight 0 to 2 that sets its colour (`green-2` at 55% opacity, `green` at 80%, `green` at 100%) and a `--r` row index that drives its stagger. Dot weight is illustrative, not coverage data, and the caption beneath says so. The map sits bare on columns 9 to 12 of the hero, 12px below the row's top, with its caption ("Signal across the archipelago. Dot weight is illustrative, not coverage data.") 18px beneath in ink-3 at 0.75rem. On load a 2px ink scan line (fading out at both ends) sweeps from the top to the bottom of the map (1500ms, 80ms after the hero is ready) and the dots pop in behind it, each row 22ms after the last (120ms base), scaling from 0.2 to 1 over 640ms. From 2.6s on, while the map is at least 20% in view and the tab is visible, a pulse runs every 7s: the scan line sweeps again (1900ms) and each dot flashes to ink and back over 1400ms, 28ms per row. Dots within 36 units of the pointer turn narra and scale to 1.5 with no delay, and reset when the pointer leaves. The footer repeats the map at 26px wide (radius 3.565), alone at the right, static and fully opaque in `green-2`. `prefers-reduced-motion` renders every dot in place with no scan, no pulse and no pointer scale.
@@ -357,11 +384,16 @@ Aya's slot holds the job timeline and also runs the full width. Inside it: a not
 A hairline-topped footer in Meta type, ink-2, padded 24px above and 56px below: "© 2026 John Robin Cubi" at left and the 26px mini archipelago at right, with no words beside it. Nothing else lives in the footer.
 
 ### Motion
-One authored moment on load, then quiet feedback. Everything uses `cubic-bezier(0.16, 1, 0.3, 1)`.
+One authored moment on load, quiet feedback, and evidence motion on the spreads. Time-based motion uses `cubic-bezier(0.16, 1, 0.3, 1)`; scroll-linked motion uses the gentler `cubic-bezier(0.33, 1, 0.68, 1)` so a plate keeps drawing while it moves up the viewport.
 - **Hero rise:** the four lines of the sentence rise from 110% to 0 inside clipped line boxes over 900ms, staggered 60, 150, 240 and 330ms; the lede and buttons fade and rise 12px over 700ms, 520ms in.
 - **Archipelago scan:** the scan line and row-staggered dot pop described above; then the 7s pulse while the hero is on screen.
 - **Pointer signal:** dots near the pointer light in narra (300ms fill, 640ms scale).
 - **Controls:** buttons wipe to ink in 320ms; the Case Study arrow slides 6px in 240ms; table rows tint in 160ms; link underlines darken in 160ms; the grader's pillar bars ease their width in 320ms; the slider thumb's border colour and a timeline job's row wash take 160ms; archipelago dots fade in over 480ms; the phone-nav Sheet slides in from the right in 320ms over a 240ms backdrop fade; Project titles turn narra with no transition.
+- **Plate draw-in:** each home plate is a scroll timeline (`view-timeline: --plate`). Its connectors draw along their length (`pathLength="1"`, dash offset 1 to 0), arrowheads and dashed lines fade in as their line finishes, the pillar bars grow from the left and the clock's run dots pop in, each part a little later than the last by its `--i` order (about 3% of the plate's pass through the viewport per step). Everything is finished by the time the plate is about halfway up the screen.
+- **Settle:** a spread's title, text and plate settle 14px into place as they enter (translate only; nothing fades, so nothing is ever hidden).
+- **Title to Case Study:** a cross-document View Transition. The spread's title and the Case Study's `h1` share a `view-transition-name`, so opening a Case Study grows the title into the heading over 460ms while the rest of the page cross-fades in 220ms.
+- **Linked terms:** see Linked terms (160ms).
+- **Support:** scroll-driven parts apply only under `@supports (animation-timeline: view())`, and all evidence motion only under `prefers-reduced-motion: no-preference`; without either, the plates render finished and navigation is plain.
 - **Reduced motion:** `prefers-reduced-motion: reduce` settles every transition and animation instantly (one rule on every element, including hover feedback) and turns off smooth scrolling.
 - **Without script:** the hero's hidden start states apply only once the document carries the `js` class, set by an inline script before first paint, so a Visitor without script sees the finished hero. `?motion=off` and `data-theme` are review-only overrides, not product features.
 
@@ -380,7 +412,8 @@ The build uses shadcn/ui primitives (Button, Table, Badge for the Credential tag
 - **Do** draw every diagram as inline SVG on a plate: drafting-dot paper, 1px hairline frame, "Plate n" caption saying it was redrawn; never a screenshot.
 - **Do** keep the dot archipelago bare, as built, with the caption stating that dot weight is illustrative, and repeat it alone as the footer mini map.
 - **Do** keep the masthead sticky (brand plus four links, nothing more) and everything else in the flow.
-- **Do** keep motion to the one load moment (hero rise, archipelago scan, slow pulse) plus control feedback, all on `cubic-bezier(0.16, 1, 0.3, 1)`, and settle everything instantly under `prefers-reduced-motion`.
+- **Do** keep motion to the one load moment (hero rise, archipelago scan, slow pulse), control feedback and evidence motion (plate draw-in, the 14px settle, linked terms, the title-to-Case-Study transition), and settle everything instantly under `prefers-reduced-motion`.
+- **Do** set supporting section heads one tier below Project titles, and give each supporting section its own shape (group rows, a ledger, the portrait room).
 - **Do** let the theme follow `prefers-color-scheme`, light by default, with no toggle; self-host Familjen Grotesk and Literata in the production build.
 - **Do** build on shadcn/ui primitives with these tokens mapped onto shadcn's variables and `--radius: 0`.
 
@@ -394,6 +427,6 @@ The build uses shadcn/ui primitives (Button, Table, Badge for the Credential tag
 - **Don't** add box-shadows, a second elevation model, or a radius on any surface or control.
 - **Don't** fill a button, heading or background with narra beyond the one primary action, and don't put green on prose or buttons.
 - **Don't** add a stat row to a spread, the hero or anywhere else; a number belongs in prose or on a plate, with a Project fact behind it.
-- **Don't** animate anything beyond the load moment and control feedback; no scroll-driven effects, no parallax, no hover lifts.
+- **Don't** animate for decoration: scroll-linked motion belongs to plates and spreads only, and there is no parallax, no smooth-scroll library, no scroll hijacking, no pinning and no hover lift.
 - **Don't** ship shadcn's default look (Geist, zinc, rounded cards, dark dashboard), Google Fonts, a theme toggle, or the prototype's `data-theme` / `?motion=off` overrides and floating review bar.
 - **Don't** introduce a third typeface, a monospace, a 700 weight or a light weight.

@@ -28,7 +28,7 @@ Robin builds AI agents that run inside the Philippine government: a telecom grad
 ## Operating Context
 
 - Hero states the name, the headline "Software & AI Engineer", the hook "I build AI agents that run inside the Philippine government.", the availability line "Open to AI Engineer roles — remote or Metro Manila", and two actions: Email and Download CV.
-- Home page order: Hero → featured Projects → Stack → Experience → About → Contact. One page per Case Study, e.g. `/work/oplan-bantay-signal`.
+- Home page order: Hero → featured Projects → Stack → Experience → Contact, with the About body and Robin's portrait inside Contact (2026-09-29 redesign). One page per Case Study, e.g. `/work/oplan-bantay-signal`.
 - Featured Projects and their Interactive Demos:
   - **Oplan Bantay Signal** (Work): a telco grading method plus an AI reporting pipeline. Demo: a grader with sliders and presets whose output is a mini Report Card.
   - **Kuya A** (Work): an executive-assistant agent on Telegram. Demo: a replayed chat with a tool-call side panel.
@@ -39,7 +39,7 @@ Robin builds AI agents that run inside the Philippine government: a telecom grad
 
 ## Capabilities and Constraints
 
-- **Privacy is a hard constraint.** No Confidential Detail may appear: internal IDs and URLs, credentials, names of officials or colleagues, real per-provider results, city results, complaint counts, internal-only rules, or real DICT or telco logos. Interactive Demos use Illustrative Data only, always visibly labelled. Public headline figures (e.g. Ookla national results) are acceptable placeholders.
+- **Privacy is a hard constraint.** No Confidential Detail may appear: internal IDs and URLs, credentials, names of officials or colleagues, real per-provider results, city results, complaint counts, internal-only rules, or real DICT or telco logos. The one exception is the Oplan Bantay Signal program logo, which Robin supplied and approved for publication on 2026-09-29; it appears only as that Project's program mark. Interactive Demos use Illustrative Data only, always visibly labelled. Public headline figures (e.g. Ookla national results) are acceptable placeholders.
 - ADR 0001: the Oplan Bantay Signal Case Study publishes Robin's real Six-Pillar grading method (weights, formulas, thresholds, grade bands). OASIS clearance is confirmed (see the ADR), and the rubric switch is on the real v3.1 rubric. The prototype uses placeholder pillars and weights.
 - Terminology is fixed by `CONTEXT.md`: Visitor, Hiring Manager, Project, Origin, Rebuild, Private Project, Case Study, Project Card, Interactive Demo, Confidential Detail, Illustrative Data, Stack, Stack Item, Credential, Experience, CV. "CV" everywhere, never "resume".
 - Must work at phone width and in both light and dark themes.

@@ -21,7 +21,9 @@ test("home page loads with the hero and the Project spreads", async ({ page }) =
     page.getByRole("heading", { level: 2, name: "Oplan Bantay Signal" }),
   ).toBeVisible();
   await expect(page.getByText("Private, demo on request").first()).toBeVisible();
-  await expect(page.getByText(/^Evidence:/).first()).toBeVisible();
+  await expect(
+    page.locator(".spread .ledger dt").filter({ hasText: /^Evidence$/ }).first(),
+  ).toBeVisible();
 
   await expect(page.getByText("© 2026 John Robin Cubi")).toBeVisible();
 });
@@ -52,4 +54,22 @@ test("three Project spreads render in order at phone width (390px)", async ({
   expect(titleBox && textBox && plateBox).toBeTruthy();
   expect(textBox!.y).toBeGreaterThan(titleBox!.y);
   expect(plateBox!.y).toBeGreaterThan(textBox!.y);
+});
+
+test("pointing at a linked term lights the plate node it names, and back", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+
+  const spread = page.locator("#kuya-a");
+  const term = spread.locator('.term[data-term="gateway"]');
+  const node = spread.locator('.plate [data-term="gateway"]');
+  await term.scrollIntoViewIfNeeded();
+  await term.hover();
+  await expect(node).toHaveClass(/\blit\b/);
+
+  await spread.locator('.plate [data-term="gate"]').hover();
+  await expect(spread.locator('.term[data-term="gate"]')).toHaveClass(/\blit\b/);
+  await expect(node).not.toHaveClass(/\blit\b/);
 });

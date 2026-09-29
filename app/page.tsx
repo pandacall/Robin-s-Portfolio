@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { About } from "@/components/about";
 import { Contact } from "@/components/contact";
 import { Experience } from "@/components/experience";
 import { Hero } from "@/components/hero";
@@ -39,8 +38,7 @@ export default function Home() {
       </main>
       <StackIndex stack={stack} />
       <Experience entries={experience} />
-      <About body={about} />
-      <Contact />
+      <Contact about={about} />
       <SiteFooter />
     </>
   );

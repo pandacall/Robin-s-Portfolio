@@ -45,7 +45,10 @@ export function collectContentSourceFiles(): ScannedFile[] {
     .split("\n")
     .filter((relativePath) => relativePath.length > 0)
     .filter((relativePath) => SCANNABLE_EXTENSIONS.test(relativePath))
-    .map((relativePath) => path.join(ROOT, relativePath));
+    .map((relativePath) => path.join(ROOT, relativePath))
+    // A tracked file deleted in the working tree is still listed until the
+    // deletion is committed; there's nothing left in it to scan.
+    .filter((filePath) => existsSync(filePath));
   return readAsScannedFiles(files);
 }
 

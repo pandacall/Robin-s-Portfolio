@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import { AyaPlate } from "./aya-plate";
-import { KuyaAPlate } from "./kuya-a-plate";
+import { KuyaAPathPlate } from "./kuya-a-path-plate";
 import { OplanBantaySignalPlate } from "./oplan-bantay-signal-plate";
 
 export const PLATES: Record<
@@ -8,6 +8,6 @@ export const PLATES: Record<
   (props: { titleId: string; alt: string }) => ReactElement
 > = {
   "oplan-bantay-signal": OplanBantaySignalPlate,
-  "kuya-a": KuyaAPlate,
+  "kuya-a": KuyaAPathPlate,
   aya: AyaPlate,
 };
