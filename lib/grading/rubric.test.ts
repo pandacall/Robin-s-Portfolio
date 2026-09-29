@@ -4,6 +4,7 @@ import {
   REAL_RUBRIC,
   RUBRIC_SWITCH,
   getActiveRubric,
+  type Rubric,
 } from "./rubric";
 
 describe("rubric switch", () => {
@@ -56,5 +57,36 @@ describe("rubric definitions", () => {
     expect(PLACEHOLDER_RUBRIC.bands.map((b) => b.min)).not.toEqual(
       REAL_RUBRIC.bands.map((b) => b.min),
     );
+  });
+
+  it("placeholder: shares no scoring target, curve anchor or band edge with the real method", () => {
+    const numbers = (rubric: Rubric) =>
+      rubric.pillars.flatMap(({ scoring }) => {
+        switch (scoring.kind) {
+          case "toward-target":
+          case "under-target":
+            return Object.values(scoring.target);
+          case "curve":
+            return scoring.points.map((point) => point.at);
+          case "bands":
+            return scoring.bands.map((band) => band.upTo);
+        }
+      });
+    const real = new Set(numbers(REAL_RUBRIC));
+    for (const value of numbers(PLACEHOLDER_RUBRIC)) {
+      expect(real.has(value), `placeholder reuses ${value}`).toBe(false);
+    }
+  });
+
+  it.each([PLACEHOLDER_RUBRIC, REAL_RUBRIC])(
+    "$kind: each pillar reads a different input, and the six cover every input",
+    (rubric) => {
+      expect(new Set(rubric.pillars.map((p) => p.input)).size).toBe(6);
+    },
+  );
+
+  it("the placeholder's simplification notes name no real pillar, tier or signal metric", () => {
+    const text = PLACEHOLDER_RUBRIC.demoSimplifications.join(" ");
+    expect(text).not.toMatch(/speed adequacy|network quality|tier|signal|RSRP/i);
   });
 });

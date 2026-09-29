@@ -212,7 +212,7 @@ A warm near-neutral palette of shell, concrete and ink, with narra brown as the 
 - **Narra Ink** (`narra-ink`): the text colour on a filled narra surface; it is the ground colour of the current theme.
 
 ### Secondary
-- **Data Green** (`green`): a deep forest green that carries data and nothing else: the heavier dots of the archipelago, the focal node and filled shapes in a diagram plate, and the Credential tag's text. In dark mode it becomes a pale mint (`green-dark`).
+- **Data Green** (`green`): a deep forest green that carries data and nothing else: the heavier dots of the archipelago, the focal node and filled shapes in a diagram plate, the Credential tag's text, and the Report Card grader's pillar bars and grade letter. In dark mode it becomes a pale mint (`green-dark`).
 - **Green 2** (`green-2`): the lighter dots of the archipelago and the footer mini map; the resting fill the pulse returns to.
 - **Green 3** (`green-3`): the Credential tag's hairline border only.
 
@@ -229,7 +229,7 @@ A warm near-neutral palette of shell, concrete and ink, with narra brown as the 
 ### Named Rules
 **The Narra Once Rule.** Narra appears once per viewport as a filled surface, on the single primary action (Email). Everywhere else narra is a link, a status dot, a focus ring or a pointer highlight, never a background, never a heading, never decoration.
 
-**The Green Carries Data Rule.** Green is for values: archipelago dots, the focal node and filled shapes in a diagram plate, the Credential tag. It never colours prose, a heading or a button.
+**The Green Carries Data Rule.** Green is for values: archipelago dots, the focal node and filled shapes in a diagram plate, the Credential tag, and the Report Card grader's pillar bars and grade letter. It never colours prose, a heading or a button.
 
 **The Three Fields Rule.** Concrete is poured under exactly three rooms: the hero, the Stack index and Contact. Fields are full-bleed sections, not boxes; the ground shows between them. The plate paper exists only inside a diagram plate's hairline frame.
 
@@ -252,6 +252,7 @@ A warm near-neutral palette of shell, concrete and ink, with narra brown as the 
 - **Body** (Literata 400, 1.0625rem, 1.6): spread prose and Experience descriptions (the latter at 1rem). The Stack index description runs at 1rem in ink-2.
 - **Action** (600, 0.9375rem, 0.005em): buttons and the "Open the Case Study" link.
 - **UI** (400, 0.9375rem): masthead brand and links (brand at 600), table cells, the "Also worked with" line, the organisation line and the Contact side note.
+- **Grade** (600, `clamp(3.5rem, 2.5rem + 4vw, 5rem)`, 0.9, -0.035em): the Report Card grader's grade letter only, in `green`. Its label and overall score run at Title size (1.25rem, -0.02em).
 - **Meta** (400, 0.875rem): the "Work · Private · Case Study" line, Experience dates, the footer.
 - **Caption** (400, 0.8125rem, 1.45 to 1.5): the Evidence line and plate captions. The archipelago caption runs one step smaller (0.75rem, 1.4) in ink-3, capped at 34ch.
 - **Label** (600, 0.75rem, 0.06em, uppercase): table column heads only. The Credential tag uses the same size at weight 400 and 0.04em.
@@ -318,7 +319,9 @@ There are no cards. The diagram plate is the only framed container, and it is an
 - **Caption:** a two-column figcaption 12px below the frame: "Plate n" in ink at 600, then one sentence in ink-2 caption type stating what was redrawn and that it is illustrative.
 
 ### Inputs / Fields
-None are built on the home page. The Case Study's grader (sliders and presets) is reserved as the demo slot on the Case Study page and not yet built; when it is built, its controls inherit the square, hairline, narra-focus language above and are labelled Illustrative Data in place.
+None are built on the home page. The Case Study's Report Card grader is the one place they appear, inside the demo slot; its controls inherit the square, hairline, narra-focus language above and are labelled Illustrative Data in place.
+- **Toggle group** (Mobile / Fixed broadband, and the three presets): a joined row of 44px-tall squares in the grotesk at 600, each with a 1px ink border; the pressed item fills ink with capiz text. One tab stop per group, arrow keys rove, Space or Enter presses.
+- **Slider** (six, one per input): a 2px `rule-2` track with an ink fill and an 18px square thumb (capiz, 2px ink border) that turns narra on hover or drag and takes the global focus ring. The label sits left of its value and unit, and the control is a 44px touch target.
 
 ### Navigation
 - **Masthead:** sticky, capiz at 92% over the page, 60px minimum height, hairline below; brand name at left in the grotesk (600, 0.9375rem, -0.01em), four links (Work, Stack, Experience, Contact) at right with a 26px gap, and nothing else.
@@ -343,7 +346,7 @@ The signature object. Authored island polygons rasterised to a 34 by 48 grid and
 ### Case Study page
 One page per Case Study at `/work/<slug>`, set in the home page's system with no new components. The head is the Project name as a Display-scale `h1` on columns 1 to 8, then a row with the Meta line ("Work", the narra-dotted "Private, demo on request", "Case Study") on columns 1 to 5 and the lede (Body serif at 1.1875rem) on 7 to 12. Each section is a hairline-topped spread of a Headline on columns 1 to 5 and a reading column on 7 to 12, with column 6 left empty (The Empty Column Rule); a hyphenated word in a heading never breaks. The reading column holds Body prose, `h3` Titles, hairline-ruled rows (an 8rem label or date column, then text; the pillar rows carry the weight as the label), a hairline table with the same Label heads as the Stack index, and diagram plates numbered in reading order. Outcome figures are their own rows under a source line, and Robin's contribution sits under its own `h3`, never in the same row. Below 900px everything stacks in source order; below 560px a row's label stacks above its text.
 
-The Interactive Demo slot is the one concrete field a Case Study adds to The Three Fields Rule: a full-bleed section after the method, a Headline on columns 1 to 5 and a slot on 7 to 12 opened by a 1px ink rule (the table-head rule), with no frame. Until the demo is built the slot carries a two-line Illustrative Data note.
+The Interactive Demo slot is the one concrete field a Case Study adds to The Three Fields Rule: a full-bleed section after the method, a Headline on columns 1 to 5 and a slot on 7 to 12 opened by a 1px ink rule (the table-head rule), with no frame. A Case Study without a demo yet carries a two-line Illustrative Data note in the slot. Oplan Bantay Signal's slot holds the Report Card grader: an Illustrative Data and simplification note, the Mobile / Fixed broadband and preset toggles, the Report Card, then the six sliders in two columns (one when the slot is narrow). The Report Card is the plate treatment (plate paper with the drafting-dot grid inside a 1px `rule` frame): a header, the provider, network and method, six pillar rows (name and weight, score, a 4px `green` bar on `rule`), and a verdict of the grade letter in `green` beside its label and the overall score. The verdict is the one polite live region.
 
 ### Footer
 A hairline-topped footer in Meta type, ink-2, padded 24px above and 56px below: "© 2026 John Robin Cubi" at left and the 26px mini archipelago at right, with no words beside it. Nothing else lives in the footer.

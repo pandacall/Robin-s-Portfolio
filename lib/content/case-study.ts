@@ -31,7 +31,12 @@ function resolveBlock(
       return {
         type: "pillars",
         versionLabel: rubric.versionLabel,
-        pillars: rubric.pillars,
+        pillars: rubric.pillars.map(({ name, weight, measures, why }) => ({
+          name,
+          weight,
+          measures,
+          why,
+        })),
       };
     }
     case "bands": {

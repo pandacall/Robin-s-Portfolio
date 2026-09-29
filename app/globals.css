@@ -1247,6 +1247,230 @@ footer.site .mini .dot {
   color: var(--ink);
   font-weight: 600;
 }
+/* The Report Card grader (Interactive Demo): controls, then a plate-style card. */
+.grader {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  font-family: var(--font-disp);
+}
+.gr-note {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.gr-note b {
+  color: var(--ink);
+  font-weight: 600;
+}
+.gr-label {
+  margin-bottom: 10px;
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+.toggle-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+.toggle-item {
+  min-height: 44px;
+  padding: 0 18px;
+  margin: 0 -1px -1px 0;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-disp);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  cursor: pointer;
+  transition:
+    background-color 200ms var(--ease),
+    color 200ms var(--ease);
+}
+.toggle-item:hover {
+  background: color-mix(in srgb, var(--capiz) 45%, transparent);
+}
+.toggle-item[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--capiz);
+}
+.toggle-item:focus-visible {
+  position: relative;
+  z-index: 1;
+}
+.rc {
+  margin: 0;
+  padding: clamp(20px, 3vw, 28px);
+  background: var(--plate);
+  background-image: radial-gradient(var(--plate-dot) 1px, transparent 1.2px);
+  background-size: 18px 18px;
+  background-position: 9px 9px;
+  border: 1px solid var(--rule);
+}
+.rc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+}
+.rc-head b {
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.rc-who {
+  margin: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.875rem;
+}
+.rc-who div {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 12px;
+  padding: 2px 0;
+}
+.rc-who dt {
+  color: var(--ink-2);
+}
+.rc-who dd {
+  margin: 0;
+}
+.rc-pillars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.rc-pillars li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 12px;
+  row-gap: 6px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.9375rem;
+}
+.rc-pillars .name {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.rc-pillars small,
+.rc-verdict small,
+.gr-slider-head small {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--ink-2);
+}
+.rc-pillars .num,
+.rc-verdict .overall,
+.gr-slider-head .value {
+  font-variant-numeric: tabular-nums;
+}
+.rc-pillars .bar {
+  grid-column: 1 / -1;
+  display: block;
+  height: 4px;
+  background: var(--rule);
+}
+.rc-pillars .bar i {
+  display: block;
+  height: 100%;
+  background: var(--green);
+  transition: width 320ms var(--ease);
+}
+.rc-verdict {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 18px;
+  padding-top: 16px;
+}
+.rc-verdict .letter {
+  font-size: clamp(3.5rem, 2.5rem + 4vw, 5rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  color: var(--green);
+}
+.rc-verdict .label {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.rc-verdict .overall {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.gr-sliders {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  column-gap: 32px;
+}
+.gr-sliders li {
+  padding: 10px 0 2px;
+  border-top: 1px solid var(--rule);
+}
+.gr-slider-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 0.9375rem;
+}
+.gr-slider-head .value {
+  font-weight: 600;
+}
+.slider-control {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  touch-action: none;
+  user-select: none;
+  cursor: pointer;
+}
+.slider-track {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: var(--rule-2);
+}
+.slider-indicator {
+  background: var(--ink);
+}
+.slider-thumb {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  background: var(--capiz);
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  transition: border-color 160ms var(--ease);
+}
+.slider-thumb:hover,
+.slider-thumb[data-dragging] {
+  border-color: var(--narra);
+}
+.slider-thumb:has(:focus-visible) {
+  outline: 2px solid var(--narra);
+  outline-offset: 3px;
+}
+.slider-thumb input {
+  outline: none;
+}
 @media (max-width: 900px) {
   .cs-head h1,
   .cs-head .kind,
@@ -1276,7 +1500,10 @@ footer.site .mini .dot {
   }
   .hero h1 .ln > span,
   .hero .below,
-  .dot {
+  .dot,
+  .rc-pillars .bar i,
+  .toggle-item,
+  .slider-thumb {
     transition: none !important;
   }
   .hero .scan,

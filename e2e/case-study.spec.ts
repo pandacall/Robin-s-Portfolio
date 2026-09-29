@@ -27,7 +27,7 @@ test("the home spread's Open the Case Study link opens the Case Study", async ({
   ).toBeVisible();
 });
 
-test("the Case Study tells the story in order, with the Interactive Demo slot", async ({
+test("the Case Study tells the story in order, with the Interactive Demo after the method", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
@@ -42,7 +42,7 @@ test("the Case Study tells the story in order, with the Interactive Demo slot", 
     ...SECTION_HEADINGS.slice(2),
   ]);
 
-  // The slot is a concrete field, empty of any demo until the grader ticket.
+  // The slot is a concrete field that holds the Interactive Demo.
   const slot = page.locator("#demo");
   await expect(slot).toBeVisible();
   await expect(slot.locator("[data-demo-slot]")).toContainText("Illustrative Data");
@@ -61,7 +61,9 @@ test("pillar details follow the placeholder rubric until clearance", async ({
 }) => {
   await page.goto(ROUTE);
 
-  await expect(page.getByText("Placeholder pillars, weights and bands")).toBeVisible();
+  await expect(
+    page.locator(".cs-cap").getByText("Placeholder pillars, weights and bands"),
+  ).toBeVisible();
   const body = await page.getByRole("main").innerText();
   for (const real of [
     "Speed Adequacy",

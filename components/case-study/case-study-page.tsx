@@ -6,8 +6,8 @@ import { SiteHeader } from "@/components/site-header";
 import type { CaseStudy, CaseStudyBlock, Project } from "@/lib/content/types";
 
 /**
- * The Interactive Demo slot (spec.md module 9): a concrete field reserved on
- * the page. It stays empty until the demo ticket fills it via `children`.
+ * The Interactive Demo slot (spec.md module 9): a concrete field on the page
+ * that holds the Case Study's demo. Without one it carries a short note.
  */
 function DemoSlot({ children }: { children?: ReactNode }) {
   return (
@@ -18,7 +18,7 @@ function DemoSlot({ children }: { children?: ReactNode }) {
           {children ?? (
             <p className="empty">
               <b>Interactive Demo</b>
-              <span>Illustrative Data. The Report Card grader is in preparation.</span>
+              <span>Illustrative Data. The demo for this Case Study is in preparation.</span>
             </p>
           )}
         </div>
@@ -44,9 +44,11 @@ function Heading({ text }: { text: string }) {
 export function CaseStudyPage({
   project,
   caseStudy,
+  demo,
 }: {
   project: Project;
   caseStudy: CaseStudy;
+  demo?: ReactNode;
 }) {
   // Plates are numbered in reading order across the whole page.
   const plateNumbers = new Map<CaseStudyBlock, number>();
@@ -97,7 +99,7 @@ export function CaseStudyPage({
                 </div>
               </div>
             </section>
-            {section.id === caseStudy.demoAfter && <DemoSlot />}
+            {section.id === caseStudy.demoAfter && <DemoSlot>{demo}</DemoSlot>}
           </div>
         ))}
       </main>
