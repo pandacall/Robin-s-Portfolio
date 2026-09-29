@@ -33,14 +33,29 @@ const OUTPUT = path.join(ROOT, "public", "cv", "john-robin-cubi.pdf");
 // one is too (Chrome would otherwise print on Letter).
 const PAGE_SIZE_CSS = "<style>@page { size: A4; }</style>";
 
+function registeredChrome(): string | undefined {
+  if (process.platform !== "win32") return undefined;
+  try {
+    const output = execFileSync(
+      "reg",
+      [
+        "query",
+        String.raw`HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe`,
+        "/ve",
+      ],
+      { encoding: "utf-8", stdio: ["ignore", "pipe", "ignore"] },
+    );
+    return output.match(/REG_SZ\s+(.+)/)?.[1].trim();
+  } catch {
+    return undefined;
+  }
+}
+
 function findChrome(): string {
   const candidates = [
     process.env.CHROME_PATH,
-    "D:/Program Files/Google/Chrome/Application/chrome.exe",
+    registeredChrome(),
     "C:/Program Files/Google/Chrome/Application/chrome.exe",
-    "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
-    process.env.LOCALAPPDATA &&
-      path.join(process.env.LOCALAPPDATA, "Google/Chrome/Application/chrome.exe"),
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     "/usr/bin/google-chrome",
     "/usr/bin/chromium",

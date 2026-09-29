@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { assertNoPhoneNumber } from "../cv/public-cv";
 import {
   assertNoConfidentialDetails,
   assertNoConfidentialDetailsInPublicPdfs,
@@ -103,6 +104,17 @@ describe("public PDFs", () => {
     await expect(
       assertNoConfidentialDetailsInPublicPdfs(null),
     ).resolves.toBeUndefined();
+  });
+
+  it("has no phone number in any real public PDF, even when the denylist is absent", async () => {
+    // The denylist is gitignored and may be missing (CI, a fresh clone); the phone-number
+    // check needs no denylist, so a stale or hand-replaced CV can't slip through.
+    const pdfs = await collectPublicPdfFiles();
+
+    expect(pdfs.length).toBeGreaterThan(0);
+    for (const pdf of pdfs) {
+      expect(() => assertNoPhoneNumber(pdf.content), pdf.path).not.toThrow();
+    }
   });
 
   it("finds no Confidential Details in the real public PDFs", async () => {
