@@ -118,14 +118,23 @@ export function ProjectSpread({
               <div>
                 <dt>Code</dt>
                 <dd>
-                  <a href={project.codeUrl}>{displayUrl(project.codeUrl)}</a>
+                  <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
+                    {displayUrl(project.codeUrl)}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
                 </dd>
               </div>
             )}
           </dl>
           {!caseStudyHref && project.liveUrl && (
-            <a className="more" href={project.liveUrl}>
+            <a
+              className="more"
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {project.liveLabel ?? "Open it live"}
+              <span className="sr-only"> (opens in a new tab)</span>
               <svg viewBox="0 0 18 18" aria-hidden="true">
                 <path
                   d="M5 13 13 5m0 0H6.5M13 5v6.5"

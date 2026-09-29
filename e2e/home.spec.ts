@@ -96,7 +96,13 @@ test("a public Project links its code and live deployment, and says nothing abou
     const spread = page.locator(`#${slug}`);
     await expect(spread.locator(".kind")).toContainText("Open source");
     await expect(spread.locator(".kind")).not.toContainText("Private");
-    await expect(spread.locator(`.ledger a[href="${code}"]`)).toBeVisible();
-    await expect(spread.locator(`a.more[href="${live}"]`)).toBeVisible();
+    const codeLink = spread.locator(`.ledger a[href="${code}"]`);
+    await expect(codeLink).toBeVisible();
+    await expect(codeLink).toHaveAttribute("target", "_blank");
+    await expect(codeLink).toHaveAttribute("rel", "noopener noreferrer");
+    const liveLink = spread.locator(`a.more[href="${live}"]`);
+    await expect(liveLink).toBeVisible();
+    await expect(liveLink).toHaveAttribute("target", "_blank");
+    await expect(liveLink).toHaveAttribute("rel", "noopener noreferrer");
   }
 });
